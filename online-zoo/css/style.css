@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("/main/nullstyle.css");
+@import url("../main/nullstyle.css");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap");
 html {
   font-size: 1px;
@@ -46,7 +46,7 @@ html {
 }
 .logo::before {
   content: "";
-  background: url("/main/img/bamboo.svg") no-repeat;
+  background: url("../main/img/bamboo.svg") no-repeat;
   position: absolute;
   width: 7rem;
   height: 21rem;
@@ -69,7 +69,7 @@ html {
 
 /*...................................................*/
 .watch {
-  background: url("/main/img/panda_bg.png") center no-repeat;
+  background: url("../main/img/panda_bg.png") center no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -327,7 +327,7 @@ html {
 }
 .column-pick:not(:last-child)::after {
   content: "";
-  background: url("/main/img/pick/Vector.svg") no-repeat;
+  background: url("../main/img/pick/Vector.svg") no-repeat;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -464,19 +464,19 @@ html {
 }
 .testimonials-column:first-child .person-column::before {
   content: "";
-  background: url("/main/img/comments/user_icon.svg") no-repeat;
+  background: url("../main/img/comments/user_icon.svg") no-repeat;
 }
 .testimonials-column:nth-child(2) .person-column::before {
   content: "";
-  background: url("/main/img/comments/man2.svg") no-repeat;
+  background: url("../main/img/comments/man2.svg") no-repeat;
 }
 .testimonials-column:nth-child(3) .person-column::before {
   content: "";
-  background: url("/main/img/comments/girl 1.svg") no-repeat;
+  background: url("../main/img/comments/girl 1.svg") no-repeat;
 }
 .testimonials-column:last-child .person-column::before {
   content: "";
-  background: url("/main/img/comments/girl2.svg") no-repeat;
+  background: url("../main/img/comments/girl2.svg") no-repeat;
 }
 .person-testimonials {
   margin-bottom: 10rem;
@@ -551,19 +551,19 @@ html {
 }
 .contacts-block1__link:first-child::before {
   content: "";
-  background: url("/main/img/footer/Facebook.svg") center no-repeat;
+  background: url("../main/img/footer/Facebook.svg") center no-repeat;
 }
 .contacts-block1__link:nth-child(2)::before {
   content: "";
-  background: url("/main/img/footer/twitter.svg") center no-repeat;
+  background: url("../main/img/footer/twitter.svg") center no-repeat;
 }
 .contacts-block1__link:nth-child(3)::before {
   content: "";
-  background: url("/main/img/footer/inst.svg") center no-repeat;
+  background: url("../main/img/footer/inst.svg") center no-repeat;
 }
 .contacts-block1__link:nth-child(4)::before {
   content: "";
-  background: url("/main/img/footer/youtube.svg") center no-repeat;
+  background: url("../main/img/footer/youtube.svg") center no-repeat;
 }
 
 .block2-footer {

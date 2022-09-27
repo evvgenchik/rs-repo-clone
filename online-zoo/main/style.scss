@@ -54,7 +54,13 @@ html {
 
 	&__menu {}
 
-	&__designed {}
+	&__designed {
+		a {
+			&:hover {
+				color: #F9804B;
+			}
+		}
+	}
 }
 
 .logo {
@@ -93,6 +99,10 @@ html {
 	&__item {}
 
 	&__link {
+		&:hover {
+			color: #F9804B;
+		}
+
 		&:first-child {
 			color: #F9804B;
 		}
@@ -169,7 +179,6 @@ html {
 
 .button {
 
-	margin-bottom: 100rem;
 	display: block;
 	margin: 0 auto;
 	background: $mainOrange;
@@ -183,10 +192,23 @@ html {
 	width: 100%;
 	height: 54rem;
 
+	a {
+		font-style: italic;
+		color: #FFFFFF;
+	}
+
+	&:active {
+		background: rgba(75, 146, 0, 1);
+
+	}
 
 	&:hover {
-		text-decoration: underline;
-		color: #000;
+		background: rgba(228, 114, 9, 1);
+
+		&:active {
+			background: rgba(75, 146, 0, 1);
+
+		}
 	}
 }
 
@@ -264,42 +286,14 @@ html {
 .pets {
 	padding-bottom: 100rem;
 	position: relative;
-	// &::before {
-	// 	content: '→';
-	// 	position: absolute;
-	// 	display: flex;
-	// 	align-items: center;
-	// 	justify-content: center;
-	// 	color: #fff;
-	// 	right: 7%;
-	// 	top: 35%;
-	// 	background: $mainOrange;
-	// 	width: 62rem;
-	// 	height: 62rem;
-	// 	border-radius: 50%;
-	// 	font-size: 23rem;
-	// }
 
-	// &::after {
-	// 	content: '←';
-	// 	position: absolute;
-	// 	display: flex;
-	// 	align-items: center;
-	// 	justify-content: center;
-	// 	color: #fff;
-	// 	left: 11%;
-	// 	top: 35%;
-	// 	background: $mainOrange;
-	// 	width: 62rem;
-	// 	height: 62rem;
-	// 	border-radius: 50%;
-	// 	font-size: 23rem;
-	// }
 
 	&__flowers {}
 
 	&__container {
 		position: relative;
+
+
 
 		&::before {
 			content: '→';
@@ -331,6 +325,25 @@ html {
 			height: 62rem;
 			border-radius: 50%;
 			font-size: 23rem;
+		}
+
+
+
+		&:hover {
+			cursor: pointer;
+
+			&::before,
+			&::after {
+				background: rgba(228, 114, 9, 1);
+			}
+
+			&:active {
+
+				&::before,
+				&::after {
+					background: rgba(75, 146, 0, 1);
+				}
+			}
 		}
 	}
 
@@ -366,7 +379,16 @@ html {
 	position: relative;
 	border: 1rem solid #FA6F32;
 
-
+	&:hover {
+		.info-pets {
+			color: #BDBDBD;
+			position: absolute;
+			bottom: 0;
+			transform: translate(0, -100%);
+			left: 0;
+			transition: all 0.3s ease 0s;
+		}
+	}
 
 
 	&__icon {
@@ -374,6 +396,7 @@ html {
 
 		&:hover {
 			cursor: pointer;
+			transform: scale(1.05);
 
 			&::after {
 				content: '';
@@ -385,20 +408,13 @@ html {
 				top: 0;
 				left: 0;
 			}
+
+
 		}
 
 	}
 
-	&__img {
-
-
-
-		&:hover {
-			transform: scale(1.05);
-			cursor: pointer;
-
-		}
-	}
+	&__img {}
 
 	&__info {}
 }
@@ -409,7 +425,6 @@ html {
 	align-items: center;
 	padding: 8rem 13rem 12rem 17rem;
 
-	&:hover {}
 
 	&__text {}
 
@@ -486,7 +501,16 @@ html {
 		margin-bottom: 10rem;
 	}
 
-	&__p2 {}
+	&__p2 {
+		a {
+			color: #333B41;
+			border-bottom: 1rem solid rgba(254, 144, 19, 1);
+
+			&:active {
+				color: rgba(75, 146, 0, 1);
+			}
+		}
+	}
 }
 
 .description-pick {
@@ -721,7 +745,12 @@ html {
 
 	&__person {}
 
-	&__text {}
+	&__text {
+		font-weight: 300;
+		font-size: 15px;
+		line-height: 120%;
+		color: #767474;
+	}
 }
 
 
@@ -815,6 +844,8 @@ html {
 			height: 26rem;
 			transform: translate(0, -50%);
 			border-radius: 50%;
+			z-index: 2;
+
 		}
 
 		&::after {
@@ -827,6 +858,14 @@ html {
 			width: 26rem;
 			height: 26rem;
 			border-radius: 50%;
+		}
+
+		&:active {
+			color: rgba(75, 146, 0, 1);
+
+			&::after {
+				background: rgba(75, 146, 0, 1);
+			}
 		}
 
 		&:first-child {
@@ -923,15 +962,27 @@ html {
 		border-radius: 5rem;
 		border: 1px solid rgba(75, 146, 0, 1);
 
+		&[data-mistake] {
+			border: 1px solid rgba(211, 20, 20, 1);
+			color: rgba(211, 20, 20, 1);
+		}
+
 	}
 
 	&__desigend {
 		font-weight: 100;
 
 		p {
-			font-weight: 100;
-			font-size: 16px;
-			line-height: 130%;
+			a {
+				&:active {
+					color: rgba(75, 146, 0, 1);
+				}
+
+				font-weight: 100;
+				font-size: 16px;
+				line-height: 130%;
+			}
+
 		}
 	}
 }

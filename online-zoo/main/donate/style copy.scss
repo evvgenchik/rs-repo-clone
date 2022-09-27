@@ -1,4 +1,4 @@
-@import url("../main/nullstyle.css");
+@import url("../../main/nullstyle.css");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 $mainOrange :linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
@@ -54,7 +54,13 @@ html {
 
 	&__menu {}
 
-	&__designed {}
+	&__designed {
+		a {
+			&:hover {
+				color: #F9804B;
+			}
+		}
+	}
 }
 
 .logo {
@@ -93,6 +99,10 @@ html {
 	&__item {}
 
 	&__link {
+		&:hover {
+			color: #F9804B;
+		}
+
 		&:first-child {
 			color: #F9804B;
 		}
@@ -234,15 +244,49 @@ html {
 }
 
 .input-pick {
+	&__wrapper-field {
+		width: 268rem;
+		display: inline-block;
+		margin-bottom: 25rem;
+		position: relative;
+
+
+		&::after {
+			content: '$';
+			position: absolute;
+			top: 50%;
+			right: 8%;
+			transform: translate(0, -50%);
+			color: #929699;
+			font-size: 20rem;
+			font-weight: 600;
+		}
+	}
+
 
 	&__fiel {
-		max-width: 268rem;
 		padding-left: 10rem;
+		width: 100%;
 		height: 54rem;
 		border: 1px solid rgba(146, 150, 153, 1);
 		border-radius: 2px;
 		background: rgba(255, 230, 211, 1);
-		margin-bottom: 25rem;
+		-moz-appearance: textfield;
+
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		&:focus {
+			border: 1px solid rgba(75, 146, 0, 1);
+		}
+
+		&:invalid {
+			border: 1px solid rgba(211, 20, 20, 1);
+
+		}
 	}
 
 	&__choice1 {
@@ -255,9 +299,10 @@ html {
 		-moz-appearance: none;
 		appearance: none;
 
-		&:checked {
-			background: #F9804B;
+		&[checked] {
+			background: rgba(75, 146, 0, 1);
 		}
+
 	}
 
 	&__choice2 {
@@ -270,7 +315,8 @@ html {
 		-moz-appearance: none;
 		appearance: none;
 
-		&:focus {
+
+		&[checked] {
 			background: rgba(75, 146, 0, 1);
 		}
 
@@ -318,35 +364,13 @@ html {
 
 
 
-	&__button {
-
-		margin-bottom: 100rem;
-		display: block;
-		margin: 0 auto;
-		background: $mainOrange;
-		font-weight: 500;
-		line-height: 140%;
-		color: #fff;
-		text-align: center;
-		text-transform: uppercase;
-		border-radius: 25rem;
-		max-width: 298rem;
-		width: 100%;
-		height: 54rem;
-
-
-		&:hover {
-			text-decoration: underline;
-			color: #000;
-		}
-
-		margin-bottom: 30rem;
-	}
+	&__button {}
 
 	&__share {
 		line-height: 140%;
 		color: #333B41;
 		text-align: center;
+		margin-top: 30rem;
 	}
 }
 
@@ -476,10 +500,68 @@ html {
 			top: -50%;
 			left: 50%;
 		}
+
+		&::after {
+			cursor: pointer;
+
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: 50%;
+			transform: translate(-38%, -40%);
+			width: 40rem;
+			height: 40rem;
+			border: 1rem solid rgba(254, 144, 19, 1);
+			border-radius: 50%;
+			opacity: 0;
+
+
+		}
+
+		&:hover {
+			color: #F9804B;
+
+			&::after {
+				opacity: 1;
+			}
+		}
+
+
+
 	}
 }
 
-.button {}
+
+.button {
+	display: block;
+	margin: 0 auto;
+	background: $mainOrange;
+	font-weight: 500;
+	line-height: 140%;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	border-radius: 25rem;
+	max-width: 298rem;
+	width: 100%;
+	height: 54rem;
+
+
+	&:active {
+		background: rgba(75, 146, 0, 1);
+
+	}
+
+	&:hover {
+		background: rgba(228, 114, 9, 1);
+
+		&:active {
+			background: rgba(75, 146, 0, 1);
+
+		}
+	}
+
+}
 
 
 
@@ -522,6 +604,7 @@ html {
 		background: $mainOrange;
 		margin-bottom: 44rem;
 		padding: 0 40rem;
+
 	}
 
 	&__contacts {}
@@ -542,8 +625,14 @@ html {
 		position: relative;
 		padding-left: 35rem;
 
-		a {
-			line-height: 140%;
+		line-height: 140%;
+
+		&:active {
+			color: rgba(75, 146, 0, 1);
+
+			&::after {
+				background: rgba(75, 146, 0, 1);
+			}
 		}
 
 		&::before {
@@ -555,6 +644,7 @@ html {
 			height: 26rem;
 			transform: translate(0, -50%);
 			border-radius: 50%;
+			z-index: 2;
 		}
 
 		&::after {
@@ -567,6 +657,8 @@ html {
 			width: 26rem;
 			height: 26rem;
 			border-radius: 50%;
+
+
 		}
 
 		&:first-child {
@@ -641,6 +733,9 @@ html {
 		padding-left: 10rem;
 		margin-right: 10rem;
 		color: #fff;
+		position: relative;
+
+
 
 		&:focus {
 			border: 0.7px solid rgba(211, 20, 20, 1);
@@ -662,13 +757,25 @@ html {
 		position: relative;
 		border-radius: 5rem;
 		border: 1px solid rgba(75, 146, 0, 1);
+
+		&[data-mistake] {
+			border: 1px solid rgba(211, 20, 20, 1);
+			color: rgba(211, 20, 20, 1);
+		}
+
 	}
 
 	&__desigend {
 		p {
-			font-weight: 100;
-			font-size: 16px;
-			line-height: 130%;
+			a {
+				&:active {
+					color: rgba(75, 146, 0, 1);
+				}
+
+				font-weight: 100;
+				font-size: 16px;
+				line-height: 130%;
+			}
 		}
 	}
 }

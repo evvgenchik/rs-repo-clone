@@ -129,6 +129,8 @@ a {
 
 	a {
 		color: #fff;
+		text-decoration: none;
+
 	}
 
 	&__container {
@@ -228,6 +230,10 @@ a {
 
 
 .forhelp-pick {
+	a {
+		text-decoration: none;
+	}
+
 	&__title {
 		white-space: nowrap;
 	}
@@ -350,6 +356,10 @@ a {
 }
 
 .pick {
+	a {
+		text-decoration: none;
+	}
+
 
 	&__input {
 		text-align: center;
@@ -701,6 +711,10 @@ a {
 
 
 .footer {
+	a {
+		text-decoration: none;
+	}
+
 	background-color: #000;
 	color: #fff;
 	padding: 41rem 50rem;

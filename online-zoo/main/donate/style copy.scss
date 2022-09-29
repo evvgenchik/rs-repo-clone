@@ -15,8 +15,7 @@ html {
 }
 
 [class*="__container"] {
-	max-width: 1130px;
-	padding: 0 15px;
+	max-width: 1160px;
 	position: relative;
 	margin: 0 auto;
 }
@@ -26,7 +25,6 @@ html {
 
 
 /*...............................................*/
-
 
 
 .header {
@@ -45,9 +43,11 @@ html {
 	}
 
 	&__block2 {
+
 		display: flex;
 		align-items: center;
 		gap: 63rem;
+		margin-right: 438rem;
 	}
 
 	&__logo {}
@@ -55,6 +55,8 @@ html {
 	&__menu {}
 
 	&__designed {
+		white-space: nowrap;
+
 		a {
 			&:hover {
 				color: #F9804B;
@@ -65,7 +67,7 @@ html {
 
 .logo {
 	border: 1.18841rem solid #FFFFFF;
-	max-width: 82rem;
+	width: 82rem;
 	padding: 3.55rem 4.75rem;
 	position: relative;
 	text-align: center;
@@ -87,6 +89,7 @@ html {
 }
 
 .menu {
+	white-space: nowrap;
 
 	&__list {
 		display: flex;
@@ -130,18 +133,33 @@ html {
 
 
 
+.forhelp-pick {
+	&__title {
+		white-space: nowrap;
+	}
 
+	&__text {
+		line-height: 1rem;
+
+	}
+}
 
 .pick {
 	background-color: #FBC6AA;
-	padding: 69rem 220rem 180rem;
+	padding: 36rem 220rem 180rem 220rem;
 	font-style: italic;
 	color: #333B41;
+	height: 1482rem;
 
 
 	&__container {
 		background-color: #FDE5D9;
-		padding: 41rem 100rem 59rem;
+		padding: 41rem 65rem 59rem 90rem;
+
+	}
+
+	&__container2 {
+		width: 1160rem;
 	}
 
 	&__title {
@@ -149,13 +167,17 @@ html {
 		line-height: 120%;
 		text-align: center;
 		color: #FE9013;
-		margin-bottom: 30rem;
+		margin-bottom: 20rem;
+		white-space: nowrap;
+		margin-right: 32rem;
+
 	}
+
 
 	&__subtitle {
 		font-size: 24px;
 		line-height: 120%;
-		margin-bottom: 40rem;
+		margin-bottom: 90rem;
 	}
 
 	&__text {
@@ -240,14 +262,17 @@ html {
 		margin-bottom: 31rem;
 	}
 
-	&__buttons {}
+	&__buttons {
+		margin-right: 45rem;
+	}
 }
 
 .input-pick {
 	&__wrapper-field {
+		margin-right: 30rem;
 		width: 268rem;
 		display: inline-block;
-		margin-bottom: 25rem;
+		margin-bottom: 30rem;
 		position: relative;
 
 
@@ -364,7 +389,9 @@ html {
 
 
 
-	&__button {}
+	&__button.button {
+		transform: translate(-5%, 0);
+	}
 
 	&__share {
 		line-height: 140%;
@@ -401,10 +428,12 @@ html {
 }
 
 .diet {
+	margin-right: 50rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 78rem;
+	margin-bottom: 25rem;
 
 	&__amount {}
 
@@ -421,8 +450,8 @@ html {
 	&::after {
 		content: '';
 		position: absolute;
-		top: 50%;
-		right: -20%;
+		top: 35%;
+		right: -15%;
 		background: url('../main/img/donate/x_icon.svg');
 		width: 14rem;
 		height: 14rem;
@@ -430,7 +459,7 @@ html {
 
 	&__number {
 		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-		font-size: 60rem;
+		font-size: 70rem;
 		font-weight: 600;
 		color: #000;
 		text-align: center;
@@ -443,9 +472,14 @@ html {
 		text-align: center;
 	}
 
-	&__icon {}
+	&__icon {
+		transform: translate(2%, -10%);
+	}
 
-	&__img {}
+	&__img {
+		width: 100%;
+		height: 100%;
+	}
 }
 
 .strip-pick {
@@ -481,7 +515,7 @@ html {
 .sum-strip {
 	margin-bottom: 50rem;
 	display: flex;
-	gap: 55rem;
+	gap: 67rem;
 
 	&__number {
 		font-weight: 500;
@@ -489,6 +523,7 @@ html {
 		line-height: 140%;
 		text-transform: uppercase;
 		position: relative;
+		margin-top: 10rem;
 
 		&::before {
 			content: '';
@@ -497,8 +532,8 @@ html {
 			height: 10rem;
 			border-radius: 50%;
 			position: absolute;
-			top: -50%;
-			left: 50%;
+			top: -75%;
+			left: 40%;
 		}
 
 		&::after {
@@ -545,6 +580,7 @@ html {
 	max-width: 298rem;
 	width: 100%;
 	height: 54rem;
+
 
 
 	&:active {
@@ -602,9 +638,9 @@ html {
 	&__button {
 		border-radius: 5rem;
 		background: $mainOrange;
-		margin-bottom: 44rem;
+		margin-bottom: 48rem;
 		padding: 0 40rem;
-
+		width: 298rem;
 	}
 
 	&__contacts {}
@@ -618,22 +654,18 @@ html {
 	&__list {
 		display: flex;
 		flex-direction: column;
-		gap: 25rem;
+		gap: 20rem;
 	}
 
 	&__link {
 		position: relative;
-		padding-left: 35rem;
+		padding-left: 40rem;
 
-		line-height: 140%;
-
-		&:active {
-			color: rgba(75, 146, 0, 1);
-
-			&::after {
-				background: rgba(75, 146, 0, 1);
-			}
+		&:hover {
+			color: #FA6F32;
 		}
+
+		a {}
 
 		&::before {
 			content: '';
@@ -645,6 +677,7 @@ html {
 			transform: translate(0, -50%);
 			border-radius: 50%;
 			z-index: 2;
+
 		}
 
 		&::after {
@@ -657,8 +690,14 @@ html {
 			width: 26rem;
 			height: 26rem;
 			border-radius: 50%;
+		}
 
+		&:active {
+			color: rgba(75, 146, 0, 1);
 
+			&::after {
+				background: rgba(75, 146, 0, 1);
+			}
 		}
 
 		&:first-child {
@@ -713,7 +752,7 @@ html {
 	&__title {
 		font-size: 24px;
 		line-height: 120%;
-		margin-bottom: 14rem;
+		margin-bottom: 10rem;
 	}
 
 	&__email {
@@ -731,11 +770,8 @@ html {
 		border-image-slice: 1;
 		background: #000;
 		padding-left: 10rem;
-		margin-right: 10rem;
+		margin-right: 7rem;
 		color: #fff;
-		position: relative;
-
-
 
 		&:focus {
 			border: 0.7px solid rgba(211, 20, 20, 1);
@@ -766,8 +802,15 @@ html {
 	}
 
 	&__desigend {
+		white-space: nowrap;
+		align-self: end;
+		margin-left: 150rem;
+		font-weight: 100;
+
 		p {
 			a {
+				color: #ABABAB;
+
 				&:active {
 					color: rgba(75, 146, 0, 1);
 				}
@@ -776,6 +819,7 @@ html {
 				font-size: 16px;
 				line-height: 130%;
 			}
+
 		}
 	}
 }

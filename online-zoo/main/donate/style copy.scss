@@ -112,10 +112,44 @@ html {
 	margin: 0 auto;
 }
 
+[class*="__container2"] {
+	max-width: 1160px;
+	position: relative;
+	margin: 0 auto;
+}
+
 
 a {
 	text-decoration: none;
 }
+
+
+@media (max-width: 1000px) {
+	[class*="__container"] {
+		max-width: 940px;
+	}
+}
+
+@media (max-width: 1000px) {
+	[class*="__container2"] {
+		max-width: 940px;
+	}
+}
+
+
+
+@media (max-width: 720px) {
+	[class*="__container"] {
+		max-width: 600px;
+	}
+}
+
+@media (max-width: 720px) {
+	[class*="__container2"] {
+		max-width: 600px;
+	}
+}
+
 
 
 /*...............................................*/
@@ -209,6 +243,118 @@ a {
 }
 
 
+
+
+.burger {
+	display: none;
+}
+
+
+
+@media (max-width:1180px) {
+	.header {
+		&__block2 {
+			margin-right: 0rem;
+
+		}
+	}
+}
+
+@media (max-width:1000px) {
+	.header {
+		.menu__list {
+			gap: 48rem;
+		}
+	}
+}
+
+@media (max-width: 720px) {
+	.header {
+		padding: 3rem;
+
+		height: 34rem;
+
+		&__container {
+			display: flex;
+			align-items: center;
+
+		}
+
+		&__designed {
+			display: none;
+		}
+
+		.logo {
+			border: 0;
+			width: 46rem;
+			padding: 0rem;
+
+			&::before {
+				content: '';
+				background: url('../main/img/bamboo.svg') no-repeat;
+				position: absolute;
+				width: 7rem;
+				height: 21rem;
+				left: 4rem;
+				bottom: -4rem;
+			}
+
+			&__text {
+				line-height: 120%;
+				font-size: 12rem;
+			}
+		}
+
+		.menu {
+			display: none;
+		}
+
+
+	}
+
+	.burger {
+		display: block;
+
+
+		&__container {
+			position: relative;
+			width: 18rem;
+			height: 13rem;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 1rem;
+				background-color: #fff;
+			}
+
+			span {
+				position: absolute;
+				bottom: 45%;
+				left: 0;
+				width: 100%;
+				height: 2rem;
+				background-color: #fff;
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 1rem;
+				background-color: #fff;
+			}
+
+
+		}
+	}
+}
+
 /*...................................................*/
 
 
@@ -222,6 +368,22 @@ a {
 	height: 390rem;
 }
 
+@media (max-width: 720px) {
+	.watch {
+		height: 335rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.watch {
+		height: 187rem;
+	}
+}
+
+
+
+
+
 
 
 /*..............................................*/
@@ -230,6 +392,7 @@ a {
 
 
 .forhelp-pick {
+
 	a {
 		text-decoration: none;
 	}
@@ -245,9 +408,11 @@ a {
 }
 
 .pick {
+	font-style: normal;
+
+
 	background-color: #FBC6AA;
 	padding: 36rem 220rem 180rem 220rem;
-	font-style: italic;
 	color: #333B41;
 	height: 1482rem;
 
@@ -270,6 +435,8 @@ a {
 		margin-bottom: 20rem;
 		white-space: nowrap;
 		margin-right: 32rem;
+		font-style: normal;
+
 
 	}
 
@@ -291,6 +458,8 @@ a {
 		line-height: 130%;
 		text-align: center;
 		margin-bottom: 40rem;
+		font-style: normal;
+
 	}
 
 	&__description {}
@@ -654,7 +823,6 @@ a {
 			border-radius: 50%;
 			opacity: 0;
 
-
 		}
 
 		&:hover {
@@ -703,7 +871,229 @@ a {
 
 }
 
+@media (max-width:1400px) {
+	.pick {
 
+		background-color: #FBC6AA;
+		padding: 36rem 30rem 22rem 30rem;
+		color: #333B41;
+		height: 1482rem;
+		height: auto;
+
+
+		&__container {
+			background-color: #FDE5D9;
+			padding: 20rem 17rem 45rem 44rem;
+		}
+
+		&__container2 {
+			width: 980rem;
+		}
+
+		.forhelp-pick {
+			margin-bottom: 40rem;
+
+			&__title {
+				white-space: normal;
+				margin-bottom: 33rem;
+			}
+
+		}
+
+		&__subtitle {
+			margin-bottom: 85rem;
+		}
+
+		&__diet {
+			margin-bottom: 18rem;
+		}
+
+		.strip-pick {
+			&__wrapper {
+				max-width: 860rem;
+			}
+		}
+
+		.sum-strip {
+			margin-bottom: 60rem;
+			gap: 70rem;
+
+			&__number {
+				&:first-child {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width:970px) {
+	.pick {
+
+		padding: 30rem 20rem 42rem 20rem;
+		height: 1482rem;
+		height: auto;
+
+
+		&__container {
+			background-color: #FDE5D9;
+			padding: 30rem 0rem 35rem 0rem;
+		}
+
+		&__container2 {
+			width: 620rem;
+		}
+
+
+		.forhelp-pick {
+
+			&__title {
+				font-size: 24rem;
+				margin-bottom: 15rem;
+			}
+
+			&__text {
+				margin-bottom: 20rem;
+			}
+		}
+
+		&__subtitle {
+			text-align: center;
+			margin-bottom: 75rem;
+		}
+
+		.sum-strip {
+			margin-bottom: 45rem;
+			gap: 70rem;
+
+			&__number {
+
+				&:first-child {
+					display: none;
+				}
+
+				&:nth-child(2) {
+					display: none;
+				}
+
+				&:nth-child(3) {
+					display: none;
+				}
+			}
+		}
+
+		.input-pick__fiel {
+			max-width: 180rem;
+			height: 42rem;
+		}
+	}
+}
+
+@media (max-width:620px) {
+	.pick {
+
+		padding: 30rem 8rem 20rem 8rem;
+
+
+		&__container {
+			background-color: #FDE5D9;
+			padding: 10rem 0rem 15rem 0rem;
+		}
+
+		&__container2 {
+			width: 300rem;
+		}
+
+		.forhelp-pick {
+			&__donation {
+				font-size: 24rem;
+			}
+		}
+
+		&__title {
+			font-size: 24rem;
+			margin-bottom: 10rem;
+		}
+
+		&__subtitle {
+			font-size: 16rem;
+			margin-bottom: 30rem;
+		}
+
+		.diet {
+			gap: 50rem;
+			margin-right: 0;
+			margin-bottom: 0rem;
+
+			.amount-diet {
+				&::after {
+					content: 'x';
+					background: none;
+					top: 25%;
+					right: -15%;
+					font-size: 14rem;
+
+				}
+
+				&__number {
+					font-size: 39rem;
+					margin-bottom: 5rem;
+				}
+
+				&__text {
+					font-size: 9rem;
+					white-space: nowrap;
+				}
+
+				&__icon {
+					img {
+						max-width: 160rem;
+					}
+				}
+			}
+		}
+
+		.strip-pick {
+			&__wrapper {
+				max-width: 300rem;
+				height: 13rem;
+			}
+
+			&__text {
+				margin-bottom: 0;
+			}
+		}
+
+		.sum-strip {
+			margin-bottom: 25rem;
+			gap: 40rem;
+
+
+			&__number {
+				font-weight: 500;
+				font-size: 13rem;
+				margin-top: 5rem;
+
+				&::before {
+					content: '';
+					width: 6rem;
+					height: 6rem;
+					top: -80%;
+					left: 40%;
+				}
+			}
+		}
+
+		.button {
+			transform: translate(0%, 0);
+		}
+
+		&__share {
+			white-space: nowrap;
+			font-size: 15rem;
+		}
+	}
+}
 
 /*.................................*/
 
@@ -928,6 +1318,195 @@ a {
 				line-height: 130%;
 			}
 
+		}
+	}
+}
+
+.footer__contacts2 {
+	display: none;
+}
+
+@media (max-width:1215px) {
+	.footer {
+
+		.block1-footer {
+			margin-right: -7rem;
+		}
+
+
+		.block2-footer {
+			margin-right: 0;
+
+		}
+
+	}
+}
+
+@media (max-width:1080px) {
+	.footer {
+		padding: 41rem 45rem;
+
+		&__container {
+			display: flex;
+		}
+	}
+
+	.block1-footer {
+		margin-right: -7rem;
+
+	}
+
+
+	.block2-footer {
+		margin-right: -78rem;
+	}
+
+	.menu__list {
+		gap: 48rem;
+	}
+
+	.block3-footer {
+		margin-right: 180rem;
+		transform: translate(-20%, 0);
+
+		&__button {
+			height: 42rem;
+		}
+
+		&__desigend {}
+	}
+}
+
+
+
+@media (max-width:970px) {
+	.block3-footer {
+
+		&__title {
+			display: none;
+		}
+
+		&__email {
+			display: none;
+		}
+
+		&__desigend {
+			position: absolute;
+			bottom: -35%;
+			left: -80rem;
+		}
+	}
+
+	.block2-footer {
+		display: block;
+	}
+
+	.footer {
+		padding: 13rem 22rem 100rem;
+		position: relative;
+
+		.block1-footer__logo {
+			margin-bottom: 30rem;
+		}
+
+		.contacts-block1 {
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			&__list {
+				gap: 30rem;
+			}
+
+			&__link {
+				color: #000;
+
+				&::before {
+					top: 90%;
+					transform: translate(0, -50%);
+					left: 75%;
+				}
+
+				&::after {
+					top: 90%;
+					transform: translate(0, -50%);
+					left: 75%;
+				}
+			}
+		}
+
+		.menu__list {
+			gap: 40rem;
+			position: absolute;
+			bottom: -40%;
+			left: 0;
+		}
+	}
+}
+
+@media (max-width:611px) {
+	.footer {
+		.footer__contacts2 {
+			display: block;
+
+			.contacts-block1__list {
+				flex-direction: row;
+				gap: 17rem;
+
+				.contacts-block1__link {
+					&::after {
+						left: 115%;
+						transform: translate(0, -200%);
+
+					}
+
+					&::before {
+						transform: translate(0, -200%);
+
+						bottom: 200rem;
+						left: 115%;
+					}
+				}
+			}
+		}
+
+		&__container {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+
+		.logo {
+			margin: 0rem auto 28rem;
+			border: none;
+			white-space: nowrap;
+			font-size: 19rem;
+			text-align: center;
+			margin-bottom: 80rem;
+			transform: translate(-20%, 0);
+
+			&::before {
+				left: 100%;
+			}
+		}
+
+		.contacts-block1 {
+			display: none;
+		}
+
+
+		.menu__list {
+			gap: 30rem;
+			position: absolute;
+			bottom: -40%;
+			left: 0;
+		}
+
+		.block3-footer {
+			&__desigend {
+				transform: translate(-30%, 60%);
+			}
 		}
 	}
 }

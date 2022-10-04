@@ -442,11 +442,11 @@ html {
     margin-bottom: 20rem;
   }
 }
-@media (max-width: 625px) {
+@media (max-width: 640px) {
   .backstage .flower-backstage img {
     display: block;
-    max-width: 130rem;
-    min-height: 520rem;
+    max-width: 125rem;
+    min-height: 480rem;
     height: 100%;
   }
 }
@@ -783,6 +783,15 @@ html {
     left: 37%;
     top: 38.5%;
     display: none;
+  }
+}
+@media (max-width: 320px) {
+  .pets .list-pets {
+    justify-content: start;
+    margin-left: 3rem;
+  }
+  .pets .info-pets {
+    padding: 7rem 13rem 12rem 12rem;
   }
 }
 /*...................................................*/
@@ -1227,6 +1236,11 @@ html {
   .testimonials {
     padding-bottom: 80rem;
   }
+  .testimonials__flowers .flowers-least {
+    bottom: -13%;
+    right: -2%;
+    max-width: 130rem;
+  }
   .testimonials__title {
     margin-bottom: 43rem;
   }
@@ -1257,6 +1271,12 @@ html {
 @media (max-width: 625px) {
   .testimonials {
     padding-bottom: 60rem;
+  }
+  .testimonials__flowers .flowers-least {
+    bottom: -8%;
+    right: 0%;
+    max-width: 65rem;
+    transform: rotate(-10deg);
   }
   .testimonials__title {
     font-size: 24rem;

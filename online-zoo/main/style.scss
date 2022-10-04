@@ -36,6 +36,12 @@ html {
 	}
 }
 
+@media (max-width: 625px) {
+	[class*="__container"] {
+		padding-left: 5rem;
+	}
+}
+
 
 
 

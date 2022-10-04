@@ -30,6 +30,11 @@ html {
     max-width: 600px;
   }
 }
+@media (max-width: 625px) {
+  [class*=__container] {
+    padding-left: 5rem;
+  }
+}
 /*...............................................*/
 .header {
   padding: 14rem;

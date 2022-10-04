@@ -361,6 +361,8 @@ a {
 		position: fixed;
 		width: 100%;
 		margin-bottom: 34rem;
+		z-index: 50;
+
 
 
 		&__container {
@@ -928,18 +930,30 @@ a {
 
 		.strip-pick {
 			&__wrapper {
-				max-width: 860rem;
+				max-width: 810rem;
+				transform: translate(2%, 0);
 			}
+
+
 		}
 
 		.sum-strip {
 			margin-bottom: 60rem;
 			gap: 70rem;
 
+
 			&__number {
 				&:first-child {
 					display: none;
 				}
+			}
+		}
+
+		.input-pick__fiel {
+			max-width: 268rem;
+
+			::after {
+				transform: translate(20%, -40%);
 			}
 		}
 	}
@@ -955,7 +969,7 @@ a {
 
 		&__container {
 			background-color: #FDE5D9;
-			padding: 30rem 0rem 35rem 0rem;
+			padding: 30rem 0rem 35rem 20rem;
 		}
 
 		&__container2 {
@@ -980,6 +994,12 @@ a {
 			margin-bottom: 75rem;
 		}
 
+		.strip-pick {
+			&__wrapper {
+				transform: translate(-2%, 0);
+			}
+		}
+
 		.sum-strip {
 			margin-bottom: 45rem;
 			gap: 70rem;
@@ -997,12 +1017,33 @@ a {
 				&:nth-child(3) {
 					display: none;
 				}
+
+				&::before {
+					top: -80%;
+					left: 30%;
+				}
 			}
 		}
 
 		.input-pick__fiel {
 			max-width: 180rem;
 			height: 42rem;
+		}
+
+		.input-pick {
+			&__wrapper-field {
+				margin-right: 20rem;
+				width: 180rem;
+				margin-bottom: 35rem;
+
+				&::after {
+					transform: translate(30%, -40%);
+				}
+			}
+		}
+
+		&__diet {
+			margin-bottom: 14rem;
 		}
 	}
 }
@@ -1020,6 +1061,7 @@ a {
 
 		&__container2 {
 			width: 300rem;
+
 		}
 
 		.forhelp-pick {
@@ -1073,12 +1115,15 @@ a {
 
 		.strip-pick {
 			&__wrapper {
-				max-width: 300rem;
+				max-width: 290rem;
 				height: 13rem;
+				transform: translate(1%, 0);
+
 			}
 
 			&__text {
 				margin-bottom: 0;
+				transform: translate(0, -50%);
 			}
 		}
 
@@ -1100,6 +1145,25 @@ a {
 					left: 40%;
 				}
 			}
+		}
+
+		.input-pick__fiel {}
+
+		.input-pick {
+			&__wrapper-field {
+				margin-right: 0rem;
+				width: 180rem;
+				margin-bottom: 29rem;
+
+				&::after {
+					transform: translate(30%, -40%);
+				}
+
+			}
+		}
+
+		.pick__buttons {
+			margin-right: 25rem;
 		}
 
 		.button {
@@ -1362,7 +1426,7 @@ a {
 
 @media (max-width:1080px) {
 	.footer {
-		padding: 41rem 45rem;
+		padding: 41rem 45rem 41rem 35rem;
 
 		&__container {
 			display: flex;
@@ -1464,6 +1528,8 @@ a {
 
 @media (max-width:611px) {
 	.footer {
+		padding: 23rem 22rem 100rem 20rem;
+
 		.footer__contacts2 {
 			display: block;
 

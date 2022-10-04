@@ -284,6 +284,7 @@ a {
     position: fixed;
     width: 100%;
     margin-bottom: 34rem;
+    z-index: 50;
   }
   .header__container {
     display: flex;
@@ -691,7 +692,8 @@ a {
     margin-bottom: 18rem;
   }
   .pick .strip-pick__wrapper {
-    max-width: 860rem;
+    max-width: 810rem;
+    transform: translate(2%, 0);
   }
   .pick .sum-strip {
     margin-bottom: 60rem;
@@ -699,6 +701,12 @@ a {
   }
   .pick .sum-strip__number:first-child {
     display: none;
+  }
+  .pick .input-pick__fiel {
+    max-width: 268rem;
+  }
+  .pick .input-pick__fiel ::after {
+    transform: translate(20%, -40%);
   }
 }
 @media (max-width: 970px) {
@@ -709,7 +717,7 @@ a {
   }
   .pick__container {
     background-color: #FDE5D9;
-    padding: 30rem 0rem 35rem 0rem;
+    padding: 30rem 0rem 35rem 20rem;
   }
   .pick__container2 {
     width: 620rem;
@@ -725,6 +733,9 @@ a {
     text-align: center;
     margin-bottom: 75rem;
   }
+  .pick .strip-pick__wrapper {
+    transform: translate(-2%, 0);
+  }
   .pick .sum-strip {
     margin-bottom: 45rem;
     gap: 70rem;
@@ -738,9 +749,24 @@ a {
   .pick .sum-strip__number:nth-child(3) {
     display: none;
   }
+  .pick .sum-strip__number::before {
+    top: -80%;
+    left: 30%;
+  }
   .pick .input-pick__fiel {
     max-width: 180rem;
     height: 42rem;
+  }
+  .pick .input-pick__wrapper-field {
+    margin-right: 20rem;
+    width: 180rem;
+    margin-bottom: 35rem;
+  }
+  .pick .input-pick__wrapper-field::after {
+    transform: translate(30%, -40%);
+  }
+  .pick__diet {
+    margin-bottom: 14rem;
   }
 }
 @media (max-width: 620px) {
@@ -789,11 +815,13 @@ a {
     max-width: 160rem;
   }
   .pick .strip-pick__wrapper {
-    max-width: 300rem;
+    max-width: 290rem;
     height: 13rem;
+    transform: translate(1%, 0);
   }
   .pick .strip-pick__text {
     margin-bottom: 0;
+    transform: translate(0, -50%);
   }
   .pick .sum-strip {
     margin-bottom: 25rem;
@@ -810,6 +838,17 @@ a {
     height: 6rem;
     top: -80%;
     left: 40%;
+  }
+  .pick .input-pick__wrapper-field {
+    margin-right: 0rem;
+    width: 180rem;
+    margin-bottom: 29rem;
+  }
+  .pick .input-pick__wrapper-field::after {
+    transform: translate(30%, -40%);
+  }
+  .pick .pick__buttons {
+    margin-right: 25rem;
   }
   .pick .button {
     transform: translate(0%, 0);
@@ -986,7 +1025,7 @@ a {
 }
 @media (max-width: 1080px) {
   .footer {
-    padding: 41rem 45rem;
+    padding: 41rem 45rem 41rem 35rem;
   }
   .footer__container {
     display: flex;
@@ -1059,6 +1098,9 @@ a {
   }
 }
 @media (max-width: 611px) {
+  .footer {
+    padding: 23rem 22rem 100rem 20rem;
+  }
   .footer .footer__contacts2 {
     display: block;
   }

@@ -176,6 +176,17 @@ html {
     background-color: #fff;
   }
 }
+@media (max-width: 640px) {
+  .header {
+    position: fixed;
+    width: 100%;
+  }
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
 /*...................................................*/
 .main__button.button {
   display: none;
@@ -283,24 +294,24 @@ html {
 }
 @media (max-width: 720px) {
   .watch {
-    height: 338rem;
+    height: 372rem;
   }
   .watch .button {
     width: 298rem;
     margin: 0;
-    transform: translate(-103%, -80%);
+    transform: translate(-103%, 0%);
   }
   .watch__block::before {
     content: "";
     width: 237rem;
     height: 237rem;
-    top: 2%;
+    top: 8%;
     left: 2%;
   }
   .watch__text {
     font-size: 54rem;
     line-height: 75%;
-    transform: translate(19%, -18%);
+    transform: translate(19%, 0%);
     margin-bottom: 0;
     max-width: 255rem;
   }
@@ -308,7 +319,7 @@ html {
     font-size: 54rem;
   }
 }
-@media (max-width: 611px) {
+@media (max-width: 625px) {
   .main__button.button {
     display: block;
     display: flex;
@@ -316,14 +327,14 @@ html {
     align-items: center;
   }
   .watch {
-    height: 187rem;
+    height: 221rem;
     margin-bottom: 20rem;
   }
   .watch__block::before {
     content: "";
     width: 119rem;
     height: 119rem;
-    top: 7%;
+    top: 13%;
     left: -30%;
   }
   .watch .button {
@@ -331,7 +342,7 @@ html {
   }
   .watch__text {
     font-size: 28rem;
-    transform: translate(-20%, -38%);
+    transform: translate(-20%, -10%);
     max-width: 128rem;
   }
   .watch__text span {
@@ -421,12 +432,6 @@ html {
   .backstage .icon-backstage {
     display: none;
   }
-  .backstage .flower-backstage img {
-    display: block;
-    max-width: 130rem;
-    min-height: 520rem;
-    height: 100%;
-  }
   .backstage .text-backstage {
     transform: translate(-10%, 0);
   }
@@ -437,7 +442,15 @@ html {
     margin-bottom: 20rem;
   }
 }
-@media (max-width: 611px) {
+@media (max-width: 625px) {
+  .backstage .flower-backstage img {
+    display: block;
+    max-width: 130rem;
+    min-height: 520rem;
+    height: 100%;
+  }
+}
+@media (max-width: 625px) {
   .backstage {
     padding: 30rem 0 55rem;
   }
@@ -461,6 +474,10 @@ html {
   }
 }
 /*.......................................*/
+#palma2 {
+  display: none;
+}
+
 .pets {
   padding-bottom: 100rem;
   position: relative;
@@ -600,16 +617,22 @@ html {
   }
   .pets .list-pets {
     justify-content: center;
-    grid-template-columns: repeat(3, 295rem);
+    grid-template-columns: repeat(3, 285rem);
   }
   .pets .block-pets {
     height: 354rem;
   }
   .pets .block-pets__icon img {
-    max-width: 295rem;
+    max-width: 275rem;
   }
 }
 @media (max-width: 1080px) {
+  #palma2 {
+    display: block;
+  }
+  #palma1 {
+    display: none;
+  }
   .list-pets {
     margin-bottom: 80rem;
     display: grid;
@@ -633,7 +656,7 @@ html {
     height: 354rem;
   }
   .pets .block-pets__icon img {
-    max-width: 295rem;
+    max-width: 285rem;
   }
   .info-pets {
     padding: 6rem 13rem 12rem 15rem;
@@ -641,8 +664,7 @@ html {
   .flowers-pets__palma {
     position: absolute;
     bottom: 0%;
-    left: -2%;
-    max-width: 180rem;
+    left: 0%;
   }
   .flowers-pets__strelitzia {
     position: absolute;
@@ -718,8 +740,7 @@ html {
   .pets .flowers-pets__palma {
     position: absolute;
     bottom: 0%;
-    left: -2%;
-    max-width: 140rem;
+    left: -8%;
   }
   .pets .flowers-pets__strelitzia {
     position: absolute;
@@ -729,7 +750,7 @@ html {
     max-width: 141rem;
   }
 }
-@media (max-width: 611px) {
+@media (max-width: 625px) {
   .pets {
     padding-bottom: 65rem;
   }
@@ -743,8 +764,8 @@ html {
   .pets .flowers-pets__palma {
     position: absolute;
     bottom: 0%;
-    left: -2%;
-    max-width: 45rem;
+    left: -6%;
+    max-width: 75rem;
   }
   .pets .flowers-pets__strelitzia {
     position: absolute;
@@ -752,6 +773,16 @@ html {
     right: 0%;
     overflow: hidden;
     max-width: 81rem;
+  }
+  .pets__container::before {
+    right: 37%;
+    top: 38.5%;
+    display: none;
+  }
+  .pets__container::after {
+    left: 37%;
+    top: 38.5%;
+    display: none;
   }
 }
 /*...................................................*/
@@ -969,7 +1000,7 @@ html {
     margin-bottom: 40rem;
   }
 }
-@media (max-width: 611px) {
+@media (max-width: 625px) {
   .pick {
     margin-bottom: 30rem;
     padding: 25rem 15rem 20rem;
@@ -1223,7 +1254,7 @@ html {
     width: 240rem;
   }
 }
-@media (max-width: 611px) {
+@media (max-width: 625px) {
   .testimonials {
     padding-bottom: 60rem;
   }
@@ -1477,7 +1508,7 @@ html {
     left: 0;
   }
 }
-@media (max-width: 611px) {
+@media (max-width: 625px) {
   .footer .footer__contacts2 {
     display: block;
   }

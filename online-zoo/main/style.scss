@@ -245,6 +245,7 @@ html {
 	.header {
 		position: fixed;
 		width: 100%;
+		z-index: 50;
 
 		&__container {
 			display: flex;
@@ -403,7 +404,7 @@ html {
 		.button {
 			width: 298rem;
 			margin: 0;
-			transform: translate(-103%, 0%);
+			transform: translate(-103%, -5%);
 		}
 
 		&__block {
@@ -2096,7 +2097,7 @@ html {
 
 @media (max-width:1080px) {
 	.footer {
-		padding: 41rem 45rem;
+		padding: 35rem 45rem 41rem 45rem;
 
 		&__container {
 			display: flex;

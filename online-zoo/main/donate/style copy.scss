@@ -355,6 +355,24 @@ a {
 	}
 }
 
+
+@media (max-width: 640px) {
+	.header {
+		position: fixed;
+		width: 100%;
+		margin-bottom: 34rem;
+
+
+		&__container {
+			display: flex;
+			justify-content: space-between;
+
+			width: 100%;
+		}
+	}
+
+}
+
 /*...................................................*/
 
 
@@ -370,13 +388,13 @@ a {
 
 @media (max-width: 720px) {
 	.watch {
-		height: 335rem;
+		height: 369rem;
 	}
 }
 
 @media (max-width: 420px) {
 	.watch {
-		height: 187rem;
+		height: 221rem;
 	}
 }
 

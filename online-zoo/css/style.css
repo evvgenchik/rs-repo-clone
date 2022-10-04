@@ -1237,9 +1237,9 @@ html {
     padding-bottom: 80rem;
   }
   .testimonials__flowers .flowers-least {
-    bottom: -13%;
-    right: -2%;
-    max-width: 130rem;
+    bottom: -12%;
+    right: 0%;
+    max-width: 120rem;
   }
   .testimonials__title {
     margin-bottom: 43rem;
@@ -1498,7 +1498,7 @@ html {
     position: relative;
   }
   .footer .block1-footer__logo {
-    margin-bottom: 20rem;
+    margin-bottom: 28rem;
   }
   .footer .contacts-block1 {
     position: absolute;

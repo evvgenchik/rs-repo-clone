@@ -1279,10 +1279,9 @@ html {
     padding-bottom: 60rem;
   }
   .testimonials__flowers .flowers-least {
-    bottom: -8%;
+    bottom: -7%;
     right: 0%;
     max-width: 65rem;
-    transform: rotate(-10deg);
   }
   .testimonials__title {
     font-size: 24rem;

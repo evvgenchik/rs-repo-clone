@@ -1830,13 +1830,10 @@ html {
 		padding-bottom: 60rem;
 
 		&__flowers {
-
 			.flowers-least {
-
-				bottom: -8%;
+				bottom: -7%;
 				right: 0%;
 				max-width: 65rem;
-				transform: rotate(-10deg);
 			}
 		}
 
@@ -2205,6 +2202,7 @@ html {
 
 @media (max-width:625px) {
 	.footer {
+
 		.footer__contacts2 {
 			display: block;
 

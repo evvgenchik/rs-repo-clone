@@ -1099,7 +1099,7 @@ a {
     left: 0;
   }
 }
-@media (max-width: 611px) {
+@media (max-width: 639px) {
   .footer {
     padding: 23rem 22rem 100rem 20rem;
   }

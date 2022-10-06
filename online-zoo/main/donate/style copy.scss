@@ -138,13 +138,13 @@ a {
 
 
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
 	[class*="__container"] {
 		max-width: 600px;
 	}
 }
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
 	[class*="__container2"] {
 		max-width: 600px;
 	}
@@ -268,7 +268,7 @@ a {
 	}
 }
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
 	.header {
 		padding: 3rem;
 
@@ -388,7 +388,7 @@ a {
 	height: 390rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
 	.watch {
 		height: 369rem;
 	}

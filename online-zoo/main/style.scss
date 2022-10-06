@@ -30,7 +30,7 @@ html {
 
 
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
 	[class*="__container"] {
 		max-width: 600px;
 	}
@@ -160,7 +160,7 @@ html {
 	}
 }
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
 	.header {
 		padding: 3rem;
 
@@ -403,7 +403,7 @@ html {
 
 }
 
-@media (max-width:720px) {
+@media (max-width:750px) {
 	.watch {
 		height: 372rem;
 
@@ -543,6 +543,10 @@ html {
 	}
 }
 
+.flower-backstage__img2 {
+	display: none;
+}
+
 @media (max-width:1495px) {
 	.flower-backstage {
 
@@ -609,7 +613,7 @@ html {
 // 	}
 // }
 
-@media (max-width:720px) {
+@media (max-width:750px) {
 	.backstage {
 		padding: 60rem 0 85rem;
 
@@ -643,11 +647,13 @@ html {
 	.backstage {
 		.flower-backstage {
 
-			img {
+			.flower-backstage__img {
+				display: none;
+			}
+
+			.flower-backstage__img2 {
 				display: block;
-				max-width: 125rem;
-				min-height: 480rem;
-				height: 100%;
+				transform: translate(0, -1%);
 			}
 		}
 	}
@@ -1019,7 +1025,7 @@ html {
 	}
 }
 
-@media (max-width:720px) {
+@media (max-width:750px) {
 	.pets {
 		padding-bottom: 100rem;
 
@@ -1088,7 +1094,7 @@ html {
 				bottom: 0%;
 				right: 0%;
 				overflow: hidden;
-				max-width: 141rem;
+				max-width: 171rem;
 			}
 		}
 	}
@@ -1390,7 +1396,7 @@ html {
 
 
 
-@media (max-width:720px) {
+@media (max-width:750px) {
 	.pick {
 		margin-bottom: 70rem;
 
@@ -1399,7 +1405,7 @@ html {
 		&__container {
 			padding: 5rem 20rem 60rem 20rem;
 			width: 100%;
-			max-width: 720rem;
+			max-width: 750rem;
 			border-radius: 15rem;
 		}
 
@@ -1773,7 +1779,7 @@ html {
 }
 
 
-@media (max-width:720px) {
+@media (max-width:750px) {
 	.testimonials {
 		padding-bottom: 80rem;
 
@@ -1823,7 +1829,7 @@ html {
 	}
 }
 
-@media (max-width:720px) {}
+@media (max-width:750px) {}
 
 @media (max-width:625px) {
 	.testimonials {

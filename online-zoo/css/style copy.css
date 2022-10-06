@@ -670,6 +670,7 @@ a {
     color: #333B41;
     height: 1482rem;
     height: auto;
+    overflow: hidden;
   }
   .pick__container {
     background-color: #FDE5D9;
@@ -714,6 +715,7 @@ a {
     padding: 30rem 20rem 42rem 20rem;
     height: 1482rem;
     height: auto;
+    overflow: hidden;
   }
   .pick__container {
     background-color: #FDE5D9;
@@ -1015,7 +1017,7 @@ a {
   display: none;
 }
 
-@media (max-width: 1215px) {
+@media (max-width: 1415px) {
   .footer .block1-footer {
     margin-right: -7rem;
   }
@@ -1023,7 +1025,7 @@ a {
     margin-right: 0;
   }
 }
-@media (max-width: 1080px) {
+@media (max-width: 1415px) {
   .footer {
     padding: 41rem 45rem 41rem 35rem;
   }
@@ -1047,7 +1049,7 @@ a {
     height: 42rem;
   }
 }
-@media (max-width: 970px) {
+@media (max-width: 999px) {
   .block3-footer__title {
     display: none;
   }

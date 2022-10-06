@@ -708,7 +708,7 @@ html {
     max-width: 195rem;
   }
 }
-@media (max-width: 750px) {
+@media (max-width: 950px) {
   .pets {
     padding-bottom: 100rem;
   }
@@ -1456,7 +1456,7 @@ html {
   display: none;
 }
 
-@media (max-width: 1215px) {
+@media (max-width: 1415px) {
   .footer .block1-footer {
     margin-right: -7rem;
   }
@@ -1464,7 +1464,7 @@ html {
     margin-right: 0;
   }
 }
-@media (max-width: 1080px) {
+@media (max-width: 1415px) {
   .footer {
     padding: 35rem 45rem 41rem 45rem;
   }
@@ -1488,7 +1488,7 @@ html {
     height: 42rem;
   }
 }
-@media (max-width: 970px) {
+@media (max-width: 999px) {
   .block3-footer__title {
     display: none;
   }

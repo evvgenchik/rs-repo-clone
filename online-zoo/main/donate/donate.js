@@ -31,3 +31,23 @@ function changeButtonSubscribe() {
 	}
 }
 
+
+
+
+/*..........................BURGER............................*/
+const burger = document.querySelector('.burger')
+
+burger.addEventListener('click', addClassBurger)
+
+function addClassBurger() {
+	const headerBlock = document.querySelector('.header__block2');
+	const cross = document.querySelector('.header__cross');
+	const header = document.querySelector('.header');
+	const fon = document.querySelector('.fon')
+	headerBlock.classList.toggle('active')
+	burger.classList.toggle('active')
+	header.classList.toggle('active')
+	fon.classList.toggle('active')
+	cross.addEventListener('click', addClassBurger)
+	fon.addEventListener('click', addClassBurger)
+}

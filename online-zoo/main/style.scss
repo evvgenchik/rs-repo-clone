@@ -810,6 +810,7 @@ body {
 		height: 62rem;
 		border-radius: 50%;
 		font-size: 23rem;
+		z-index: 1;
 
 		&:hover {
 			cursor: pointer;
@@ -835,6 +836,8 @@ body {
 		height: 62rem;
 		border-radius: 50%;
 		font-size: 23rem;
+		z-index: 1;
+
 
 		&:hover {
 			cursor: pointer;
@@ -888,7 +891,6 @@ body {
 	column-gap: 30rem;
 	row-gap: 20rem;
 	transition: all ease 2s;
-	left: 0;
 	top: 0;
 }
 
@@ -997,10 +999,13 @@ body {
 @media (max-width:1358px) {
 	.pets {
 
+		&__container {
+			max-width: 925rem;
+			height: 900rem;
 
+		}
 
 		.list-pets {
-			justify-content: center;
 			grid-template-columns: repeat(3, 285rem);
 		}
 
@@ -1084,51 +1089,54 @@ body {
 	}
 }
 
-@media (max-width:950px) {
+// @media (max-width:950px) {
 
-	.pets {
+// 	.pets {
 
-		.list-pets {
-			grid-template-columns: repeat(3, 250rem);
-			column-gap: 20rem;
-		}
+// 		.list-pets {
+// 			grid-template-columns: repeat(3, 250rem);
+// 			column-gap: 20rem;
+// 		}
 
-		.block-pets {
-			height: 300rem;
+// 		.block-pets {
+// 			height: 300rem;
 
-			&__icon {
-				img {
-					max-width: 245rem;
-				}
-			}
-		}
-	}
-}
+// 			&__icon {
+// 				img {
+// 					max-width: 245rem;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
-@media (max-width:800px) {
-	.pets {
+// @media (max-width:800px) {
+// 	.pets {
 
-		.list-pets {
-			grid-template-columns: repeat(3, 200rem);
-			column-gap: 20rem;
-		}
+// 		.list-pets {
+// 			grid-template-columns: repeat(3, 200rem);
+// 			column-gap: 20rem;
+// 		}
 
-		.block-pets {
+// 		.block-pets {
 
-			&__icon {
-				img {
-					max-width: 195rem;
-				}
-			}
-		}
-	}
-}
+// 			&__icon {
+// 				img {
+// 					max-width: 195rem;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 @media (max-width:950px) {
 	.pets {
 		padding-bottom: 100rem;
 
 		&__container {
+			max-width: 600rem;
+			height: 860rem;
+
 
 			&::before {
 				right: 37%;

@@ -35,8 +35,6 @@ aside {
 
 html,
 body {
-	height: 100%;
-	width: 100%;
 	font-size: 100%;
 	line-height: 1;
 	font-size: 14px;
@@ -108,13 +106,11 @@ html {
 
 [class*="__container"] {
 	max-width: 1160px;
-	position: relative;
 	margin: 0 auto;
 }
 
 [class*="__container2"] {
 	max-width: 1160px;
-	position: relative;
 	margin: 0 auto;
 }
 
@@ -144,27 +140,29 @@ a {
 	}
 }
 
-@media (max-width: 750px) {
-	[class*="__container2"] {
-		max-width: 600px;
+@media (max-width: 625px) {
+	[class*="__container"] {
+		padding-left: 5rem;
 	}
 }
 
+body {
+	position: relative;
+}
 
 
 /*...............................................*/
-
 
 .header {
 	padding: 14rem;
 	color: #fff;
 	background-color: #000;
+	z-index: 2;
+	position: relative;
 
 
 	a {
 		color: #fff;
-		text-decoration: none;
-
 	}
 
 	&__container {
@@ -242,10 +240,47 @@ a {
 	}
 }
 
-
-
-
 .burger {
+	display: none;
+	cursor: pointer;
+
+	&__container {
+		position: relative;
+		width: 18rem;
+		height: 13rem;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 1rem;
+			background-color: #fff;
+		}
+
+		span {
+			position: absolute;
+			bottom: 45%;
+			left: 0;
+			width: 100%;
+			height: 2rem;
+			background-color: #fff;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1rem;
+			background-color: #fff;
+		}
+	}
+}
+
+.header__cross {
 	display: none;
 }
 
@@ -269,101 +304,146 @@ a {
 }
 
 @media (max-width: 750px) {
-	.header {
-		padding: 3rem;
 
-		height: 34rem;
+	.fon.active {
 
-		&__container {
-			display: flex;
-			align-items: center;
-
-		}
-
-		&__designed {
-			display: none;
-		}
-
-		.logo {
-			border: 0;
-			width: 46rem;
-			padding: 0rem;
-
-			&::before {
-				content: '';
-				background: url('../main/img/bamboo.svg') no-repeat;
-				position: absolute;
-				width: 7rem;
-				height: 21rem;
-				left: 4rem;
-				bottom: -4rem;
-			}
-
-			&__text {
-				line-height: 120%;
-				font-size: 12rem;
-			}
-		}
-
-		.menu {
-			display: none;
-		}
-
-
-	}
-
-	.burger {
-		display: block;
-
-
-		&__container {
-			position: relative;
-			width: 18rem;
-			height: 13rem;
-
-			&::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 1rem;
-				background-color: #fff;
-			}
-
-			span {
-				position: absolute;
-				bottom: 45%;
-				left: 0;
-				width: 100%;
-				height: 2rem;
-				background-color: #fff;
-			}
-
-			&::after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 1rem;
-				background-color: #fff;
-			}
-
-
-		}
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.7);
 	}
 }
 
+.header.active {
+	height: 300rem;
+}
+
+.header {
+	position: fixed;
+	width: 100%;
+
+	padding: 3rem;
+
+	height: 34rem;
+
+	&__container {
+		display: flex;
+		align-items: center;
+	}
+
+	&__designed {
+		display: none;
+	}
+
+	.logo {
+		border: 0;
+		width: 46rem;
+		padding: 0rem;
+
+		&::before {
+			content: '';
+			background: url('../main/img/bamboo.svg') no-repeat;
+			position: absolute;
+			width: 7rem;
+			height: 21rem;
+			left: 4rem;
+			bottom: -4rem;
+		}
+
+		&__text {
+			line-height: 120%;
+			font-size: 12rem;
+		}
+	}
+
+	.menu {
+		display: none;
+	}
+
+
+
+	.burger {
+		display: block;
+	}
+
+	.burger.active {
+		display: none;
+	}
+
+	.header__block2.active {
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 33rem;
+		background-color: #fff;
+		width: 100%;
+		height: 100%;
+		align-items: start;
+		padding: 12rem 0 40rem 10rem;
+
+		.logo {
+			border: 1.18841rem solid #FE9013;
+			padding: 3.55rem 4.75rem;
+			width: 65rem;
+
+
+
+
+			h1 {
+				color: #FE9013;
+				font-size: 15rem;
+			}
+
+			&::before {
+				background: none;
+			}
+		}
+
+		.header__menu.menu {
+			display: block;
+
+			.menu__list {
+				flex-direction: column;
+				gap: 15rem;
+
+				a {
+					color: #000;
+
+					&:hover {
+						color: #F9804B;
+					}
+				}
+			}
+		}
+
+		.header__cross {
+			cursor: pointer;
+			display: block;
+			font-size: 20rem;
+			position: absolute;
+			top: 4%;
+			right: 1%;
+			width: 20rem;
+			height: 20rem;
+			color: #000;
+		}
+	}
+
+
+}
 
 @media (max-width: 640px) {
 	.header {
 		position: fixed;
 		width: 100%;
-		margin-bottom: 34rem;
 		z-index: 50;
-
-
 
 		&__container {
 			display: flex;
@@ -374,6 +454,7 @@ a {
 	}
 
 }
+
 
 /*...................................................*/
 
@@ -811,6 +892,7 @@ a {
 	gap: 67rem;
 
 	&__number {
+		cursor: pointer;
 		font-weight: 500;
 		font-size: 26px;
 		line-height: 140%;
@@ -834,9 +916,9 @@ a {
 
 			content: '';
 			position: absolute;
-			top: -50%;
-			left: 50%;
-			transform: translate(-38%, -40%);
+			top: -120%;
+			left: 40%;
+			transform: translate(-38%, 0%);
 			width: 40rem;
 			height: 40rem;
 			border: 1rem solid rgba(254, 144, 19, 1);
@@ -846,6 +928,14 @@ a {
 		}
 
 		&:hover {
+			color: #F9804B;
+
+			&::after {
+				opacity: 1;
+			}
+		}
+
+		&.active {
 			color: #F9804B;
 
 			&::after {
@@ -1142,6 +1232,13 @@ a {
 					height: 6rem;
 					top: -80%;
 					left: 40%;
+				}
+
+				&::after {
+					width: 20rem;
+					height: 20rem;
+					top: -120%;
+					left: 44%;
 				}
 			}
 		}

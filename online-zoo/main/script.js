@@ -24,14 +24,20 @@ function addClassBurger() {
 	const cross = document.querySelector('.header__cross');
 	const header = document.querySelector('.header');
 	const fon = document.querySelector('.fon')
-	headerBlock.classList.toggle('active')
-	burger.classList.toggle('active')
-	header.classList.toggle('active')
-	fon.classList.toggle('active')
-	cross.addEventListener('click', addClassBurger)
-	fon.addEventListener('click', addClassBurger)
+	headerBlock.classList.add('active')
+	burger.classList.add('active')
+	header.classList.add('active')
+	fon.classList.add('active')
+	cross.addEventListener('click', () => removeActiveBurger(headerBlock, burger, header, fon))
+	fon.addEventListener('click', () => removeActiveBurger(headerBlock, burger, header, fon))
 }
 
+function removeActiveBurger(headerBlock, burger, header, fon) {
+	headerBlock.classList.remove('active')
+	burger.classList.remove('active')
+	header.classList.remove('active')
+	fon.classList.remove('active')
+}
 
 
 
@@ -125,5 +131,72 @@ function deletePreviousSlide(button) {
 
 /*.........CARUSEL TESTIMONIALS.................*/
 
+const TESTIMONIALS = {
+	input: document.querySelector('.strip__input'),
+	commentsBlock: document.querySelector('.comments-testimonials'),
+	commentColumn: document.querySelector('.testimonials-column'),
+}
+
+TESTIMONIALS.input.addEventListener('input', rangeValue)
+
+// function rangeValue() {
+// 	let offset = 0;
+// 	let gap = parseInt(window.getComputedStyle(TESTIMONIALS.commentsBlock).gap);
+// 	let step = TESTIMONIALS.input.value;
+// 	const columnWidth = document.querySelector('.testimonials-column').offsetWidth;
+// 	offset += columnWidth * step;
+// 	TESTIMONIALS.commentsBlock.style.right = gap +offset + 'rem'
+// }
+
+function rangeValue() {
+	let offset = 0;
+	let step = TESTIMONIALS.input.value;
+	let gap = parseInt(window.getComputedStyle(TESTIMONIALS.commentsBlock).gap);
+	if (step == 0 || step > 11) {
+		TESTIMONIALS.commentsBlock.style.right = '0';
+		console.log('this');
+		return
+	}
+
+	console.log('nothis');
+	const columnWidth = document.querySelector('.testimonials-column').offsetWidth + gap;
+	offset += (columnWidth * step);
+	console.log(offset);
+	TESTIMONIALS.commentsBlock.style.right = offset + 'rem'
+}
 
 
+
+
+/*.....................POPUP.............................*/
+
+
+const popupColumns = document.querySelectorAll('.testimonials-column')
+
+function addClassToPopup() { popupColumns.forEach((item) => item.addEventListener('click', addClassPopup)) }
+addClassToPopup()
+
+function addClassPopup(e) {
+	const commentsTestimonials = document.querySelector('.comments-testimonials')
+	const comment = e.target.closest('.testimonials-column');
+	const cross = comment.querySelector('.testimonials__cross');
+	const fon = document.querySelector('.fon')
+	comment.classList.add('active')
+	commentsTestimonials.classList.add('active')
+	fon.classList.add('active')
+	cross.classList.add('active')
+	cross.addEventListener('click', () => removeActivePopup(comment, commentsTestimonials, fon, cross))
+	fon.addEventListener('click', () => removeActivePopup(comment, commentsTestimonials, fon, cross));
+	popupColumns.forEach((item) => item.removeEventListener('click', addClassPopup))
+}
+
+function removeActivePopup(comment, commentsTestimonials, fon, cross) {
+	cross.classList.remove('active')
+
+	comment.classList.remove('active')
+	commentsTestimonials.classList.remove('active')
+	fon.classList.remove('active')
+	console.log('br');
+	setTimeout(addClassToPopup, 1)
+
+}

@@ -159,103 +159,114 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
   }
+  .fon {
+    display: none;
+  }
+  .fon.active {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+  }
+  .header.active {
+    height: 300rem;
+  }
+  .header {
+    position: fixed;
+    width: 100%;
+    padding: 3rem;
+    height: 34rem;
+  }
+  .header__container {
+    display: flex;
+    align-items: center;
+  }
+  .header__designed {
+    display: none;
+  }
+  .header .logo {
+    border: 0;
+    width: 46rem;
+    padding: 0rem;
+  }
+  .header .logo::before {
+    content: "";
+    background: url("../main/img/bamboo.svg") no-repeat;
+    position: absolute;
+    width: 7rem;
+    height: 21rem;
+    left: 4rem;
+    bottom: -4rem;
+  }
+  .header .logo__text {
+    line-height: 120%;
+    font-size: 12rem;
+  }
+  .header .menu {
+    display: none;
+  }
+  .header .burger {
+    display: block;
+  }
+  .header .burger.active {
+    display: none;
+  }
+  .header .header__block2.active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 33rem;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    align-items: start;
+    padding: 12rem 0 40rem 10rem;
+  }
+  .header .header__block2.active .logo {
+    border: 1.18841rem solid #FE9013;
+    padding: 3.55rem 4.75rem;
+    width: 65rem;
+  }
+  .header .header__block2.active .logo h1 {
+    color: #FE9013;
+    font-size: 15rem;
+  }
+  .header .header__block2.active .logo::before {
+    background: none;
+  }
+  .header .header__block2.active .header__menu.menu {
+    display: block;
+  }
+  .header .header__block2.active .header__menu.menu .menu__list {
+    flex-direction: column;
+    gap: 15rem;
+  }
+  .header .header__block2.active .header__menu.menu .menu__list a {
+    color: #000;
+  }
+  .header .header__block2.active .header__menu.menu .menu__list a:hover {
+    color: #F9804B;
+  }
+  .header .header__block2.active .header__cross {
+    cursor: pointer;
+    display: block;
+    font-size: 20rem;
+    position: absolute;
+    top: 4%;
+    right: 1%;
+    width: 20rem;
+    height: 20rem;
+    color: #000;
+  }
 }
-.header.active {
-  height: 300rem;
-}
-
-.header {
-  position: fixed;
-  width: 100%;
-  padding: 3rem;
-  height: 34rem;
-}
-.header__container {
-  display: flex;
-  align-items: center;
-}
-.header__designed {
-  display: none;
-}
-.header .logo {
-  border: 0;
-  width: 46rem;
-  padding: 0rem;
-}
-.header .logo::before {
-  content: "";
-  background: url("../main/img/bamboo.svg") no-repeat;
-  position: absolute;
-  width: 7rem;
-  height: 21rem;
-  left: 4rem;
-  bottom: -4rem;
-}
-.header .logo__text {
-  line-height: 120%;
-  font-size: 12rem;
-}
-.header .menu {
-  display: none;
-}
-.header .burger {
-  display: block;
-}
-.header .burger.active {
-  display: none;
-}
-.header .header__block2.active {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 33rem;
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
-  align-items: start;
-  padding: 12rem 0 40rem 10rem;
-}
-.header .header__block2.active .logo {
-  border: 1.18841rem solid #FE9013;
-  padding: 3.55rem 4.75rem;
-  width: 65rem;
-}
-.header .header__block2.active .logo h1 {
-  color: #FE9013;
-  font-size: 15rem;
-}
-.header .header__block2.active .logo::before {
-  background: none;
-}
-.header .header__block2.active .header__menu.menu {
-  display: block;
-}
-.header .header__block2.active .header__menu.menu .menu__list {
-  flex-direction: column;
-  gap: 15rem;
-}
-.header .header__block2.active .header__menu.menu .menu__list a {
-  color: #000;
-}
-.header .header__block2.active .header__menu.menu .menu__list a:hover {
-  color: #F9804B;
-}
-.header .header__block2.active .header__cross {
-  cursor: pointer;
-  display: block;
-  font-size: 20rem;
-  position: absolute;
-  top: 4%;
-  right: 1%;
-  width: 20rem;
-  height: 20rem;
-  color: #000;
-}
-
 @media (max-width: 640px) {
   .header {
     position: fixed;
@@ -1141,6 +1152,10 @@ body {
   }
 }
 /*.....................................................*/
+.testimonials__cross {
+  display: none;
+}
+
 .testimonials {
   padding-bottom: 180rem;
   line-height: 130%;
@@ -1197,18 +1212,30 @@ body {
   border-radius: 5px;
 }
 
+.comments-testimonials.active {
+  position: static;
+}
+
 .comments-testimonials {
   margin-bottom: 18rem;
   display: flex;
   gap: 30rem;
+  position: relative;
+  transition: all ease 2s;
+  right: 0;
 }
+.testimonials__comments_container {
+  overflow: hidden;
+}
+
 .testimonials-column {
+  cursor: pointer;
+  flex: 1 0 auto;
   width: 268rem;
   height: 391rem;
   border-radius: 20px;
   background: #F1F3F2;
   padding: 15rem;
-  overflow: hidden;
   position: relative;
   opacity: 0.6;
 }
@@ -1294,6 +1321,9 @@ body {
   .testimonials {
     padding-bottom: 140rem;
   }
+  .testimonials__container {
+    max-width: 960rem;
+  }
   .testimonials__flowers .flowers-least {
     bottom: -13%;
     right: 0%;
@@ -1332,11 +1362,16 @@ body {
   .testimonials__title {
     margin-bottom: 43rem;
   }
+  .testimonials .testimonials__comments_container {
+    height: 357rem;
+    margin-bottom: 20rem;
+  }
   .testimonials .comments-testimonials {
     margin-bottom: 40rem;
     display: flex;
     flex-direction: column;
     gap: 15rem;
+    align-items: center;
   }
   .testimonials .testimonials-column {
     width: 600rem;
@@ -1354,6 +1389,31 @@ body {
   .testimonials__button {
     margin: 0 auto;
     width: 240rem;
+  }
+  .testimonials .comments-testimonials.active .testimonials-column.active {
+    width: 267rem;
+    height: 391rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    position: absolute;
+    overflow: visible;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7);
+  }
+  .testimonials .comments-testimonials.active .testimonials-column.active:hover {
+    border: none;
+  }
+  .testimonials .comments-testimonials.active .testimonials__cross.active {
+    cursor: pointer;
+    display: block;
+    font-size: 20rem;
+    position: absolute;
+    top: -8%;
+    right: -10%;
+    width: 20rem;
+    height: 20rem;
+    color: #FA6F32;
   }
 }
 @media (max-width: 625px) {
@@ -1661,4 +1721,18 @@ body {
   .footer .block3-footer__desigend {
     transform: translate(-30%, 60%);
   }
+}
+.fon {
+  display: none;
+}
+
+.fon.active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2;
 }/*# sourceMappingURL=style.css.map */

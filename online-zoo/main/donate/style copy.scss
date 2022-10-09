@@ -892,6 +892,7 @@ body {
 	gap: 67rem;
 
 	&__number {
+		cursor: pointer;
 		font-weight: 500;
 		font-size: 26px;
 		line-height: 140%;
@@ -915,9 +916,9 @@ body {
 
 			content: '';
 			position: absolute;
-			top: -50%;
-			left: 50%;
-			transform: translate(-38%, -40%);
+			top: -120%;
+			left: 40%;
+			transform: translate(-38%, 0%);
 			width: 40rem;
 			height: 40rem;
 			border: 1rem solid rgba(254, 144, 19, 1);
@@ -927,6 +928,14 @@ body {
 		}
 
 		&:hover {
+			color: #F9804B;
+
+			&::after {
+				opacity: 1;
+			}
+		}
+
+		&.active {
 			color: #F9804B;
 
 			&::after {
@@ -1223,6 +1232,13 @@ body {
 					height: 6rem;
 					top: -80%;
 					left: 40%;
+				}
+
+				&::after {
+					width: 20rem;
+					height: 20rem;
+					top: -120%;
+					left: 44%;
 				}
 			}
 		}

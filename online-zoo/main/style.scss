@@ -235,6 +235,7 @@ body {
 	.header {
 		position: fixed;
 		width: 100%;
+		z-index: 50;
 
 		padding: 3rem;
 
@@ -542,8 +543,6 @@ body {
 
 			span {
 				font-size: 54rem;
-
-
 			}
 		}
 	}

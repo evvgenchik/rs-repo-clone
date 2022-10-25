@@ -408,7 +408,6 @@ INPUTS.x3.addEventListener('click', () => {
 	moves = -1
 	changeMoves()
 	changeSize(3)
-	mixing()
 	clearInterval(interval)
 	timer(0, -1)
 })

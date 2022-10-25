@@ -48,7 +48,7 @@ const SUBTITLE = {
 let arrCells = document.querySelectorAll('.game__cell');
 let hiddenCell = arrCells[arrCells.length - 1];
 let matrix
-let audio = new Audio('http://zornet.ru/ABVUN/Anisa/oops.mp3');
+let audio = new Audio('https://zornet.ru/ABVUN/Anisa/oops.mp3');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		mixing()
 		localStorage.setItem('number', '4')
 		changeMoves()
+
 	}
 })
 

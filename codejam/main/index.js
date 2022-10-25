@@ -7,7 +7,7 @@ const ELEMENTS = {
 	MENU: addToHtml('div', 'menu', document.querySelector('.container')),
 	SUBTITLE: addToHtml('div', 'subtitle', document.querySelector('.container')),
 	GAME: addToHtml('div', 'game', document.querySelector('.container')),
-	CELL: addToHtml('div', 'game__cell', document.querySelector('.game'), 1, 16,),
+	CELL: addToHtml('div', 'game__cell', document.querySelector('.game'), 1, 16, 'draggable'),
 	SIZES: addToHtml('div', 'sizes', document.querySelector('.container')),
 	RESULTS: addToHtml('div', 'results', document.querySelector('.container')),
 	CROSS: addToHtml('div', 'results__cross', document.querySelector('.results'), 'X'),
@@ -47,6 +47,12 @@ const SUBTITLE = {
 
 let arrCells = document.querySelectorAll('.game__cell');
 let hiddenCell = arrCells[arrCells.length - 1];
+hiddenCell.ondrdragover = allowDrop;
+console.log(hiddenCell);
+function allowDrop(e) {
+	console.log('br');
+	e.preventDefault()
+}
 let matrix
 let audio = new Audio('click.mp3');
 
@@ -94,7 +100,7 @@ function timer(minutes, seconds) {
 	}, 1000)
 }
 
-function addToHtml(tag, clss, container, content, number) {
+function addToHtml(tag, clss, container, content, number, draggable) {
 
 	if (number) {
 		let element = document.createElement(tag)
@@ -106,6 +112,10 @@ function addToHtml(tag, clss, container, content, number) {
 			if (content) {
 				element.textContent = content
 				content += 1
+			}
+			if (draggable) {
+				console.log('br');
+				element.setAttribute('draggable', 'true')
 			}
 		}
 
@@ -408,6 +418,7 @@ INPUTS.x3.addEventListener('click', () => {
 	moves = -1
 	changeMoves()
 	changeSize(3)
+	mixing()
 	clearInterval(interval)
 	timer(0, -1)
 })

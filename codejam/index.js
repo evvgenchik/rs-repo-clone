@@ -274,7 +274,7 @@ BUTTONS.SOUND.addEventListener('click', () => {
 		audio = null
 		return
 	} else {
-		audio = new Audio('http://zornet.ru/ABVUN/Anisa/oops.mp3');
+		audio = new Audio('https://zornet.ru/ABVUN/Anisa/oops.mp3');
 	}
 })
 

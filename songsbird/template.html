@@ -19,9 +19,9 @@
         </div>
         <nav class="top-header__nav">
           <ul class="top-header__list">
-            <li class="top-header__item"><a href="#" class="top-header__link">Игра</a></li>
-            <li class="top-header__item"><a href="#" class="top-header__link">Галерея</a></li>
-            <li class="top-header__item"><a href="#" class="top-header__link">Результаты</a></li>
+            <li class="top-header__item"><a href="#" class="top-header__link" id="game">Игра</a></li>
+            <li class="top-header__item"><a href="#" class="top-header__link" id="gallery">Галерея</a></li>
+            <li class="top-header__item"><a href="#" class="top-header__link" id="results">Результаты</a></li>
           </ul>
         </nav>
       </div>
@@ -43,7 +43,7 @@
     <section class="main__random random">
       <div class="random__container">
         <div class="random__icon icon-random">
-          <img src="./img/voron.jpg" alt="voron" class="icon-random__img">
+          <img src="./img/defolt.jpg" alt="voron" class="icon-random__img">
         </div>
         <div class="random__palyer player-random">
           <div class="player-random__info">
@@ -53,18 +53,20 @@
           <div class="player-random__audio audio-player">
             <audio
               src="https://www.xeno-canto.org/sounds/uploaded/XIQVMQVUPP/XC518684-Grands%20corbeaux%2009012020%20Suzon.mp3"
-              class="audio-player__sound"></audio>
+              class="audio-player__sound" controls></audio>
             <div class="audio-player__controls player-controles">
-              <div class="player-controles__button button-player-controles">
-                <img src="./img/stop-box.png" alt="start/stop" class="button-player-controles__img">
-              </div>
               <div class="player-controles__track track-player">
-                <div class="track-player__line"></div>
-                <div class="track-player__pointer"></div>
-                <div class="track-player__time player-time">
-                  <div class="player-time__passed">00:00</div>
-                  <div class="player-time__all">01:02</div>
+                <div class="player-controles__button button-player-controles">
+                  <img src="./img/stop-box.png" alt="start/stop" class="button-player-controles__img">
                 </div>
+                <div class="track-player__line">
+                  <input type="range">
+                </div>
+                <div class="track-player__pointer"></div>
+              </div>
+              <div class="track-player__time player-time">
+                <div class="player-time__passed">00:00</div>
+                <div class="player-time__all">01:02</div>
               </div>
             </div>
           </div>
@@ -110,7 +112,7 @@
             <div class="info__audio audio-player">
               <audio
                 src="https://www.xeno-canto.org/sounds/uploaded/XIQVMQVUPP/XC518684-Grands%20corbeaux%2009012020%20Suzon.mp3"
-                class="audio-player__sound"></audio>
+                class="audio-player__sound" id="choices-audio" controls></audio>
               <div class="audio-player__controls player-controles">
                 <div class="player-controles__button button-player-controles">
                   <img src="./img/stop-box.png" alt="start/stop" class="button-player-controles__img">

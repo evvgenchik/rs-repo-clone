@@ -1,9 +1,16 @@
+import { birdsDataRandom, count, score, rightAnswer, shuffle, convertTime } from "./script"
 
 const RANDOM = {
   icon: document.querySelector('.icon-random__img'),
   audio: document.querySelector('.audio-player__sound'),
+  play: document.querySelector('.button-player-controles__img'),
+  input: document.querySelector('input'),
+  timePassed: document.querySelector('.player-time__passed'),
+  timeAll: document.querySelector('.player-time__all'),
   name: document.querySelector('.player-random__name'),
-  score: document.querySelector('.player-random__score')
+  score: document.querySelector('.player-random__score'),
+  inputVolume: document.querySelector('.track-player__volume_input'),
+  iconVolume: document.querySelector('.track-player__volume_img')
 }
 
 const CHOICES = {
@@ -18,16 +25,147 @@ const INFO = {
   species: document.querySelector('.info__species'),
   audio: document.querySelector('#choices-audio'),
   text: document.querySelector('.info__description'),
+  defolt: document.querySelector('.info__defolt'),
+  wrapper: document.querySelector('.info__wrapper')
 }
 
 const BUTTONS = {
   game: document.querySelector('#game'),
   gallery: document.querySelector('#gallery'),
-  results: document.querySelector('#results')
+  results: document.querySelector('#results'),
+  next: document.querySelector('.main__button')
+}
+
+const changeChoicesHTML = (birdsNamesRandom) => {
+  for (let i = 0; i < birdsNamesRandom.length; i++) {
+    CHOICES.texts[i].textContent = birdsNamesRandom[i]
+  }
+}
+
+
+const changeInfoHTML = (birdName) => {
+  let birdObj = birdsDataRandom[count].find(item => item.name === birdName);
+
+  INFO.icon.src = birdObj.image;
+  INFO.name.textContent = birdObj.name;
+  INFO.species.textContent = birdObj.species;
+  INFO.audio.src = birdObj.audio;
+  INFO.text.textContent = birdObj.description;
+}
+
+const changeRandomHTML = (birdObj) => {
+  RANDOM.icon.src = birdObj.image;
+  RANDOM.name.textContent = birdObj.name;
 }
 
 
 
+const finishGame = () => {
+  const winWindow = document.createElement('div');
+  document.querySelector('main').style.display = 'none'
+  winWindow.classList.add('win')
+  document.body.append(winWindow)
+
+  if (score < 30) {
+    winWindow.textContent = `Поздравляю! Вы прошли игру и набрали:
+  ${score} баллов`
+    const button = document.createElement('button')
+    button.classList.add('win__button')
+    winWindow.append(button)
+    button.textContent = `Попробовать сыграть еще раз!`
+  } else {
+    winWindow.textContent = `Поздравляю! Вы выиграли  и набрали:
+      максимальное количество баллов - ${score}`
+  }
+}
+
+const highlightQuestion = () => {
+  let questions = document.querySelectorAll('.menu__link');
+  questions[count].classList.add('active')
+
+  if (questions[count - 1]) {
+
+    if (questions[count - 1].classList.contains('active')) {
+      questions[count - 1].classList.remove('active')
+    }
+  }
+}
+
+const showInfoHtml = (status) => {
+  if (status) {
+    INFO.wrapper.style.display = 'block'
+    INFO.defolt.style.display = 'none'
+  } else {
+    INFO.wrapper.style.display = 'none'
+    INFO.defolt.style.display = 'block'
+  }
+}
+
+const putDefaultRandomHTML = () => {
+  RANDOM.icon.src = './img/defolt.jpg';
+  RANDOM.name.textContent = '******';
+  RANDOM.audio.src = rightAnswer.audio;
+
+}
+
+const changeCircleColor = (e, color) => {
+  let circle = e.target.firstElementChild;
+
+  if (circle.classList.contains('choices__button')) {
+    circle.style.backgroundColor = color
+  }
+}
+
+const resetCircleColor = () => {
+  for (let choice of CHOICES.items) {
+    choice.firstElementChild.style.backgroundColor = ''
+  }
+}
+
+const putButtonDisabled = () => {
+  BUTTONS.next.disabled = true;
+  BUTTONS.next.style.backgroundColor = 'rgb(254, 252, 234)'
+}
+
+const removeDisabledButton = () => {
+  BUTTONS.next.disabled = false;
+  BUTTONS.next.style.backgroundColor = '#A15849'
+}
+
+const playPauseAudio = () => {
+  RANDOM.play.classList.toggle('play')
+
+  if (RANDOM.play.classList.contains('play')) {
+    RANDOM.play.src = './img/stop.png'
+    RANDOM.audio.play()
+  } else {
+    RANDOM.play.src = './img/play.png'
+    RANDOM.audio.pause()
+  }
+}
 
 
-export { RANDOM, CHOICES, INFO }
+
+const changeTimeTracker = (e) => {
+  let currentTime = Math.floor(e.target.currentTime)
+  RANDOM.input.max = e.target.duration;
+  RANDOM.input.value = currentTime;
+  RANDOM.timePassed.textContent = convertTime(currentTime)
+}
+
+const setTimePos = (e) => {
+  RANDOM.audio.currentTime = e.target.value
+}
+
+const changeAllTimeSong = () => {
+  RANDOM.timeAll.textContent = convertTime(Math.floor(RANDOM.audio.duration))
+}
+
+const setVolume = (e) => {
+  RANDOM.audio.volume = e.target.value
+  console.log(e.target.value);
+
+  RANDOM.iconVolume.src = (e.target.value === '0') ? './img/volumeOff.png' : './img/volumeOn.png'
+}
+
+export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume }

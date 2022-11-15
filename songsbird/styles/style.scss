@@ -136,17 +136,34 @@ body {
   &__img {
     border: 1rem solid rgba(6, 38, 111, 1);
     border-radius: 50%;
+    cursor: pointer;
   }
 }
 
 .track-player {
   display: flex;
   align-items: center;
-  gap: 10rem;
+  gap: 40rem;
 
-  &__line {}
+  &__line {
+    flex: 0 1 70%;
+  }
 
-  &__pointer {}
+  &__input {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__volume {
+    display: flex;
+    gap: 5rem;
+  }
+
+  &__volume_img {
+    width: 15%;
+  }
+
+  &__volume_input {}
 
   &__time {}
 }
@@ -205,6 +222,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15rem;
+    height: 100%;
 
     &::after {
       content: '';
@@ -439,11 +457,28 @@ body {
   height: 300rem;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  gap: 50rem;
+  padding: 40rem 15rem 30rem;
 }
+
+.win__button {}
 
 .menu__link.active {
   color: #C0AB8E;
   text-decoration: underline;
+}
+
+.choices__item.wrong {
+  .choices__button {
+    background-color: red;
+  }
+}
+
+.choices__item.right {
+  .choices__button {
+    background-color: green;
+  }
 }

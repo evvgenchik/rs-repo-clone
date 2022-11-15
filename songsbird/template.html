@@ -51,18 +51,19 @@
             <div class="player-random__score">Score: 0</div>
           </div>
           <div class="player-random__audio audio-player">
-            <audio
-              src="https://www.xeno-canto.org/sounds/uploaded/XIQVMQVUPP/XC518684-Grands%20corbeaux%2009012020%20Suzon.mp3"
-              class="audio-player__sound" controls></audio>
+            <audio src="" class="audio-player__sound"></audio>
             <div class="audio-player__controls player-controles">
               <div class="player-controles__track track-player">
                 <div class="player-controles__button button-player-controles">
-                  <img src="./img/stop-box.png" alt="start/stop" class="button-player-controles__img">
+                  <img src="./img/play.png" alt="start/stop" class="button-player-controles__img">
                 </div>
                 <div class="track-player__line">
-                  <input type="range">
+                  <input type="range" max="" value="0" class="track-player__input">
                 </div>
-                <div class="track-player__pointer"></div>
+                <div class="track-player__volume">
+                  <img src="./img/volumeOn.png" class="track-player__volume_img" alt="volume">
+                  <input type="range" min="0" max="1" step="0.01" value="100" class="track-player__volume_input">
+                </div>
               </div>
               <div class="track-player__time player-time">
                 <div class="player-time__passed">00:00</div>
@@ -131,10 +132,11 @@
               до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные
               вороны улетят от Тауэра, монархия рухнет.</div>
           </div>
+          <div class="info__defolt">Послушайте плеер и по звуку выберите птицу из списка</div>
         </div>
       </div>
     </section>
-    <div class="section__container"><button class="main__button"><span>NEXT LEVEL</span></button></div>
+    <div class="section__container"><button class="main__button" disabled><span>NEXT LEVEL</span></button></div>
   </main>
 
 </body>

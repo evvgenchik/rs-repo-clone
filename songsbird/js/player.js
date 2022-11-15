@@ -1,0 +1,1 @@
+import { RANDOM, INFO } from view.js

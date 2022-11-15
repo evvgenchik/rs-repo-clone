@@ -4,6 +4,7 @@ import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, chan
 
 export let count = 0
 export let score = 0
+export let scoreStep = 5
 export let birdsDataRandom
 export let rightAnswer
 
@@ -37,12 +38,15 @@ const isRightAnswer = (e) => {
   let rightChoice = rightAnswer
 
   if (chosenAnswer === rightChoice.name) {
+    playSoundAnswer(e, true)
     changeRandomHTML(rightChoice)
     changeInfoHTML(chosenAnswer)
-    changeScores()
+    changeStepScore(e, 5)
     changeCircleColor(e, 'green')
     removeDisabledButton()
   } else {
+    playSoundAnswer(e, false)
+    changeStepScore(e, 1)
     changeCircleColor(e, 'red')
     changeInfoHTML(chosenAnswer)
   }
@@ -53,14 +57,10 @@ const goNextQuestion = () => {
     finishGame()
   } else {
     count += 1
+    scoreStep = 5
     getRandomBirdsNames(birdsDataRandom)
     changeChoicesHTML(getRandomBirdsNames())
   }
-}
-
-const changeScores = () => {
-  score += 5;
-  RANDOM.score.textContent = `Score: ${score}`
 }
 
 const getRightAnswer = () => {
@@ -80,6 +80,40 @@ export const convertTime = (time) => {
 
   return `${minutes}:${seconds}`
 }
+
+const playSoundAnswer = (e, answer) => {
+  if (e.target.classList.contains('active')) {
+    return
+  }
+  let sound = (answer) ? new Audio('./sounds/right.mp3') : new Audio('./sounds/wrong.mp3');
+  sound.play()
+
+  if (answer && RANDOM.play.classList.contains('play')) {
+    playPauseAudio(RANDOM)
+  }
+}
+
+const changeStepScore = (e, number) => {
+
+  if (e.target.classList.contains('active')) {
+    return
+  }
+  if (number == 5) {
+    score += scoreStep;
+    RANDOM.score.textContent = `Score: ${score}`
+  } else {
+    scoreStep -= 1
+  }
+}
+
+
+// export const isHasClass = (elem, nameClass) => {
+//   if (elem.classList.contains(nameClass)) {
+//     return true
+//   } else {
+//     return false
+//   }
+// }
 
 document.addEventListener('DOMContentLoaded', () => {
   birdsDataRandom = shuffle(birdsData);
@@ -106,10 +140,28 @@ CHOICES.list.addEventListener('click', (e) => {
   showInfoHtml(true)
 })
 
-RANDOM.play.addEventListener('click', playPauseAudio)
+RANDOM.play.addEventListener('click', () => {
+  playPauseAudio(RANDOM)
 
-RANDOM.audio.addEventListener('timeupdate', changeTimeTracker)
-RANDOM.audio.addEventListener('canplaythrough', changeAllTimeSong)
+})
+INFO.play.addEventListener('click', () => {
+  playPauseAudio(INFO)
+})
 
-RANDOM.input.addEventListener('input', setTimePos)
-RANDOM.inputVolume.addEventListener('input', setVolume)
+RANDOM.audio.addEventListener('timeupdate', () => changeTimeTracker(event, RANDOM))
+
+INFO.audio.addEventListener('timeupdate', () => changeTimeTracker(event, INFO))
+
+RANDOM.audio.addEventListener('canplaythrough', () => changeAllTimeSong(RANDOM))
+
+INFO.audio.addEventListener('canplaythrough', () => changeAllTimeSong(INFO))
+
+RANDOM.audio.addEventListener('canplaythrough', () => changeAllTimeSong(RANDOM))
+
+RANDOM.input.addEventListener('input', () => setTimePos(event, RANDOM))
+
+INFO.input.addEventListener('input', () => setTimePos(event, INFO))
+
+RANDOM.inputVolume.addEventListener('input', () => setVolume(event, RANDOM))
+
+INFO.inputVolume.addEventListener('input', () => setVolume(event, INFO))

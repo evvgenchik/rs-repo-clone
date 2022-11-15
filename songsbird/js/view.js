@@ -1,4 +1,4 @@
-import { birdsDataRandom, count, score, rightAnswer, shuffle, convertTime } from "./script"
+import { birdsDataRandom, count, score, rightAnswer, shuffle, convertTime, isHasClass } from "./script"
 
 const RANDOM = {
   icon: document.querySelector('.icon-random__img'),
@@ -24,9 +24,15 @@ const INFO = {
   name: document.querySelector('.info__name'),
   species: document.querySelector('.info__species'),
   audio: document.querySelector('#choices-audio'),
+  play: document.querySelector('.info__wrapper').querySelector('.button-player-controles__img'),
+  input: document.querySelector('.info__wrapper').querySelector('input'),
+  timePassed: document.querySelector('.info__wrapper').querySelector('.player-time__passed'),
+  timeAll: document.querySelector('.info__wrapper').querySelector('.player-time__all'),
   text: document.querySelector('.info__description'),
   defolt: document.querySelector('.info__defolt'),
-  wrapper: document.querySelector('.info__wrapper')
+  wrapper: document.querySelector('.info__wrapper'),
+  inputVolume: document.querySelector('.info__wrapper').querySelector('.track-player__volume_input'),
+  iconVolume: document.querySelector('.info__wrapper').querySelector('.track-player__volume_img')
 }
 
 const BUTTONS = {
@@ -36,9 +42,15 @@ const BUTTONS = {
   next: document.querySelector('.main__button')
 }
 
+
+
 const changeChoicesHTML = (birdsNamesRandom) => {
   for (let i = 0; i < birdsNamesRandom.length; i++) {
     CHOICES.texts[i].textContent = birdsNamesRandom[i]
+
+    if (CHOICES.items[i].classList.contains('active')) {
+      CHOICES.items[i].classList.remove('active')
+    }
   }
 }
 
@@ -99,17 +111,24 @@ const showInfoHtml = (status) => {
     INFO.wrapper.style.display = 'none'
     INFO.defolt.style.display = 'block'
   }
+  if (INFO.play.classList.contains('play')) {
+    playPauseAudio(INFO)
+  }
 }
 
 const putDefaultRandomHTML = () => {
   RANDOM.icon.src = './img/defolt.jpg';
   RANDOM.name.textContent = '******';
   RANDOM.audio.src = rightAnswer.audio;
-
+  RANDOM.play.src = './img/play.png'
+  if (RANDOM.play.classList.contains('play')) {
+    playPauseAudio(RANDOM)
+  }
 }
 
 const changeCircleColor = (e, color) => {
   let circle = e.target.firstElementChild;
+  e.target.classList.add('active')
 
   if (circle.classList.contains('choices__button')) {
     circle.style.backgroundColor = color
@@ -132,40 +151,38 @@ const removeDisabledButton = () => {
   BUTTONS.next.style.backgroundColor = '#A15849'
 }
 
-const playPauseAudio = () => {
-  RANDOM.play.classList.toggle('play')
-
-  if (RANDOM.play.classList.contains('play')) {
-    RANDOM.play.src = './img/stop.png'
-    RANDOM.audio.play()
+const playPauseAudio = (block) => {
+  if (!block.play.classList.contains('play')) {
+    block.play.classList.add('play');
+    block.play.src = './img/stop.png'
+    block.audio.play()
   } else {
-    RANDOM.play.src = './img/play.png'
-    RANDOM.audio.pause()
+    block.play.classList.remove('play')
+    block.play.src = './img/play.png'
+    block.audio.pause()
   }
 }
 
 
 
-const changeTimeTracker = (e) => {
+const changeTimeTracker = (e, block) => {
   let currentTime = Math.floor(e.target.currentTime)
-  RANDOM.input.max = e.target.duration;
-  RANDOM.input.value = currentTime;
-  RANDOM.timePassed.textContent = convertTime(currentTime)
+  block.input.max = e.target.duration;
+  block.input.value = currentTime;
+  block.timePassed.textContent = convertTime(currentTime)
 }
 
-const setTimePos = (e) => {
-  RANDOM.audio.currentTime = e.target.value
+const setTimePos = (e, block) => {
+  block.audio.currentTime = e.target.value
 }
 
-const changeAllTimeSong = () => {
-  RANDOM.timeAll.textContent = convertTime(Math.floor(RANDOM.audio.duration))
+const changeAllTimeSong = (block) => {
+  block.timeAll.textContent = convertTime(Math.floor(RANDOM.audio.duration))
 }
 
-const setVolume = (e) => {
-  RANDOM.audio.volume = e.target.value
-  console.log(e.target.value);
-
-  RANDOM.iconVolume.src = (e.target.value === '0') ? './img/volumeOff.png' : './img/volumeOn.png'
+const setVolume = (e, block) => {
+  block.audio.volume = e.target.value
+  block.iconVolume.src = (e.target.value === '0') ? './img/volumeOff.png' : './img/volumeOn.png'
 }
 
 export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume }

@@ -1,6 +1,7 @@
 import scss from "../styles/style.scss"
 import birdsData from './birds'
-import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, changeRandomHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume } from "./view"
+import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, changeRandomHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton } from "./view"
+import { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume } from './player'
 
 export let count = 0
 export let score = 0
@@ -65,20 +66,6 @@ const goNextQuestion = () => {
 
 const getRightAnswer = () => {
   rightAnswer = birdsDataRandom[count][Math.floor(Math.random() * birdsDataRandom[count].length)];
-}
-
-export const convertTime = (time) => {
-  let minutes = Math.floor(time / 60)
-  let seconds = time % 60
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`
-  }
-  if (seconds < 10) {
-    seconds = `0${seconds}`
-  }
-
-  return `${minutes}:${seconds}`
 }
 
 const playSoundAnswer = (e, answer) => {

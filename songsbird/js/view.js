@@ -151,38 +151,6 @@ const removeDisabledButton = () => {
   BUTTONS.next.style.backgroundColor = '#A15849'
 }
 
-const playPauseAudio = (block) => {
-  if (!block.play.classList.contains('play')) {
-    block.play.classList.add('play');
-    block.play.src = './img/stop.png'
-    block.audio.play()
-  } else {
-    block.play.classList.remove('play')
-    block.play.src = './img/play.png'
-    block.audio.pause()
-  }
-}
 
 
-
-const changeTimeTracker = (e, block) => {
-  let currentTime = Math.floor(e.target.currentTime)
-  block.input.max = e.target.duration;
-  block.input.value = currentTime;
-  block.timePassed.textContent = convertTime(currentTime)
-}
-
-const setTimePos = (e, block) => {
-  block.audio.currentTime = e.target.value
-}
-
-const changeAllTimeSong = (block) => {
-  block.timeAll.textContent = convertTime(Math.floor(RANDOM.audio.duration))
-}
-
-const setVolume = (e, block) => {
-  block.audio.volume = e.target.value
-  block.iconVolume.src = (e.target.value === '0') ? './img/volumeOff.png' : './img/volumeOn.png'
-}
-
-export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume }
+export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton }

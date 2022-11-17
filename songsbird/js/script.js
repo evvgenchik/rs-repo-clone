@@ -94,6 +94,11 @@ const changeStepScore = (e, number) => {
 }
 
 
+const changeLanguage = () => {
+
+}
+
+
 // export const isHasClass = (elem, nameClass) => {
 //   if (elem.classList.contains(nameClass)) {
 //     return true
@@ -126,6 +131,8 @@ CHOICES.list.addEventListener('click', (e) => {
   isRightAnswer(e)
   showInfoHtml(true)
 })
+
+BUTTONS.english.addEventListener('click', changeLanguage)
 
 RANDOM.play.addEventListener('click', () => {
   playPauseAudio(RANDOM)

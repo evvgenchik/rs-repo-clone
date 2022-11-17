@@ -39,7 +39,8 @@ const BUTTONS = {
   game: document.querySelector('#game'),
   gallery: document.querySelector('#gallery'),
   results: document.querySelector('#results'),
-  next: document.querySelector('.main__button')
+  next: document.querySelector('.main__button'),
+  english: document.querySelector('.language__english')
 }
 
 

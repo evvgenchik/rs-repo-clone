@@ -1,3 +1,6 @@
+
+
+
 const playPauseAudio = (block) => {
   if (!block.play.classList.contains('play')) {
     block.play.classList.add('play');
@@ -45,5 +48,35 @@ export const convertTime = (time) => {
 
   return `${minutes}:${seconds}`
 }
+
+
+
+// RANDOM.play.addEventListener('click', () => {
+//   playPauseAudio(RANDOM)
+
+// })
+// INFO.play.addEventListener('click', () => {
+//   playPauseAudio(INFO)
+// })
+
+// RANDOM.audio.addEventListener('timeupdate', () => changeTimeTracker(event, RANDOM))
+
+// INFO.audio.addEventListener('timeupdate', () => changeTimeTracker(event, INFO))
+
+// RANDOM.audio.addEventListener('canplaythrough', () => changeAllTimeSong(RANDOM))
+
+// INFO.audio.addEventListener('canplaythrough', () => changeAllTimeSong(INFO))
+
+// RANDOM.audio.addEventListener('canplaythrough', () => changeAllTimeSong(RANDOM))
+
+// RANDOM.input.addEventListener('input', () => setTimePos(event, RANDOM))
+
+// INFO.input.addEventListener('input', () => setTimePos(event, INFO))
+
+// RANDOM.inputVolume.addEventListener('input', () => setVolume(event, RANDOM))
+
+// INFO.inputVolume.addEventListener('input', () => setVolume(event, INFO))
+
+
 
 export { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume }

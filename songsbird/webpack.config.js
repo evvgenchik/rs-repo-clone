@@ -7,6 +7,7 @@ module.exports = {
   mode: 'development',
   entry: {
     main: path.join(__dirname, 'js', 'script.js'),
+    gallery: path.join(__dirname, 'js', 'gallery.js'),
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -23,6 +24,14 @@ module.exports = {
       title: 'webpack Boilerplate',
       template: path.join(__dirname, 'template.html'), // шаблон
       filename: 'index.html', // название выходного файла
+      chunks: ["main"]
+    }),
+    new HtmlWebpackPlugin({
+      title: 'webpack Boilerplate',
+      template: path.join(__dirname, 'galery.html'), // шаблон
+      filename: 'galery.html', // название выходного файла
+      chunks: ["gallery"]
+
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),

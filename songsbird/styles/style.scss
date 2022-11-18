@@ -10,10 +10,10 @@ html {
 
 body {
   font-size: 24rem;
-  // background-color: rgba(246, 230, 180, 0.3);
-  // background-color: rgba(247, 236, 224, 0.7);
-  background-color: rgba(246, 230, 180, 0.7);
-
+  //background-color: rgba(246, 230, 180, 0.7);
+  background: url('../img/minimalFon.jpg') no-repeat;
+  background-size: cover;
+  color: #6C4F3D;
 }
 
 [class*="__container"] {
@@ -45,7 +45,7 @@ body {
   }
 
   &__logo-img {
-    max-width: 30%;
+    max-width: 12%;
   }
 
   &__logo-text {
@@ -92,11 +92,13 @@ body {
 .random {
   margin-bottom: 30rem;
 
+
   &__container {
+    border: 1px solid #FFF3EB;
+    border-radius: 2%;
     display: flex;
     align-items: center;
     gap: 20rem;
-    // background-color: rgba(247, 236, 224, 0.7);
   }
 }
 
@@ -188,6 +190,8 @@ body {
 .quiz {
 
   &__container {
+    //background-color: rgba(247, 236, 224, 0.4);
+
     display: flex;
     align-items: center;
     gap: 50rem;
@@ -196,13 +200,11 @@ body {
   }
 
   &__choices {
-    // background-color: rgba(247, 236, 224, 0.7);
     flex: 0 1 50%;
     height: 100%;
   }
 
   &__info {
-    // background-color: rgba(247, 236, 224, 0.7);
     flex: 0 1 50%;
   }
 }
@@ -319,7 +321,7 @@ body {
 
 .main__button {
   width: 100%;
-  background-color: rgba(254, 252, 234, 1);
+  background-color: #B4B7BA;
   padding: 7rem;
   border: none;
   cursor: pointer;

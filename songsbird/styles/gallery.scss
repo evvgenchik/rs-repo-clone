@@ -9,7 +9,6 @@ html {
 body {
   font-size: 24rem;
   background-color: rgba(246, 230, 180, 0.7);
-
 }
 
 [class*="__container"] {
@@ -58,7 +57,6 @@ body {
 
 .audio-player {
   padding: 10rem 0;
-  border: 1rem solid rgba(6, 38, 111, 1);
 
   &__sound {}
 

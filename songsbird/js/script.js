@@ -1,5 +1,6 @@
 import scss from "../styles/style.scss"
 import birdsData from './birds'
+import birdsDataEN from './birdsEN'
 import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, changeRandomHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton } from "./view"
 import { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume } from './player'
 
@@ -95,7 +96,12 @@ const changeStepScore = (e, number) => {
 
 
 const changeLanguage = () => {
-
+  birdsDataRandom = shuffle(birdsDataEN);
+  getRandomBirdsNames(birdsDataRandom)
+  changeChoicesHTML(getRandomBirdsNames())
+  showInfoHtml()
+  getRightAnswer()
+  putDefaultRandomHTML()
 }
 
 

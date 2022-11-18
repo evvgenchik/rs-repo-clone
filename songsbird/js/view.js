@@ -1,4 +1,4 @@
-import { birdsDataRandom, count, score, rightAnswer, shuffle, convertTime, isHasClass } from "./script"
+import { birdsDataRandom, count, score, rightAnswer } from "./script"
 
 const RANDOM = {
   icon: document.querySelector('.icon-random__img'),
@@ -42,6 +42,7 @@ const BUTTONS = {
   next: document.querySelector('.main__button'),
   english: document.querySelector('.language__english')
 }
+
 
 
 

@@ -24,18 +24,18 @@
         <div class="player-controles__track track-player">
           <div class="player-controles__button button-player-controles">
             <img src="./img/play.png" alt="start/stop" class="button-player-controles__img">
+            <div class="track-player-line">
+              <input type="range" max="" value="0" class="track-player-input">
+            </div>
           </div>
-          <div class="track-player__line">
-            <input type="range" max="" value="0" class="track-player__input">
+          <div class="track-player__time player-time">
+            <div class="player-time__passed"></div>
+            <div class="track-player__volume">
+              <img src="./img/volumeOn.png" class="track-player__volume_img" alt="volume">
+              <input type="range" min="0" max="1" step="0.01" value="100" class="track-player__volume_input">
+            </div>
+            <div class="player-time__all"></div>
           </div>
-          <div class="track-player__volume">
-            <img src="./img/volumeOn.png" class="track-player__volume_img" alt="volume">
-            <input type="range" min="0" max="1" step="0.01" value="100" class="track-player__volume_input">
-          </div>
-        </div>
-        <div class="track-player__time player-time">
-          <div class="player-time__passed"></div>
-          <div class="player-time__all"></div>
         </div>
       </div>
     </div>

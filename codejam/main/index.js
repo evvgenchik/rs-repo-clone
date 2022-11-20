@@ -1,5 +1,3 @@
-import go from "./view";
-import './styles/style.scss';
 
 
 
@@ -9,7 +7,7 @@ const ELEMENTS = {
 	MENU: addToHtml('div', 'menu', document.querySelector('.container')),
 	SUBTITLE: addToHtml('div', 'subtitle', document.querySelector('.container')),
 	GAME: addToHtml('div', 'game', document.querySelector('.container')),
-	CELL: addToHtml('div', 'game__cell', document.querySelector('.game'), 1, 16,),
+	CELL: addToHtml('div', 'game__cell', document.querySelector('.game'), 1, 16, 'draggable'),
 	SIZES: addToHtml('div', 'sizes', document.querySelector('.container')),
 	RESULTS: addToHtml('div', 'results', document.querySelector('.container')),
 	CROSS: addToHtml('div', 'results__cross', document.querySelector('.results'), 'X'),
@@ -37,7 +35,7 @@ const INPUTS = {
 	x7: addToHtml('button', 'sizes_number', document.querySelector('.sizes'), '7x7'),
 	x8: addToHtml('button', 'sizes_number', document.querySelector('.sizes'), '8x8'),
 }
-
+let moves = -1;
 
 const SUBTITLE = {
 	MOVES: addToHtml('div', 'subtitle__moves', document.querySelector('.subtitle'), `Moves:`),
@@ -47,11 +45,16 @@ const SUBTITLE = {
 }
 
 
-let moves = -1;
 let arrCells = document.querySelectorAll('.game__cell');
 let hiddenCell = arrCells[arrCells.length - 1];
+hiddenCell.ondrdragover = allowDrop;
+console.log(hiddenCell);
+function allowDrop(e) {
+	console.log('br');
+	e.preventDefault()
+}
 let matrix
-let audio = new Audio('http://zornet.ru/ABVUN/Anisa/oops.mp3');
+let audio = new Audio('click.mp3');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		mixing()
 		localStorage.setItem('number', '4')
 		changeMoves()
+
 	}
 })
 
@@ -96,7 +100,7 @@ function timer(minutes, seconds) {
 	}, 1000)
 }
 
-function addToHtml(tag, clss, container, content, number) {
+function addToHtml(tag, clss, container, content, number, draggable) {
 
 	if (number) {
 		let element = document.createElement(tag)
@@ -108,6 +112,10 @@ function addToHtml(tag, clss, container, content, number) {
 			if (content) {
 				element.textContent = content
 				content += 1
+			}
+			if (draggable) {
+				console.log('br');
+				element.setAttribute('draggable', 'true')
 			}
 		}
 
@@ -276,7 +284,7 @@ BUTTONS.SOUND.addEventListener('click', () => {
 		audio = null
 		return
 	} else {
-		audio = new Audio('http://zornet.ru/ABVUN/Anisa/oops.mp3');
+		audio = new Audio('https://zornet.ru/ABVUN/Anisa/oops.mp3');
 	}
 })
 
@@ -596,242 +604,3 @@ function addResultFromStorageToHtml(arr) {
 }
 
 
-
-/*****************CREATE HTML********************** */
-
-// const container = document.createElement("div");
-// const gameContainer = document.createElement("div");
-// const Cells = createCellArr();
-// const menu = document.createElement('div')
-// const Shuffle = createButtons('Shuffle and start');
-// const Stop = createButtons('Stop');
-// const Save = createButtons('Save');
-// const Results = createButtons('Results');
-
-
-// function createButtons(name) {
-// 	let button = document.createElement('button');
-// 	button.classList.add('menu__button');
-// 	button.innerHTML = name;
-// 	button.setAttribute('data-name', name);
-
-// 	menu.append(button)
-// 	return button
-// }
-
-// function createCellArr() {
-// 	let arr = [];
-// 	for (let i = 1; i <= 16; i++) {
-// 		const Cell = document.createElement("div");
-// 		Cell.classList.add('game__cell');
-// 		Cell.innerText = i;
-// 		Cell.id = i;
-// 		gameContainer.append(Cell)
-// 		arr.push(Cell)
-// 	}
-// 	return arr
-// }
-
-
-
-// function addHtml() {
-// 	container.classList.add('container');
-// 	gameContainer.classList.add('game');
-// 	menu.classList.add('menu')
-// 	document.body.append(container);
-// 	container.append(menu)
-// 	container.append(gameContainer);
-
-// };
-// addHtml();
-
-
-// /*****************POSITION************************************ */
-
-
-// let matrix = getMatrix(Cells.map(item => Number(item.textContent)));
-
-// Cells[Cells.length - 1].style.display = 'none';
-
-// addPosition(matrix)
-
-
-
-
-
-// /************************HELPERS*********************** */
-
-
-// function getMatrix(arr) {
-// 	matrix = [[], [], [], []];
-// 	let x = 0;
-// 	let y = 0;
-// 	for (let i = 0; i < arr.length; i++) {
-// 		if (x >= 4) {
-// 			y++;
-// 			x = 0;
-// 		}
-// 		matrix[y][x] = arr[i]
-// 		x++
-// 	}
-// 	return matrix
-// };
-
-
-// function addPosition(matrix) {
-// 	for (let y = 0; y < matrix.length; y++) {
-// 		for (let x = 0; x < matrix[y].length; x++) {
-// 			let value = matrix[y][x];
-// 			let cell = Cells[value - 1]
-// 			addTransform(cell, x, y)
-// 		}
-// 	}
-// }
-
-
-// function addTransform(cell, x, y) {
-// 	let space = 100;
-
-// 	cell.style.transform = `translate(${ x * space} %, ${ y * space} %)`;
-// }
-
-
-// /*******************CHANGE CLICK*************************/
-
-// gameContainer.addEventListener('click', chengePosition);
-
-// function chengePosition(event) {
-// 	const hiddenButton = Number((Cells[Cells.length - 1]).textContent);
-// 	const button = event.target;
-// 	const buttonNumber = Number(button.textContent);
-// 	const buttonCoors = findCoors(buttonNumber);
-// 	const hiddenButtonCoors = findCoors(hiddenButton);
-// 	const isValid = isValidSwap(buttonCoors, hiddenButtonCoors);
-// 	console.log();
-
-// 	if (isValid) {
-// 		swapCells(buttonCoors, hiddenButtonCoors)
-// 		addPosition(matrix)
-
-// 	}
-
-
-// }
-
-// function findCoors(number) {
-// 	for (let y = 0; y < matrix.length; y++) {
-
-// 		for (let x = 0; x < matrix[y].length; x++) {
-// 			if (number === matrix[y][x]) {
-
-// 				return { x, y }
-// 			}
-// 		}
-// 	}
-// 	return null
-// }
-
-
-// function isValidSwap(coorsVisible, coorsHidden) {
-// 	const differX = Math.abs(coorsVisible.x - coorsHidden.x);
-// 	const differY = Math.abs(coorsVisible.y - coorsHidden.y);
-
-// 	return ((differX === 1 || differY === 1) && (coorsVisible.x === coorsHidden.x || coorsVisible.y === coorsHidden.y))
-// }
-
-// function swapCells(coorsVisible, coorsHidden) {
-// 	const coorsVisibleNumber = matrix[coorsVisible.y][coorsVisible.x];
-// 	matrix[coorsVisible.y][coorsVisible.x] = matrix[coorsHidden.y][coorsHidden.x];
-// 	matrix[coorsHidden.y][coorsHidden.x] = coorsVisibleNumber;
-
-
-// 	// if (isWon()) {
-// 	// 	addWonClass()
-// 	// }
-// }
-
-// // const winFlatArr = new Array(16).fill(0).map((item, i) => i + 1)
-
-// // function isWon() {
-// // 	const flatMatrix = matrix.flat();
-
-// // 	for (let i = 0; i < winFlatArr.length; i++) {
-// // 		if (winFlatArr[i] !== flatMatrix[i]) {
-// // 			return false;
-// // 		}
-// // 	}
-// // 	return true;
-// // };
-
-
-// /***********************mixing********************/
-
-// function addWonClass() {
-// 	setTimeout(() => {
-// 		container.classList.add('won')
-
-// 		setTimeout(() => {
-// 			container.classList.remove('won')
-
-// 		}, 2000)
-// 	}, 300)
-// }
-
-
-// const maxShuffle = 100;
-// let timer;
-
-
-// Shuffle.addEventListener('click', () => {
-// 	mixing()
-// 	addPosition(matrix)
-
-// 	clearInterval(timer);
-
-// 	let shuffleCount = 0;
-
-// 	timer = setInterval(() => {
-// 		mixing();
-// 		addPosition(matrix)
-
-// 		shuffleCount += 1
-
-// 		if (shuffleCount >= maxShuffle) {
-// 			shuffleCount = 0;
-// 			clearInterval(timer);
-// 		}
-// 	}, 10)
-// });
-
-
-// let blockCoords = null;
-
-// function mixing() {
-// 	const hiddenButton = Number((Cells[Cells.length - 1]).textContent);
-// 	const hiddenButtonCoors = findCoors(hiddenButton);
-// 	const validCoords = findValidCoords(hiddenButtonCoors, blockCoords)
-
-// 	const finalCoords = validCoords[Math.floor(Math.random() * validCoords.length)];
-
-// 	swapCells(hiddenButtonCoors, finalCoords);
-// 	blockCoords = hiddenButtonCoors;
-// }
-
-// function findValidCoords(hiddenButtonCoors, blockCoords) {
-// 	const validsCoords = [];
-
-// 	for (let y = 0; y < matrix.length; y++) {
-
-// 		for (let x = 0; x < matrix[y].length; x++) {
-// 			if (isValidSwap({ x, y }, hiddenButtonCoors))
-
-// 				if (!blockCoords || !(
-// 					blockCoords.x === x && blockCoords.y === y
-// 				)) {
-// 					validsCoords.push({ x, y })
-// 				}
-// 		}
-// 	}
-
-// 	return validsCoords;
-// }

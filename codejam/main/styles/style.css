@@ -22,14 +22,14 @@ html {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background-color: #C0AB8E;
+	background-color: #c0ab8e;
 }
 
 .menu__button {
 	cursor: pointer;
 	font-size: 20rem;
 	padding: 10rem;
-	background-color: #EADEDB;
+	background-color: #eadedb;
 }
 
 .subtitle {
@@ -40,7 +40,7 @@ html {
 	gap: 5rem;
 	justify-content: center;
 	align-items: center;
-	background-color: #C0AB8E;
+	background-color: #c0ab8e;
 }
 
 .game {
@@ -67,7 +67,7 @@ html {
 	color: #000;
 	width: 25%;
 	height: 25%;
-	background-color: #C0AB8E;
+	background-color: #c0ab8e;
 	border: 3rem solid orange;
 }
 
@@ -77,27 +77,26 @@ html {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background-color: #C0AB8E;
+	background-color: #c0ab8e;
 }
 
 .sizes_number {
 	cursor: pointer;
 	font-size: 20rem;
 	padding: 10rem;
-	background-color: #EADEDB;
+	background-color: #eadedb;
 }
-
 
 .results {
 	display: none;
 	padding: 10rem;
 	width: 100%;
 	margin: 0 auto;
-	padding: 10rem 10rem 0rem;
+	padding: 30rem 10rem 20rem;
 	position: absolute;
-	top: 0;
+	top: 20%;
 	left: 0;
-	background-color: #C0AB8E;
+	background-color: #ec9787;
 }
 
 .results.show {
@@ -114,10 +113,11 @@ html {
 }
 
 .results__item {
-	background-color: #EADEDB;
+	background-color: #eadedb;
 	font-size: 18rem;
 	align-items: center;
 	justify-content: center;
+	padding: 5rem 0;
 	width: 100%;
 	display: flex;
 	gap: 5rem;
@@ -130,7 +130,7 @@ html {
 	height: 80%;
 	top: 22%;
 	left: 0;
-	background-color: #EC9787;
+	background-color: #ec9787;
 	border-radius: 20rem;
 	text-align: center;
 }
@@ -148,7 +148,6 @@ html {
 	display: flex;
 	align-items: center;
 }
-
 
 @media (max-width: 500px) {
 	.menu__button {

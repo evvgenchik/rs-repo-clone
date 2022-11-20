@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script defer src="script.bundle.js"></script></head>
+
+<body>
+  <header class="header">
+    <div class="header__container">
+      <div class="header__top top-header">
+        <div class="top-header__logo">
+          <img src="./img/owl.png" class="top-header__logo-img" alt="logotip"></img>
+          <div class="top-header__logo-text"><span>Song</span> Bird</div>
+        </div>
+        <nav class="top-header__nav">
+          <ul class="top-header__list">
+            <li class="top-header__item"><a href="./start.html" class="top-header__link" id="game">Стартовая</a></li>
+            <li class="top-header__item"><a href="./template.html" class="top-header__link" id="game">Игра</a></li>
+            <li class="top-header__item"><a href="./galery.html" class="top-header__link" id="gallery">Галерея</a></li>
+            <!-- <li class="top-header__item"><a href="#" class="top-header__link" id="results">Стартовая страница</a>
+            </li> -->
+          </ul>
+          <div class="top-header__language language">
+            <span class="language__english">EN</span>
+            <span class="language__russian">RU</span>
+          </div>
+        </nav>
+      </div>
+      <nav class="header__menu menu">
+        <ul class="menu__list">
+          <li class="menu__item"><a class="menu__link" href="#">Разминка</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Воробьиные</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Лесные птицы</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Певчие птицы</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Хищные птицы</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Морские птицы</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="main">
+    <section class="main__random random">
+      <div class="random__container">
+        <div class="random__icon icon-random">
+          <img src="./img/defolt.jpg" alt="voron" class="icon-random__img">
+        </div>
+        <div class="random__palyer player-random">
+          <div class="player-random__info">
+            <div class="player-random__name">******</div>
+            <div class="player-random__score">Score: 0</div>
+          </div>
+          <div class="player-random__audio audio-player">
+            <audio src="" class="audio-player__sound"></audio>
+            <div class="audio-player__controls player-controles">
+              <div class="player-controles__track track-player">
+                <div class="player-controles__button button-player-controles">
+                  <img src="./img/play.png" alt="start/stop" class="button-player-controles__img">
+                </div>
+                <div class="track-player__line">
+                  <input type="range" max="" value="0" class="track-player__input">
+                </div>
+                <div class="track-player__volume">
+                  <img src="./img/volumeOn.png" class="track-player__volume_img" alt="volume">
+                  <input type="range" min="0" max="1" step="0.01" value="100" class="track-player__volume_input">
+                </div>
+              </div>
+              <div class="track-player__time player-time">
+                <div class="player-time__passed"></div>
+                <div class="player-time__all"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="main__quiz quiz">
+      <div class="quiz__container">
+        <div class="quiz__choices choices">
+          <div class="choices__wrapper">
+            <ul class="choices__list">
+              <li class="choices__item">
+                <div class="choices__button"></div>
+                <div class="choices__text"></div>
+              </li>
+              <li class="choices__item">
+                <div class="choices__button"></div>
+                <div class="choices__text"></div>
+              </li>
+              <li class="choices__item">
+                <div class="choices__button"></div>
+                <div class="choices__text"></div>
+              </li>
+              <li class="choices__item">
+                <div class="choices__button"></div>
+                <div class="choices__text"></div>
+              </li>
+              <li class="choices__item">
+                <div class="choices__button"></div>
+                <div class="choices__text"></div>
+              </li>
+              <li class="choices__item">
+                <div class="choices__button"></div>
+                <div class="choices__text"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="quiz__info info">
+          <div class="info__wrapper">
+            <img src="" class="info__img"></img>
+            <div class="info__name">Ворон</div>
+            <div class="info__species">Corvus corax</div>
+            <div class="info__audio audio-player">
+              <audio id="choices-audio" src="" class="audio-player__sound"></audio>
+              <div class="audio-player__controls player-controles">
+                <div class="player-controles__track track-player">
+                  <div class="player-controles__button button-player-controles">
+                    <img src="./img/play.png" alt="start/stop" class="button-player-controles__img">
+                  </div>
+                  <div class="track-player__line">
+                    <input type="range" max="" value="0" class="track-player__input">
+                  </div>
+                  <div class="track-player__volume">
+                    <img src="./img/volumeOn.png" class="track-player__volume_img" alt="volume">
+                    <input type="range" min="0" max="1" step="0.01" value="100" class="track-player__volume_input">
+                  </div>
+                </div>
+                <div class="track-player__time player-time">
+                  <div class="player-time__passed"></div>
+                  <div class="player-time__all"></div>
+                </div>
+              </div>
+            </div>
+            <div class="info__description"></div>
+          </div>
+          <div class="info__defolt">Послушайте плеер и по звуку выберите птицу из списка</div>
+        </div>
+      </div>
+    </section>
+    <div class="section__container"><button class="main__button" disabled><span>NEXT LEVEL</span></button></div>
+  </main>
+
+</body>
+
+</html>

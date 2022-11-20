@@ -6,7 +6,7 @@ const webpack = require('webpack')
 module.exports = {
   mode: 'development',
   entry: {
-    main: path.join(__dirname, 'js', 'script.js'),
+    script: path.join(__dirname, 'js', 'script.js'),
     gallery: path.join(__dirname, 'js', 'gallery.js'),
     start: path.join(__dirname, 'js', 'start.js'),
   },
@@ -23,9 +23,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'webpack Boilerplate',
-      template: path.join(__dirname, 'template.html'), // шаблон
+      template: path.join(__dirname, 'index.html'), // шаблон
       filename: 'index.html', // название выходного файла
-      chunks: ["main"]
+      chunks: ["script"]
     }),
     new HtmlWebpackPlugin({
       title: 'webpack Boilerplate',

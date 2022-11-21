@@ -16,7 +16,7 @@
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_results_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/results.scss */ \"./styles/results.scss\");\n\r\n\r\nconst ELEMENTS = {\r\n  text: document.querySelector('.text'),\r\n  button: document.querySelector('.button'),\r\n}\r\n\r\nconst addHTML = () => {\r\n  let score = localStorage.getItem('result')\r\n  if (score < 30) {\r\n    ELEMENTS.text.textContent = `Поздравляю! Вы прошли игру и набрали:${score} баллов`\r\n  } else {\r\n    ELEMENTS.text.textContent = `Поздравляю! Вы выиграли  и набрали: максимальное количество баллов - ${score}`\r\n  }\r\n}\r\n\r\nconst goToGame = () => {\r\n  window.location.href = '../index.html'\r\n}\r\n\r\nELEMENTS.button.addEventListener('click', goToGame)\r\n\r\ndocument.addEventListener('DOMContentLoaded', addHTML)\r\n\r\n\n\n//# sourceURL=webpack://songsbird/./js/results.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_results_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/results.scss */ \"./styles/results.scss\");\n\r\n\r\nconst ELEMENTS = {\r\n  text: document.querySelector('.text'),\r\n  button: document.querySelector('.button'),\r\n}\r\n\r\nconst addHTML = () => {\r\n  let score = localStorage.getItem('result')\r\n  if (score < 30) {\r\n    ELEMENTS.text.textContent = `Поздравляю! Вы прошли игру и набрали:${score} баллов`\r\n  } else {\r\n    ELEMENTS.text.textContent = `Поздравляю! Вы выиграли  и набрали: максимальное количество баллов - ${score}`\r\n  }\r\n}\r\n\r\nconst goToGame = () => {\r\n  window.location.href = './index.html'\r\n}\r\n\r\nELEMENTS.button.addEventListener('click', goToGame)\r\n\r\ndocument.addEventListener('DOMContentLoaded', addHTML)\r\n\r\n\n\n//# sourceURL=webpack://songsbird/./js/results.js?");
 
 /***/ }),
 
@@ -235,7 +235,7 @@ eval("module.exports = __webpack_require__.p + \"6c849cb6d367729c78a2.jpg\";\n\n
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("f478918f5bd6f3aefc90")
+/******/ 		__webpack_require__.h = () => ("edf7408fea06848f83bb")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

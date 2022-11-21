@@ -52,6 +52,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "img", to: "img" },
+        { from: "video", to: "video" },
+        { from: "sounds", to: "sounds" },
       ],
     }),
   ],

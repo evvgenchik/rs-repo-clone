@@ -15,7 +15,7 @@ const addHTML = () => {
 }
 
 const goToGame = () => {
-  window.location.href = '../index.html'
+  window.location.href = './index.html'
 }
 
 ELEMENTS.button.addEventListener('click', goToGame)

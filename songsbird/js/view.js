@@ -108,10 +108,10 @@ const showInfoHtml = (status) => {
 }
 
 const putDefaultRandomHTML = () => {
-  RANDOM.icon.src = '../img/defolt.jpg';
+  RANDOM.icon.src = './img/defolt.jpg';
   RANDOM.name.textContent = '******';
   RANDOM.audio.src = rightAnswer.audio;
-  RANDOM.play.src = '../img/play.png'
+  RANDOM.play.src = './img/play.png'
 
   if (RANDOM.play.classList.contains('play')) {
     playPauseAudio(RANDOM)

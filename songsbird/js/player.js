@@ -1,11 +1,11 @@
 const playPauseAudio = (block) => {
   if (!block.play.classList.contains('play')) {
     block.play.classList.add('play');
-    block.play.src = '../img/stop.png'
+    block.play.src = './img/stop.png'
     block.audio.play()
   } else {
     block.play.classList.remove('play')
-    block.play.src = '../img/play.png'
+    block.play.src = './img/play.png'
     block.audio.pause()
   }
 }
@@ -27,7 +27,7 @@ const changeAllTimeSong = (block) => {
 
 const setVolume = (e, block) => {
   block.audio.volume = e.target.value
-  block.iconVolume.src = (e.target.value === '0') ? '../img/volumeOff.png' : '../img/volumeOn.png'
+  block.iconVolume.src = (e.target.value === '0') ? './img/volumeOff.png' : './img/volumeOn.png'
 }
 
 export const convertTime = (time) => {

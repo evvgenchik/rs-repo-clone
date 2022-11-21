@@ -144,7 +144,7 @@ const changeLanguageGame = (lang) => {
 
 const finishGame = () => {
   localStorage.setItem('result', score)
-  window.location.href = '../results.html'
+  window.location.href = './results.html'
 }
 
 document.addEventListener('DOMContentLoaded', () => {

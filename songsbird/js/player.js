@@ -1,19 +1,14 @@
-
-
-
 const playPauseAudio = (block) => {
   if (!block.play.classList.contains('play')) {
     block.play.classList.add('play');
-    block.play.src = './img/stop.png'
+    block.play.src = '../img/stop.png'
     block.audio.play()
   } else {
     block.play.classList.remove('play')
-    block.play.src = './img/play.png'
+    block.play.src = '../img/play.png'
     block.audio.pause()
   }
 }
-
-
 
 const changeTimeTracker = (e, block) => {
   let currentTime = Math.floor(e.target.currentTime)
@@ -32,7 +27,7 @@ const changeAllTimeSong = (block) => {
 
 const setVolume = (e, block) => {
   block.audio.volume = e.target.value
-  block.iconVolume.src = (e.target.value === '0') ? './img/volumeOff.png' : './img/volumeOn.png'
+  block.iconVolume.src = (e.target.value === '0') ? '../img/volumeOff.png' : '../img/volumeOn.png'
 }
 
 export const convertTime = (time) => {
@@ -48,35 +43,5 @@ export const convertTime = (time) => {
 
   return `${minutes}:${seconds}`
 }
-
-
-
-// RANDOM.play.addEventListener('click', () => {
-//   playPauseAudio(RANDOM)
-
-// })
-// INFO.play.addEventListener('click', () => {
-//   playPauseAudio(INFO)
-// })
-
-// RANDOM.audio.addEventListener('timeupdate', () => changeTimeTracker(event, RANDOM))
-
-// INFO.audio.addEventListener('timeupdate', () => changeTimeTracker(event, INFO))
-
-// RANDOM.audio.addEventListener('canplaythrough', () => changeAllTimeSong(RANDOM))
-
-// INFO.audio.addEventListener('canplaythrough', () => changeAllTimeSong(INFO))
-
-// RANDOM.audio.addEventListener('canplaythrough', () => changeAllTimeSong(RANDOM))
-
-// RANDOM.input.addEventListener('input', () => setTimePos(event, RANDOM))
-
-// INFO.input.addEventListener('input', () => setTimePos(event, INFO))
-
-// RANDOM.inputVolume.addEventListener('input', () => setVolume(event, RANDOM))
-
-// INFO.inputVolume.addEventListener('input', () => setVolume(event, INFO))
-
-
 
 export { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume }

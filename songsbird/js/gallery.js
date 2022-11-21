@@ -71,9 +71,12 @@ const addListeners = (item) => {
 }
 const checkLocalStorageGallery = () => {
   const language = localStorage.getItem('language')
+  let title = document.querySelector('.gallery__title')
   if (language === 'EN') {
+    title.textContent = 'Gallery'
     addHTMLfiles(birdsDataEN)
   } else {
+    title.textContent = 'Галерея'
     addHTMLfiles(birdsData)
   }
 }

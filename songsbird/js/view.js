@@ -81,27 +81,6 @@ const changeRandomHTML = (birdObj) => {
   RANDOM.name.textContent = birdObj.name;
 }
 
-
-
-const finishGame = () => {
-  const winWindow = document.createElement('div');
-  document.querySelector('main').style.display = 'none'
-  winWindow.classList.add('win')
-  document.body.append(winWindow)
-
-  if (score < 30) {
-    winWindow.textContent = `Поздравляю! Вы прошли игру и набрали:
-  ${score} баллов`
-    const button = document.createElement('button')
-    button.classList.add('win__button')
-    winWindow.append(button)
-    button.textContent = `Попробовать сыграть еще раз!`
-  } else {
-    winWindow.textContent = `Поздравляю! Вы выиграли  и набрали:
-      максимальное количество баллов - ${score}`
-  }
-}
-
 const highlightQuestion = () => {
   let questions = document.querySelectorAll('.menu__link');
   questions[count].classList.add('active')
@@ -122,16 +101,18 @@ const showInfoHtml = (status) => {
     INFO.wrapper.style.display = 'none'
     INFO.defolt.style.display = 'block'
   }
+
   if (INFO.play.classList.contains('play')) {
     playPauseAudio(INFO)
   }
 }
 
 const putDefaultRandomHTML = () => {
-  RANDOM.icon.src = './img/defolt.jpg';
+  RANDOM.icon.src = '../img/defolt.jpg';
   RANDOM.name.textContent = '******';
   RANDOM.audio.src = rightAnswer.audio;
-  RANDOM.play.src = './img/play.png'
+  RANDOM.play.src = '../img/play.png'
+
   if (RANDOM.play.classList.contains('play')) {
     playPauseAudio(RANDOM)
   }
@@ -162,6 +143,4 @@ const removeDisabledButton = () => {
   BUTTONS.next.style.backgroundColor = '#A15849'
 }
 
-
-
-export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, LANGUAGE, ELEMENTS }
+export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, LANGUAGE, ELEMENTS }

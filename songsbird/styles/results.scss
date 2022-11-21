@@ -1,1 +1,52 @@
 @import "./null.css";
+
+html {
+  font-size: 1px;
+}
+
+body {
+  background: url('../img/blueFon.jpg') no-repeat;
+  background-size: cover;
+}
+
+.wrapper {
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6C4F3D;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.text {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.button {
+  font-size: 20rem;
+  cursor: pointer;
+  position: relative;
+  width: 300rem;
+  padding: 10rem 30rem;
+  background-color: #898E8C;
+  text-shadow: 0 -1px 1px #777;
+
+  &:hover {
+    top: -5rem;
+    box-shadow: 2rem 5rem 0 0 rgba(0, 0, 0, .7);
+  }
+
+  &:active {
+    top: -1rem;
+    transition: all 0.5s ease 0s;
+    box-shadow: 0 2rem 0 0 #898E8C;
+  }
+}

@@ -59,17 +59,6 @@ body {
 
 .audio-player {
   padding: 10rem 0;
-
-  &__sound {}
-
-  &__controls {}
-}
-
-.player-controles {
-
-  &__track {}
-
-  &__button {}
 }
 
 .track-player {
@@ -87,8 +76,6 @@ body {
       flex: 0 1 50%;
     }
   }
-
-  &__time {}
 }
 
 .button-player-controles {
@@ -116,9 +103,6 @@ body {
   display: flex;
   justify-content: space-between;
 
-  &__passed {}
-
-  &__all {}
 }
 
 
@@ -131,12 +115,7 @@ body {
   html {
     font-size: 0.8px;
   }
-
-
 }
-
-
-
 
 @media (max-width: 920px) {
   html {

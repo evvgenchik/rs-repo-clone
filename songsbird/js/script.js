@@ -2,7 +2,7 @@ import scss from "../styles/style.scss"
 import birdsData from './birds'
 import birdsDataEN from './birdsEN'
 import { TEXT } from "./language"
-import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, changeRandomHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, LANGUAGE, ELEMENTS } from "./view"
+import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, changeRandomHTML, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, LANGUAGE, ELEMENTS } from "./view"
 import { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume } from './player'
 
 export let count = 0
@@ -83,7 +83,6 @@ const playSoundAnswer = (e, answer) => {
 }
 
 const changeStepScore = (e, number) => {
-
   if (e.target.classList.contains('active')) {
     return
   }
@@ -111,9 +110,10 @@ const checkLocalStorage = () => {
   getRightAnswer()
   putDefaultRandomHTML()
 }
-const changeLanguageGame = (lang) => {
 
+const changeLanguageGame = (lang) => {
   for (let key in TEXT) {
+
     if (lang === 'EN') {
       ELEMENTS.home.textContent = TEXT.Game.EN.home
       ELEMENTS.game.textContent = TEXT.Game.EN.game
@@ -126,6 +126,7 @@ const changeLanguageGame = (lang) => {
         ELEMENTS.categories[i].textContent = categoryNameEn
       }
     }
+
     if (lang === 'RU') {
       ELEMENTS.home.textContent = TEXT.Game.RU.home
       ELEMENTS.game.textContent = TEXT.Game.RU.game
@@ -139,6 +140,11 @@ const changeLanguageGame = (lang) => {
       }
     }
   }
+}
+
+const finishGame = () => {
+  localStorage.setItem('result', score)
+  window.location.href = '../results.html'
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -175,7 +181,6 @@ LANGUAGE.ru.addEventListener('click', () => {
   localStorage.setItem('language', 'RU')
   checkLocalStorage()
 })
-
 
 RANDOM.play.addEventListener('click', () => {
   playPauseAudio(RANDOM)

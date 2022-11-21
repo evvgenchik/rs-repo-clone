@@ -4,17 +4,12 @@
 html {
   font-size: 1px;
   height: 100%;
-
 }
 
 body {
   font-size: 26rem;
   height: 100%;
 }
-
-
-
-
 
 .wrapper {
   height: 100vh;
@@ -90,14 +85,10 @@ body {
     color: burlywood;
   }
 
-  &__nav {}
-
   &__list {
     display: flex;
     gap: 30rem;
   }
-
-  &__item {}
 
   &__link {
     font-size: 28rem;
@@ -106,15 +97,28 @@ body {
       color: #A15849;
     }
   }
+}
 
-  &__language {}
+.language__english {
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.language__russian {
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 
 
 .main {
   flex: 1 1 auto;
-
 
   &__container {
     display: flex;
@@ -148,8 +152,6 @@ body {
     top: -1rem;
     transition: all 0.5s ease 0s;
     box-shadow: 0 2rem 0 0 #898E8C;
-
-
   }
 }
 
@@ -165,10 +167,6 @@ body {
   &__logo {
     width: 10%;
   }
-
-  &__year {}
-
-  &__github {}
 }
 
 

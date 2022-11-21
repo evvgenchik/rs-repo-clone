@@ -14,11 +14,6 @@ const ELEMENTS = {
   gitHub: document.querySelector('.footer__github'),
 }
 
-
-
-
-
-
 const changeLanguage = (lang) => {
   for (let key in TEXT) {
     if (lang === 'EN') {

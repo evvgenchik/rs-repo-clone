@@ -1,10 +1,12 @@
 import scss from "../styles/gallery.scss"
 import birdsData from "./birds.js"
+import birdsDataEN from './birdsEN'
 import { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume } from "./player.js"
 
 
 
 const addHTMLfiles = (birdsData) => {
+
   let list = document.querySelector('.gallery__list')
 
   for (let i = 0; i < birdsData.length; i++) {
@@ -67,8 +69,15 @@ const addListeners = (item) => {
 
   PLAYER.inputVolume.addEventListener('input', () => setVolume(event, PLAYER))
 }
-
+const checkLocalStorageGallery = () => {
+  const language = localStorage.getItem('language')
+  if (language === 'EN') {
+    addHTMLfiles(birdsDataEN)
+  } else {
+    addHTMLfiles(birdsData)
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  addHTMLfiles(birdsData)
+  checkLocalStorageGallery()
 })

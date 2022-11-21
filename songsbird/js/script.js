@@ -1,7 +1,8 @@
 import scss from "../styles/style.scss"
 import birdsData from './birds'
 import birdsDataEN from './birdsEN'
-import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, changeRandomHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton } from "./view"
+import { TEXT } from "./language"
+import { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeInfoHTML, changeRandomHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, LANGUAGE, ELEMENTS } from "./view"
 import { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume } from './player'
 
 export let count = 0
@@ -94,24 +95,51 @@ const changeStepScore = (e, number) => {
   }
 }
 
-
-const changeLanguage = () => {
-  birdsDataRandom = shuffle(birdsDataEN);
+const checkLocalStorage = () => {
+  const language = localStorage.getItem('language')
+  if (language === 'EN') {
+    birdsDataRandom = birdsDataEN;
+    changeLanguageGame(language)
+  } else {
+    birdsDataRandom = birdsData;
+    changeLanguageGame(language)
+  }
   getRandomBirdsNames(birdsDataRandom)
   changeChoicesHTML(getRandomBirdsNames())
+  highlightQuestion()
   showInfoHtml()
   getRightAnswer()
   putDefaultRandomHTML()
 }
+const changeLanguageGame = (lang) => {
 
+  for (let key in TEXT) {
+    if (lang === 'EN') {
+      ELEMENTS.home.textContent = TEXT.Game.EN.home
+      ELEMENTS.game.textContent = TEXT.Game.EN.game
+      ELEMENTS.gallery.textContent = TEXT.Game.EN.gallery
+      INFO.defolt.textContent = TEXT.Game.EN.infoDefolt
+      BUTTONS.next.textContent = TEXT.Game.EN.mainButton
 
-// export const isHasClass = (elem, nameClass) => {
-//   if (elem.classList.contains(nameClass)) {
-//     return true
-//   } else {
-//     return false
-//   }
-// }
+      for (let i = 0; i < 6; i++) {
+        let categoryNameEn = TEXT.Game.EN.categories.split(',')[i]
+        ELEMENTS.categories[i].textContent = categoryNameEn
+      }
+    }
+    if (lang === 'RU') {
+      ELEMENTS.home.textContent = TEXT.Game.RU.home
+      ELEMENTS.game.textContent = TEXT.Game.RU.game
+      ELEMENTS.gallery.textContent = TEXT.Game.RU.gallery
+      INFO.defolt.textContent = TEXT.Game.RU.infoDefolt
+      BUTTONS.next.textContent = TEXT.Game.RU.mainButton
+
+      for (let i = 0; i < 6; i++) {
+        let categoryNameEn = TEXT.Game.RU.categories.split(',')[i]
+        ELEMENTS.categories[i].textContent = categoryNameEn
+      }
+    }
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   birdsDataRandom = birdsData;
@@ -121,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   showInfoHtml()
   getRightAnswer()
   putDefaultRandomHTML()
+  checkLocalStorage()
 })
 
 BUTTONS.next.addEventListener('click', () => {
@@ -138,7 +167,15 @@ CHOICES.list.addEventListener('click', (e) => {
   showInfoHtml(true)
 })
 
-BUTTONS.english.addEventListener('click', changeLanguage)
+LANGUAGE.en.addEventListener('click', () => {
+  localStorage.setItem('language', 'EN')
+  checkLocalStorage()
+})
+LANGUAGE.ru.addEventListener('click', () => {
+  localStorage.setItem('language', 'RU')
+  checkLocalStorage()
+})
+
 
 RANDOM.play.addEventListener('click', () => {
   playPauseAudio(RANDOM)

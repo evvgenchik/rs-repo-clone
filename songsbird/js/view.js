@@ -1,5 +1,14 @@
 import { birdsDataRandom, count, score, rightAnswer } from "./script"
 
+const ELEMENTS = {
+  home: document.querySelector('#home'),
+  game: document.querySelector('#game'),
+  gallery: document.querySelector('#gallery'),
+  en: document.querySelector('.language__english'),
+  ru: document.querySelector('.language__russian'),
+  categories: document.querySelectorAll('.menu__link'),
+}
+
 const RANDOM = {
   icon: document.querySelector('.icon-random__img'),
   audio: document.querySelector('.audio-player__sound'),
@@ -36,15 +45,16 @@ const INFO = {
 }
 
 const BUTTONS = {
+  home: document.querySelector('#homes'),
   game: document.querySelector('#game'),
   gallery: document.querySelector('#gallery'),
-  results: document.querySelector('#results'),
   next: document.querySelector('.main__button'),
-  english: document.querySelector('.language__english')
 }
 
-
-
+const LANGUAGE = {
+  en: document.querySelector('.language__english'),
+  ru: document.querySelector('.language__russian')
+}
 
 const changeChoicesHTML = (birdsNamesRandom) => {
   for (let i = 0; i < birdsNamesRandom.length; i++) {
@@ -55,7 +65,6 @@ const changeChoicesHTML = (birdsNamesRandom) => {
     }
   }
 }
-
 
 const changeInfoHTML = (birdName) => {
   let birdObj = birdsDataRandom[count].find(item => item.name === birdName);
@@ -155,4 +164,4 @@ const removeDisabledButton = () => {
 
 
 
-export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton }
+export { RANDOM, CHOICES, INFO, BUTTONS, changeChoicesHTML, changeRandomHTML, changeInfoHTML, finishGame, highlightQuestion, showInfoHtml, putDefaultRandomHTML, changeCircleColor, resetCircleColor, putButtonDisabled, removeDisabledButton, LANGUAGE, ELEMENTS }

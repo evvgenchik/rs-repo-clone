@@ -114,7 +114,7 @@ const changeLanguage = () => {
 // }
 
 document.addEventListener('DOMContentLoaded', () => {
-  birdsDataRandom = shuffle(birdsData);
+  birdsDataRandom = birdsData;
   getRandomBirdsNames(birdsDataRandom)
   changeChoicesHTML(getRandomBirdsNames())
   highlightQuestion()

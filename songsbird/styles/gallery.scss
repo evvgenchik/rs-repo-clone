@@ -20,6 +20,42 @@ body {
 
 
 
+.header {
+  padding: 10rem;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-img {
+    width: 10%;
+  }
+
+  &__logo-text {
+    font-size: 40rem;
+    color: burlywood;
+  }
+
+  &__list {
+    display: flex;
+    gap: 30rem;
+  }
+
+  &__link {
+    font-size: 28rem;
+
+    &:hover {
+      color: #A15849;
+    }
+  }
+}
+
 .gallery {
 
   &__title {

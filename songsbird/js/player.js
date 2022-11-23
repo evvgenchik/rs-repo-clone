@@ -27,7 +27,7 @@ const changeAllTimeSong = (block) => {
 
 const setVolume = (e, block) => {
   block.audio.volume = e.target.value
-  block.iconVolume.src = (e.target.value === '0') ? './img/volumeOff.png' : './img/volumeOn.png'
+  block.iconVolume.src = (e.target.value === '0') ? './img/volumeoff.png' : './img/volumeOn.png'
 }
 
 export const convertTime = (time) => {

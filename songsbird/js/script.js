@@ -39,7 +39,6 @@ const getRandomBirdsNames = () => {
 const isRightAnswer = (e) => {
   let chosenAnswer = e.target.lastElementChild.textContent;
   let rightChoice = rightAnswer
-
   if (chosenAnswer === rightChoice.name) {
     playSoundAnswer(e, true)
     changeRandomHTML(rightChoice)
@@ -71,7 +70,7 @@ const getRightAnswer = () => {
 }
 
 const playSoundAnswer = (e, answer) => {
-  if (e.target.classList.contains('active')) {
+  if (e.target.classList.contains('active') || !BUTTONS.next.classList.contains('disabled')) {
     return
   }
   let sound = (answer) ? new Audio('./sounds/right.mp3') : new Audio('./sounds/wrong.mp3');
@@ -156,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
   getRightAnswer()
   putDefaultRandomHTML()
   checkLocalStorage()
+  putButtonDisabled()
 })
 
 BUTTONS.next.addEventListener('click', () => {
@@ -168,10 +168,10 @@ BUTTONS.next.addEventListener('click', () => {
   putButtonDisabled()
 })
 
-CHOICES.list.addEventListener('click', (e) => {
+CHOICES.items.forEach(item => item.addEventListener('click', (e) => {
   isRightAnswer(e)
   showInfoHtml(true)
-})
+}))
 
 LANGUAGE.en.addEventListener('click', () => {
   localStorage.setItem('language', 'EN')

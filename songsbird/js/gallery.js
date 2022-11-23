@@ -1,6 +1,7 @@
 import scss from "../styles/gallery.scss"
 import birdsData from "./birds.js"
 import birdsDataEN from './birdsEN'
+import { TEXT } from "./language"
 import { playPauseAudio, changeAllTimeSong, changeTimeTracker, setTimePos, setVolume } from "./player.js"
 
 
@@ -69,18 +70,27 @@ const addListeners = (item) => {
 
   PLAYER.inputVolume.addEventListener('input', () => setVolume(event, PLAYER))
 }
-const checkLocalStorageGallery = () => {
+const checkLanguage = () => {
   const language = localStorage.getItem('language')
-  let title = document.querySelector('.gallery__title')
+  const home = document.querySelector('#home')
+  const game = document.querySelector('#game')
+  const gallery = document.querySelector('#gallery')
+  const title = document.querySelector('.gallery__title')
   if (language === 'EN') {
+    home.textContent = TEXT.Starting.EN.home
+    game.textContent = TEXT.Starting.EN.game
+    gallery.textContent = TEXT.Starting.EN.gallery
     title.textContent = 'Gallery'
     addHTMLfiles(birdsDataEN)
   } else {
+    home.textContent = TEXT.Starting.RU.home
+    game.textContent = TEXT.Starting.RU.game
+    gallery.textContent = TEXT.Starting.RU.gallery
     title.textContent = 'Галерея'
     addHTMLfiles(birdsData)
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  checkLocalStorageGallery()
+  checkLanguage()
 })

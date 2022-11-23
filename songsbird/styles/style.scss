@@ -351,6 +351,12 @@ body {
 }
 
 
+@media (max-width: 460px) {
+  .track-player__volume_input {
+    width: 90rem;
+  }
+}
+
 @media (max-width: 560px) {
   html {
     font-size: 0.7px;
@@ -410,8 +416,6 @@ body {
   gap: 50rem;
   padding: 40rem 15rem 30rem;
 }
-
-.win__button {}
 
 .menu__link.active {
   color: #C0AB8E;

@@ -68,12 +68,14 @@ const changeChoicesHTML = (birdsNamesRandom) => {
 
 const changeInfoHTML = (birdName) => {
   let birdObj = birdsDataRandom[count].find(item => item.name === birdName);
-
-  INFO.icon.src = birdObj.image;
-  INFO.name.textContent = birdObj.name;
-  INFO.species.textContent = birdObj.species;
-  INFO.audio.src = birdObj.audio;
-  INFO.text.textContent = birdObj.description;
+  if (!birdObj) {
+  } else {
+    INFO.icon.src = birdObj.image;
+    INFO.name.textContent = birdObj.name;
+    INFO.species.textContent = birdObj.species;
+    INFO.audio.src = birdObj.audio;
+    INFO.text.textContent = birdObj.description;
+  }
 }
 
 const changeRandomHTML = (birdObj) => {
@@ -119,6 +121,10 @@ const putDefaultRandomHTML = () => {
 }
 
 const changeCircleColor = (e, color) => {
+  if (!BUTTONS.next.classList.contains('disabled')) {
+    return
+  }
+
   let circle = e.target.firstElementChild;
   e.target.classList.add('active')
 
@@ -134,11 +140,13 @@ const resetCircleColor = () => {
 }
 
 const putButtonDisabled = () => {
+  BUTTONS.next.classList.add('disabled')
   BUTTONS.next.disabled = true;
   BUTTONS.next.style.backgroundColor = 'rgb(254, 252, 234)'
 }
 
 const removeDisabledButton = () => {
+  BUTTONS.next.classList.remove('disabled')
   BUTTONS.next.disabled = false;
   BUTTONS.next.style.backgroundColor = '#A15849'
 }

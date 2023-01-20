@@ -48,5 +48,5 @@ export const modelsCars: Array<string> = [
   'Aventador',
   '911',
   'Cayenne',
-  'FX37',
-]
+  'FX37'
+];

@@ -1,4 +1,5 @@
-import { $, $All } from '../assets/utils/helpers';
+// eslint-disable-next-line object-curly-newline
+import { $, $All, mixCars, randomHexColor } from '../assets/utils/helpers';
 import Garage from '../pages/garagePage';
 import api from './api';
 
@@ -28,6 +29,7 @@ class Car {
     const updateBtn = <HTMLButtonElement>$('.update__confirm');
     const selectBtn = <NodeList>$All('.control__select');
     const removeBtn = <NodeList>$All('.control__remove');
+    const generateBtn = <HTMLButtonElement>$('.btns__generate');
 
     createBtn.addEventListener('click', () => {
       this.create();
@@ -45,6 +47,12 @@ class Car {
 
     updateBtn.addEventListener('click', () => {
       this.update();
+      this.garage.cleanCars();
+      this.garage.renderCars();
+    });
+
+    generateBtn.addEventListener('click', () => {
+      this.generateCars();
       this.garage.cleanCars();
       this.garage.renderCars();
     });
@@ -87,6 +95,14 @@ class Car {
 
   changeColor(image: SVGSVGElement, color: string) {
     image.style.fill = color;
+  }
+
+  generateCars() {
+    const arrayAuto = <string[]>mixCars();
+    console.log(arrayAuto);
+    arrayAuto.forEach((item) => {
+      api.createCar(item, randomHexColor());
+    });
   }
 }
 

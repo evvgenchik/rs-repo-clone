@@ -113,7 +113,7 @@ class Garage {
             <button class="drive__stop">B</button>
           </div>
           <div class="drive__icon">
-          <svg  data-color="${item.color}" class="drive__img ${nameCar}" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800" height="800" viewBox="0 0 511 511">
+          <svg  data-color="${item.color}" data-model="${nameCar}" class="drive__img" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800" height="800" viewBox="0 0 511 511">
           <path
             d="M127.5 320.712a7.5 7.5 0 0 0-7.5 7.5c0 9.098-7.402 16.5-16.5 16.5S87 337.31 87 328.212s7.402-16.5 16.5-16.5a7.5 7.5 0 0 0 0-15c-17.369 0-31.5 14.131-31.5 31.5s14.131 31.5 31.5 31.5 31.5-14.131 31.5-31.5a7.5 7.5 0 0 0-7.5-7.5zM439.5 320.712a7.5 7.5 0 0 0-7.5 7.5c0 9.098-7.402 16.5-16.5 16.5s-16.5-7.402-16.5-16.5 7.402-16.5 16.5-16.5a7.5 7.5 0 0 0 0-15c-17.369 0-31.5 14.131-31.5 31.5s14.131 31.5 31.5 31.5 31.5-14.131 31.5-31.5a7.5 7.5 0 0 0-7.5-7.5z" />
           <path
@@ -129,12 +129,10 @@ class Garage {
   </div>
     `;
 
-      const iconCar = <SVGSVGElement>$(`.${nameCar}`);
-      console.log(item.name);
-      console.log(iconCar);
+      const iconCar = <SVGSVGElement>$(`[data-model=${nameCar}]`);
       this.car.changeColor(iconCar, item.color);
+      this.car.eventliteners();
     });
-    this.car.eventliteners();
   }
 
   cleanCars() {

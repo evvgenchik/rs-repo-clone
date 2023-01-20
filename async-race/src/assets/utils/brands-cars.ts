@@ -48,5 +48,5 @@ export const brandsCars: Array<string> = [
   'RAM',
   'Chevrolet',
   'Mazzanti',
-  'Daewoo',
-]
+  'Daewoo'
+];

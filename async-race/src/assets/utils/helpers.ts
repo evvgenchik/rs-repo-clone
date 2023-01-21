@@ -30,7 +30,9 @@ const randomHexColor = () => {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 };
 
+const getTranslateX = (transform: string) => Number(transform.split('(')[1]);
+
 // eslint-disable-next-line prettier/prettier
 export {
-  $, $All, mixCars, randomHexColor
+  $, $All, mixCars, randomHexColor, getTranslateX
 };

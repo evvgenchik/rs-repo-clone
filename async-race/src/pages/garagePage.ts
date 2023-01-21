@@ -87,6 +87,7 @@ class Garage {
 </div>
   `;
     this.renderCars();
+    this.car.eventlitenersMenu();
   }
 
   async renderCars() {

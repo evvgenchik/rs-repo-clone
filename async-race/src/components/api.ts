@@ -55,6 +55,21 @@ class Api {
       throw new Error('err');
     }
   }
+
+  async drive(id: string, status: string) {
+    try {
+      const response = await fetch(`http://127.0.0.1:3000/engine?id=${id}&status=${status}`, {
+        method: 'PATCH'
+      });
+      if (response.status === 500) {
+        await fetch(`http://127.0.0.1:3000/engine?id=${id}&status=stopped`, { method: 'PATCH' });
+      }
+      const date = await response.json();
+      return date;
+    } catch (e) {
+      throw new Error('err');
+    }
+  }
 }
 
 const api = new Api();

@@ -146,7 +146,9 @@ class Car {
     let measure: FrameRequestCallback;
 
     if (stop) {
-      cancelAnimationFrame(this.animationId);
+      const currentId = Number(icon.getAttribute('data-animationId'));
+      console.log(currentId);
+      cancelAnimationFrame(currentId);
       icon.style.transform = '';
       return;
     }
@@ -164,6 +166,7 @@ class Car {
 
         if (progress < 1) {
           this.animationId = requestAnimationFrame(measure);
+          icon.setAttribute('data-animationId', String(this.animationId));
         }
       })
     );

@@ -30,6 +30,7 @@ class Car {
     const createBtn = <HTMLButtonElement>$('.create__confirm');
     const updateBtn = <HTMLButtonElement>$('.update__confirm');
     const generateBtn = <HTMLButtonElement>$('.btns__generate');
+    const raceBtn = <HTMLButtonElement>$('.btns__race');
 
     createBtn.addEventListener('click', () => {
       this.create();
@@ -47,6 +48,24 @@ class Car {
       this.generateCars();
       this.garage.cleanCars();
       this.garage.renderCars();
+    });
+
+    raceBtn.addEventListener('click', (e) => {
+      const allCarsIcons = <NodeList>$All('.drive__img');
+
+      allCarsIcons.forEach(async (item) => {
+        const carIcon = <SVGSVGElement>item;
+        const carBlock = <HTMLElement>carIcon.closest('.item__block');
+
+        const response = await this.drive(e, 'started', carBlock);
+        this.animation(e, false, false, carIcon, response);
+
+        const responseDrive = await this.drive(e, 'drive', carBlock);
+        if (responseDrive === 500) {
+          this.drive(e, 'stopped', carBlock);
+          this.animation(e, true, true, carIcon);
+        }
+      });
     });
   }
 
@@ -67,12 +86,10 @@ class Car {
     aBtns.forEach((item) => {
       item.addEventListener('click', async (e) => {
         const response = await this.drive(e, 'started');
-        this.animation(e, false, false, response);
+        this.animation(e, false, false, null, response);
 
         const responseDrive = await this.drive(e, 'drive');
-
         if (responseDrive === 500) {
-          console.log('br');
           this.drive(e, 'stopped');
           this.animation(e, true, true);
         }
@@ -128,55 +145,64 @@ class Car {
 
   generateCars() {
     const arrayAuto = <string[]>mixCars();
-    console.log(arrayAuto);
     arrayAuto.forEach((item) => {
       api.createCar(item, randomHexColor());
     });
   }
 
-  async drive(e: Event, status: string) {
+  async drive(e: Event, status: string, carBlock?: HTMLElement) {
     const eventBtn = <HTMLElement>e.target;
-    const carBlock = <HTMLElement>eventBtn.closest('.item__block');
+    carBlock = carBlock || <HTMLElement>eventBtn.closest('.item__block');
 
     const date = await api.drive(carBlock.id, status);
     return date;
   }
 
-  animation(e: Event, stop = false, broke = false, response = { velocity: 0, distance: 1000 }) {
+  animation(
+    e: Event,
+    stop = false,
+    broke = false,
+    icon: null | SVGSVGElement = null,
+    response = { velocity: 0, distance: 1000 }
+  ) {
     const eventBtn = <HTMLElement>e.target;
-    const carBlock = <HTMLElement>eventBtn.closest('.item__block');
-    const icon = <SVGSVGElement>$('.drive__img', carBlock);
+    const carBlock = <HTMLElement>eventBtn.closest('.item__block') || icon?.closest('.item__block');
+    icon = icon || <SVGSVGElement>$('.drive__img', carBlock);
     const duration = response.distance / response.velocity;
     const distance = carBlock.clientWidth - 150;
     let startAnimation = 0;
     // eslint-disable-next-line no-undef
     let measure: FrameRequestCallback;
 
-    if (stop) {
-      const currentId = Number(icon.getAttribute('data-animationId'));
-      console.log(currentId);
-      cancelAnimationFrame(currentId);
-      icon.style.transform = broke ? getTranslateX(icon.style.transform) : '';
-      return;
+    if (icon !== null) {
+      if (stop) {
+        console.log(carBlock);
+        const currentId = Number(icon.getAttribute('data-animationId'));
+        cancelAnimationFrame(currentId);
+        icon.style.transform = broke ? getTranslateX(icon.style.transform) : '';
+        return;
+      }
+
+      this.animationId = requestAnimationFrame(
+        (measure = (time) => {
+          if (!startAnimation) {
+            startAnimation = time;
+          }
+
+          const progress = (time - startAnimation) / duration;
+          const translate = progress * distance;
+
+          if (icon !== null) {
+            icon.style.transform = `translate(${translate}px, 35%)`;
+
+            if (progress < 1) {
+              this.animationId = requestAnimationFrame(measure);
+              icon.setAttribute('data-animationId', String(this.animationId));
+            }
+          }
+        })
+      );
     }
-
-    this.animationId = requestAnimationFrame(
-      (measure = (time) => {
-        if (!startAnimation) {
-          startAnimation = time;
-        }
-
-        const progress = (time - startAnimation) / duration;
-        const translate = progress * distance;
-
-        icon.style.transform = `translate(${translate}px, 35%)`;
-
-        if (progress < 1) {
-          this.animationId = requestAnimationFrame(measure);
-          icon.setAttribute('data-animationId', String(this.animationId));
-        }
-      })
-    );
   }
 }
 

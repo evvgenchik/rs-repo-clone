@@ -63,6 +63,7 @@ class Api {
       });
       if (response.status === 500) {
         await fetch(`http://127.0.0.1:3000/engine?id=${id}&status=stopped`, { method: 'PATCH' });
+        return 500;
       }
       const date = await response.json();
       return date;

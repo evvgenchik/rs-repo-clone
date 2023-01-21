@@ -1,5 +1,5 @@
 // eslint-disable-next-line object-curly-newline
-import { $, $All, mixCars, randomHexColor } from '../assets/utils/helpers';
+import { $, $All, mixCars, randomHexColor, getTranslateX } from '../assets/utils/helpers';
 import Garage from '../pages/garagePage';
 import api from './api';
 
@@ -67,8 +67,15 @@ class Car {
     aBtns.forEach((item) => {
       item.addEventListener('click', async (e) => {
         const response = await this.drive(e, 'started');
-        this.animation(e, false, response);
-        this.drive(e, 'drive');
+        this.animation(e, false, false, response);
+
+        const responseDrive = await this.drive(e, 'drive');
+
+        if (responseDrive === 500) {
+          console.log('br');
+          this.drive(e, 'stopped');
+          this.animation(e, true, true);
+        }
       });
     });
 
@@ -135,7 +142,7 @@ class Car {
     return date;
   }
 
-  animation(e: Event, stop = false, response = { velocity: 0, distance: 1000 }, translate = 0) {
+  animation(e: Event, stop = false, broke = false, response = { velocity: 0, distance: 1000 }) {
     const eventBtn = <HTMLElement>e.target;
     const carBlock = <HTMLElement>eventBtn.closest('.item__block');
     const icon = <SVGSVGElement>$('.drive__img', carBlock);
@@ -149,7 +156,7 @@ class Car {
       const currentId = Number(icon.getAttribute('data-animationId'));
       console.log(currentId);
       cancelAnimationFrame(currentId);
-      icon.style.transform = '';
+      icon.style.transform = broke ? getTranslateX(icon.style.transform) : '';
       return;
     }
 
@@ -160,7 +167,7 @@ class Car {
         }
 
         const progress = (time - startAnimation) / duration;
-        translate = progress * distance;
+        const translate = progress * distance;
 
         icon.style.transform = `translate(${translate}px, 35%)`;
 

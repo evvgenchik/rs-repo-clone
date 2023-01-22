@@ -32,7 +32,14 @@ const randomHexColor = () => {
 
 const getTranslateX = (transform: string) => transform.split('(')[1];
 
+const addDisabled = (elem: HTMLElement) => elem.setAttribute('disabled', 'disabled');
+
+const convertTime = (time: number) => {
+  time /= 1000;
+  return time.toFixed(2);
+};
+
 // eslint-disable-next-line prettier/prettier
 export {
-  $, $All, mixCars, randomHexColor, getTranslateX
+  $, $All, mixCars, randomHexColor, getTranslateX, addDisabled, convertTime
 };

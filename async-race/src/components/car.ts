@@ -1,5 +1,12 @@
 // eslint-disable-next-line object-curly-newline
-import { $, $All, mixCars, randomHexColor, getTranslateX } from '../assets/utils/helpers';
+import {
+  $,
+  $All,
+  mixCars,
+  randomHexColor,
+  getTranslateX,
+  convertTime
+} from '../assets/utils/helpers';
 import Garage from '../pages/garagePage';
 import api from './api';
 
@@ -31,6 +38,7 @@ class Car {
     const updateBtn = <HTMLButtonElement>$('.update__confirm');
     const generateBtn = <HTMLButtonElement>$('.btns__generate');
     const raceBtn = <HTMLButtonElement>$('.btns__race');
+    const resetBtn = <HTMLButtonElement>$('.btns__reset');
 
     createBtn.addEventListener('click', () => {
       this.create();
@@ -52,19 +60,41 @@ class Car {
 
     raceBtn.addEventListener('click', (e) => {
       const allCarsIcons = <NodeList>$All('.drive__img');
+      let firstWin = true;
+
+      allCarsIcons.forEach(async (item) => {
+        const carIcon = <SVGSVGElement>item;
+        const modelCar = <string>carIcon.getAttribute('data-model');
+        const carBlock = <HTMLElement>carIcon.closest('.item__block');
+
+        const response = await this.drive(e, 'started', carBlock);
+        const duration = response.distance / response.velocity;
+        this.animation(e, false, false, carIcon, response);
+
+        const responseDrive = await this.drive(e, 'drive', carBlock);
+
+        if (responseDrive.success && firstWin) {
+          firstWin = false;
+
+          this.showWinner(modelCar, duration);
+        }
+
+        if (responseDrive === 500) {
+          this.drive(e, 'stopped', carBlock);
+          this.animation(e, true, true, carIcon);
+        }
+      });
+    });
+
+    resetBtn.addEventListener('click', (e) => {
+      const allCarsIcons = <NodeList>$All('.drive__img');
 
       allCarsIcons.forEach(async (item) => {
         const carIcon = <SVGSVGElement>item;
         const carBlock = <HTMLElement>carIcon.closest('.item__block');
 
-        const response = await this.drive(e, 'started', carBlock);
-        this.animation(e, false, false, carIcon, response);
-
-        const responseDrive = await this.drive(e, 'drive', carBlock);
-        if (responseDrive === 500) {
-          this.drive(e, 'stopped', carBlock);
-          this.animation(e, true, true, carIcon);
-        }
+        await this.drive(e, 'stopped', carBlock);
+        this.animation(e, true, false, carIcon);
       });
     });
   }
@@ -203,6 +233,22 @@ class Car {
         })
       );
     }
+  }
+
+  showWinner(model: string, time: number) {
+    const winTime = convertTime(time);
+    const modalWinner = document.createElement('div');
+    modalWinner.classList.add('modal-block');
+    const textWinner = document.createElement('h2');
+    textWinner.classList.add('modal-text');
+    textWinner.textContent = `${model} won this race (${winTime}s.)`;
+
+    modalWinner.append(textWinner);
+    document.body.append(modalWinner);
+
+    setTimeout(() => {
+      modalWinner.remove();
+    }, 2000);
   }
 }
 

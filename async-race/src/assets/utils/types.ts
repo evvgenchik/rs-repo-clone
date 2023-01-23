@@ -4,5 +4,10 @@ interface ICar {
   id: 'number';
 }
 
+interface IWinner {
+  id: number;
+  wins: number;
+  time: number;
+}
 
-export default ICar;
+export { ICar, IWinner };

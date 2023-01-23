@@ -36,10 +36,14 @@ const addDisabled = (elem: HTMLElement) => elem.setAttribute('disabled', 'disabl
 
 const convertTime = (time: number) => {
   time /= 1000;
-  return time.toFixed(2);
+  return +time.toFixed(2);
+};
+
+const changeColor = (image: SVGSVGElement, color: string) => {
+  image.style.fill = color;
 };
 
 // eslint-disable-next-line prettier/prettier
 export {
-  $, $All, mixCars, randomHexColor, getTranslateX, addDisabled, convertTime
+  $, $All, mixCars, randomHexColor, getTranslateX, addDisabled, convertTime, changeColor
 };

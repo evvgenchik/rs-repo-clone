@@ -45,19 +45,37 @@
 // </div>
 // `;
 
-import { $ } from '../assets/utils/helpers';
+import { $, changeColor } from '../assets/utils/helpers';
 import Car from '../components/car';
 import api from '../components/api';
-import ICar from '../assets/utils/types';
+import { ICar } from '../assets/utils/types';
 
 class Garage {
   main: HTMLElement;
 
   car: Car;
 
+  page: number;
+
+  footer: HTMLElement;
+
   constructor() {
     this.main = <HTMLElement>$('.main');
+    this.footer = <HTMLElement>$('.footer');
     this.car = new Car(this);
+    this.page = 1;
+  }
+
+  eventliteners() {
+    const nextBtn = <HTMLButtonElement>$('.footer__next');
+    const prevBtn = <HTMLButtonElement>$('.footer__prev');
+
+    nextBtn.addEventListener('click', () => {
+      this.pagination('next');
+    });
+    prevBtn.addEventListener('click', () => {
+      this.pagination('prev');
+    });
   }
 
   render() {
@@ -86,17 +104,28 @@ class Garage {
 <div class="content__items">
 </div>
   `;
+
+    this.footer.innerHTML = `
+  <div class="footer__btns">
+      <button class="footer__prev button">PREV</button>
+      <button class="footer__next button">NEXT</button>
+    </div>
+  `;
     this.renderCars();
     this.car.eventlitenersMenu();
+    this.eventliteners();
   }
 
-  async renderCars() {
+  async renderCars(cars?: ICar[]) {
     const carsBlock = <HTMLElement>$('.content__items');
-    const cars = await api.getCars();
+    const allCars = await api.getCars(1, 7);
+    const carsArr = cars || allCars;
     const amount = <HTMLElement>$('.amount-cars');
-    amount.textContent = ` ${cars.length}`;
+    amount.textContent = ` ${carsArr.length}`;
+    const page = <HTMLElement>$('.content__page-number');
+    page.textContent = `Page ${String(this.page)}`;
 
-    cars.forEach((item: ICar) => {
+    carsArr.forEach((item: ICar) => {
       const nameCar = item.name.split(' ').join('-');
 
       carsBlock.innerHTML += `
@@ -129,16 +158,36 @@ class Garage {
  </div>
   </div>
     `;
-
       const iconCar = <SVGSVGElement>$(`[data-model=${nameCar}]`);
-      this.car.changeColor(iconCar, item.color);
-      this.car.eventliteners();
+      changeColor(iconCar, item.color);
     });
+
+    this.car.eventliteners();
   }
 
   cleanCars() {
     const carsBlock = <HTMLElement>$('.content__items');
     carsBlock.innerHTML = '';
+  }
+
+  async pagination(direction: string) {
+    const allCarsAmount = await api.getCars();
+    const lastPage = Math.ceil(+allCarsAmount.length / 7);
+    console.log(lastPage);
+
+    if (
+      // eslint-disable-next-line operator-linebreak
+      (direction === 'next' && this.page === lastPage) ||
+      (direction === 'prev' && this.page < 2)
+    ) {
+      return;
+    }
+
+    this.page = direction === 'next' ? this.page + 1 : this.page - 1;
+
+    const cars = await api.getCars(this.page, 7);
+    this.cleanCars();
+    this.renderCars(cars);
   }
 }
 

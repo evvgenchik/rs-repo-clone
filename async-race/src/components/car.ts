@@ -9,6 +9,7 @@ import {
 } from '../assets/utils/helpers';
 import Garage from '../pages/garagePage';
 import api from './api';
+import Winner from './winner';
 
 class Car {
   updateBtn: HTMLButtonElement;
@@ -25,12 +26,16 @@ class Car {
 
   garage;
 
+  winner: Winner;
+
   constructor(garage: Garage) {
     this.createBtn = <HTMLButtonElement>$('.create__confirm');
     this.updateBtn = <HTMLButtonElement>$('.create__confirm');
     this.selectBtn = <HTMLButtonElement>$('.create__confirm');
     this.removeBtn = <HTMLButtonElement>$('.create__confirm');
     this.garage = garage;
+
+    this.winner = new Winner();
   }
 
   eventlitenersMenu() {
@@ -59,31 +64,7 @@ class Car {
     });
 
     raceBtn.addEventListener('click', (e) => {
-      const allCarsIcons = <NodeList>$All('.drive__img');
-      let firstWin = true;
-
-      allCarsIcons.forEach(async (item) => {
-        const carIcon = <SVGSVGElement>item;
-        const modelCar = <string>carIcon.getAttribute('data-model');
-        const carBlock = <HTMLElement>carIcon.closest('.item__block');
-
-        const response = await this.drive(e, 'started', carBlock);
-        const duration = response.distance / response.velocity;
-        this.animation(e, false, false, carIcon, response);
-
-        const responseDrive = await this.drive(e, 'drive', carBlock);
-
-        if (responseDrive.success && firstWin) {
-          firstWin = false;
-
-          this.showWinner(modelCar, duration);
-        }
-
-        if (responseDrive === 500) {
-          this.drive(e, 'stopped', carBlock);
-          this.animation(e, true, true, carIcon);
-        }
-      });
+      this.race(e);
     });
 
     resetBtn.addEventListener('click', (e) => {
@@ -137,6 +118,8 @@ class Car {
   create() {
     const modelInput = <HTMLInputElement>$('.input__create.input');
     const colorInput = <HTMLInputElement>$('.btn__create.color');
+
+    modelInput.value = '';
     api.createCar(modelInput.value, colorInput.value);
   }
 
@@ -157,6 +140,7 @@ class Car {
     const modelInput = <HTMLInputElement>$('.input__update.input');
     const colorInput = <HTMLInputElement>$('.btn__update.color');
 
+    modelInput.value = '';
     api.updateCar(modelInput.value, colorInput.value, this.currentId);
   }
 
@@ -167,10 +151,6 @@ class Car {
     api.deleteCar(carBlock.id);
     this.garage.cleanCars();
     this.garage.renderCars();
-  }
-
-  changeColor(image: SVGSVGElement, color: string) {
-    image.style.fill = color;
   }
 
   generateCars() {
@@ -206,7 +186,6 @@ class Car {
 
     if (icon !== null) {
       if (stop) {
-        console.log(carBlock);
         const currentId = Number(icon.getAttribute('data-animationId'));
         cancelAnimationFrame(currentId);
         icon.style.transform = broke ? getTranslateX(icon.style.transform) : '';
@@ -235,8 +214,42 @@ class Car {
     }
   }
 
-  showWinner(model: string, time: number) {
-    const winTime = convertTime(time);
+  race(e: Event) {
+    const allCarsIcons = <NodeList>$All('.drive__img');
+    let firstWin = true;
+
+    allCarsIcons.forEach(async (item) => {
+      const carIcon = <SVGSVGElement>item;
+      const modelCar = <string>carIcon.getAttribute('data-model');
+      const carBlock = <HTMLElement>carIcon.closest('.item__block');
+      const idCar = <number>Number(carBlock.getAttribute('id'));
+
+      const response = await this.drive(e, 'started', carBlock);
+      const time = response.distance / response.velocity;
+      const winTime = convertTime(time);
+      this.animation(e, false, false, carIcon, response);
+
+      const responseDrive = await this.drive(e, 'drive', carBlock);
+
+      if (responseDrive.success && firstWin) {
+        firstWin = false;
+
+        this.createWinner(modelCar, winTime, idCar);
+      }
+
+      if (responseDrive === 500) {
+        this.drive(e, 'stopped', carBlock);
+        this.animation(e, true, true, carIcon);
+      }
+    });
+  }
+
+  createWinner(modelCar: string, winTime: number, id: number) {
+    this.winner.addWinner(id, winTime);
+    this.showWinner(modelCar, winTime);
+  }
+
+  showWinner(model: string, winTime: number) {
     const modalWinner = document.createElement('div');
     modalWinner.classList.add('modal-block');
     const textWinner = document.createElement('h2');

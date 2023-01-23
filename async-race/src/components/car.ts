@@ -120,8 +120,8 @@ class Car {
     const modelInput = <HTMLInputElement>$('.input__create.input');
     const colorInput = <HTMLInputElement>$('.btn__create.color');
 
-    modelInput.value = '';
     api.createCar(modelInput.value, colorInput.value);
+    modelInput.value = '';
   }
 
   select(e: Event) {
@@ -141,8 +141,8 @@ class Car {
     const modelInput = <HTMLInputElement>$('.input__update.input');
     const colorInput = <HTMLInputElement>$('.btn__update.color');
 
-    modelInput.value = '';
     api.updateCar(modelInput.value, colorInput.value, this.currentId);
+    modelInput.value = '';
   }
 
   remove(e: Event) {

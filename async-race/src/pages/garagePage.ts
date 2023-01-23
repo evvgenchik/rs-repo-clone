@@ -49,6 +49,7 @@ import { $, changeColor } from '../assets/utils/helpers';
 import Car from '../components/car';
 import api from '../components/api';
 import { ICar } from '../assets/utils/types';
+import store from '../components/store';
 
 class Garage {
   main: HTMLElement;
@@ -98,8 +99,8 @@ class Garage {
 </div>
 </div>
 <div class="main__content">
-<h1 class="content__title title">Garage<span class="amount-cars">(104)</span></h1>
-<h2 class="content__page-number page">Page #1
+<h1 class="content__title title">Garage<span class="amount-cars"></span></h1>
+<h2 class="content__page-number page">Page 
 </div>
 <div class="content__items">
 </div>
@@ -119,13 +120,13 @@ class Garage {
   async renderCars(cars?: ICar[]) {
     const carsBlock = <HTMLElement>$('.content__items');
     const allCars: ICar[] = await api.getCars();
-    const arrCars: ICar[] = await api.getCars(1, 7);
+    const arrCars: ICar[] = await api.getCars(store.carsPage, 7);
     const carsArr = cars || arrCars;
 
     const amount = <HTMLElement>$('.amount-cars');
     amount.textContent = ` ${allCars.length}`;
     const page = <HTMLElement>$('.content__page-number');
-    page.textContent = `Page ${String(this.page)}`;
+    page.textContent = `Page ${String(store.carsPage)}`;
 
     carsArr.forEach((item: ICar) => {
       const nameCar = item.name.split(' ').join('-');
@@ -175,19 +176,18 @@ class Garage {
   async pagination(direction: string) {
     const allCarsAmount = await api.getCars();
     const lastPage = Math.ceil(+allCarsAmount.length / 7);
-    console.log(lastPage);
 
     if (
       // eslint-disable-next-line operator-linebreak
-      (direction === 'next' && this.page === lastPage) ||
-      (direction === 'prev' && this.page < 2)
+      (direction === 'next' && store.carsPage === lastPage) ||
+      (direction === 'prev' && store.carsPage < 2)
     ) {
       return;
     }
 
-    this.page = direction === 'next' ? this.page + 1 : this.page - 1;
+    store.carsPage = direction === 'next' ? store.carsPage + 1 : store.carsPage - 1;
 
-    const cars = await api.getCars(this.page, 7);
+    const cars = await api.getCars(store.carsPage, 7);
     this.cleanCars();
     this.renderCars(cars);
   }

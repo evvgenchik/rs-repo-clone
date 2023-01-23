@@ -1,6 +1,7 @@
 import { $, changeColor } from '../assets/utils/helpers';
 import api from '../components/api';
 import { IWinner, ICar } from '../assets/utils/types';
+import store from '../components/store';
 
 class Winner {
   main: HTMLElement;
@@ -27,8 +28,8 @@ class Winner {
   render() {
     this.main.innerHTML = `
     <div class="main__content">
-    <h1 class="content__title title">Winners<span class="amount-cars">(3)</span></h1>
-    <h2 class="content__page-numbe page">Page<span class="page-number">#1</span></h2>
+    <h1 class="content__title title">Winners<span class="amount-cars"></span></h1>
+    <h2 class="content__page-number page">Page<span class="page-number"></span></h2>
     <div class="content__chart">
       <div class="chart__header">
         <span>Number</span>
@@ -71,8 +72,8 @@ class Winner {
     winsBtn.addEventListener('click', () => {
       timeBtn.classList.remove('active');
       winsBtn.classList.add('active');
-      this.sort = 'wins';
-      this.order = this.order === 'ASC' ? 'DESC' : 'ASC';
+      store.sort = 'wins';
+      store.order = store.order === 'ASC' ? 'DESC' : 'ASC';
       this.cleanWinners();
       this.renderWinners();
     });
@@ -80,8 +81,8 @@ class Winner {
     timeBtn.addEventListener('click', () => {
       winsBtn.classList.remove('active');
       timeBtn.classList.add('active');
-      this.sort = 'time';
-      this.order = this.order === 'ASC' ? 'DESC' : 'ASC';
+      store.sort = 'time';
+      store.order = store.order === 'ASC' ? 'DESC' : 'ASC';
       this.cleanWinners();
       this.renderWinners();
     });
@@ -90,13 +91,19 @@ class Winner {
   async renderWinners(winners?: IWinner[]) {
     const list = <HTMLElement>$('.chart__list');
     // eslint-disable-next-line prettier/prettier
-    const winnersArr = (await api.getAllWinners(this.page, this.sort, this.order, this.limit))
-      || winners;
+    const winnersArr = (await api.getAllWinners(
+      store.winnersPage,
+      store.sort,
+      store.order,
+      this.limit
+    )) || winners;
 
-    const allWinners = await api.getAllWinners(this.page, this.sort, this.order);
+    const allWinners = await api.getAllWinners(store.winnersPage, store.sort, store.order);
 
     const amount = <HTMLElement>$('.amount-cars');
     amount.textContent = ` ${allWinners.length}`;
+    const page = <HTMLElement>$('.content__page-number');
+    page.textContent = `Page ${String(store.winnersPage)}`;
 
     winnersArr.forEach(async (item: IWinner, index: number) => {
       const car: ICar = await api.getCar(item.id);
@@ -124,20 +131,20 @@ class Winner {
   }
 
   async pagination(direction: string) {
-    const allCarsAmount = await api.getAllWinners(this.page, this.sort, this.order);
+    const allCarsAmount = await api.getAllWinners(store.winnersPage, store.sort, store.order);
     const lastPage = Math.ceil(+allCarsAmount.length / 10);
 
     if (
       // eslint-disable-next-line operator-linebreak
-      (direction === 'next' && this.page === lastPage) ||
-      (direction === 'prev' && this.page < 2)
+      (direction === 'next' && store.winnersPage === lastPage) ||
+      (direction === 'prev' && store.winnersPage < 2)
     ) {
       return;
     }
 
-    this.page = direction === 'next' ? this.page + 1 : this.page - 1;
+    store.winnersPage = direction === 'next' ? store.winnersPage + 1 : store.winnersPage - 1;
 
-    const cars = await api.getCars(this.page, 7);
+    const cars = await api.getCars(store.winnersPage, 7);
     this.cleanWinners();
     this.renderWinners(cars);
   }

@@ -137,6 +137,15 @@ class Api {
       throw new Error('err');
     }
   }
+
+  async deleteWinner(id: string) {
+    try {
+      const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, { method: 'DELETE' });
+      return response.json();
+    } catch (e) {
+      throw new Error('err');
+    }
+  }
 }
 
 const api = new Api();

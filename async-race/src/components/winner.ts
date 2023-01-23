@@ -13,7 +13,6 @@ class Winner {
       return;
     }
 
-    winTime = winTime > winner.time ? winner.time : winTime;
     const updateWinner = await api.updateWinner(id, winTime, winner.wins);
     if (updateWinner !== 200) {
       throw new Error('Code: 404 NOT FOUND');

@@ -1,11 +1,12 @@
-// eslint-disable-next-line object-curly-newline
+/* eslint-disable prettier/prettier */
 import {
   $,
   $All,
   mixCars,
   randomHexColor,
   getTranslateX,
-  convertTime
+  convertTime,
+  addDisabled
 } from '../assets/utils/helpers';
 import Garage from '../pages/garagePage';
 import api from './api';
@@ -108,8 +109,8 @@ class Car {
     });
 
     bBtns.forEach((item) => {
-      item.addEventListener('click', (e) => {
-        this.drive(e, 'stopped');
+      item.addEventListener('click', async (e) => {
+        await this.drive(e, 'stopped');
         this.animation(e, true);
       });
     });
@@ -149,6 +150,8 @@ class Car {
     const carBlock = <HTMLElement>eventBtn.closest('.item__block');
 
     api.deleteCar(carBlock.id);
+    api.deleteWinner(carBlock.id);
+
     this.garage.cleanCars();
     this.garage.renderCars();
   }
@@ -162,6 +165,9 @@ class Car {
 
   async drive(e: Event, status: string, carBlock?: HTMLElement) {
     const eventBtn = <HTMLElement>e.target;
+
+    addDisabled(eventBtn);
+
     carBlock = carBlock || <HTMLElement>eventBtn.closest('.item__block');
 
     const date = await api.drive(carBlock.id, status);
@@ -240,7 +246,11 @@ class Car {
       if (responseDrive === 500) {
         this.drive(e, 'stopped', carBlock);
         this.animation(e, true, true, carIcon);
+        return;
       }
+      const eventBtn = <HTMLButtonElement>e.target;
+      const nearElem = <HTMLElement>eventBtn.nextElementSibling;
+      nearElem.removeAttribute('disabled');
     });
   }
 

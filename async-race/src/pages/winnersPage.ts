@@ -92,13 +92,16 @@ class Winner {
     // eslint-disable-next-line prettier/prettier
     const winnersArr = (await api.getAllWinners(this.page, this.sort, this.order, this.limit))
       || winners;
-    // winnersArr.sort((a: IWinner, b: IWinner) => a.time - b.time);
+
+    const allWinners = await api.getAllWinners(this.page, this.sort, this.order);
+
     const amount = <HTMLElement>$('.amount-cars');
-    amount.textContent = ` ${winnersArr.length}`;
+    amount.textContent = ` ${allWinners.length}`;
 
     winnersArr.forEach(async (item: IWinner, index: number) => {
       const car: ICar = await api.getCar(item.id);
       const nameCar = car.name.split(' ').join('-');
+
       list.innerHTML += `
       <li class="chart__winner">
       <span class="winner__number">${index + 1}</span>

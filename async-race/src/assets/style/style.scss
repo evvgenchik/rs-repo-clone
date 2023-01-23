@@ -87,6 +87,7 @@ body {
 }
 
 .button {
+  cursor: pointer;
   font-size: 16rem;
   width: 100rem;
   background-color: hsl(83, 78%, 50%);
@@ -185,7 +186,10 @@ body {
   &__btns {}
 
   &__go {
-    background-color: hsl(83, 78%, 50%);
+    border: 3rem solid hsl(83, 78%, 50%);
+    color: hsl(83, 78%, 50%);
+    cursor: pointer;
+
     // border: 3rem solid hsl(83, 78%, 50%);
     // color: hsl(83, 78%, 50%);
   }
@@ -194,6 +198,8 @@ body {
     //background-color: hsl(83, 78%, 50%);
     border: 3rem solid hsl(83, 78%, 50%);
     color: hsl(83, 78%, 50%);
+    cursor: pointer;
+
   }
 
   &__icon {}

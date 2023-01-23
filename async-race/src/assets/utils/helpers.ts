@@ -32,7 +32,69 @@ const randomHexColor = () => {
 
 const getTranslateX = (transform: string) => transform.split('(')[1];
 
-const addDisabled = (elem: HTMLElement) => elem.setAttribute('disabled', 'disabled');
+const addDisabled = (elem: HTMLElement) => {
+  if (elem.classList.contains('drive__go')) {
+    elem.setAttribute('disabled', 'disabled');
+    const nearElem = <HTMLElement>elem.nextElementSibling;
+    nearElem.removeAttribute('disabled');
+  }
+  if (elem.classList.contains('drive__stop')) {
+    elem.setAttribute('disabled', 'disabled');
+    const nearElem = <HTMLElement>elem.previousElementSibling;
+    nearElem.removeAttribute('disabled');
+  }
+  if (elem.classList.contains('btns__race')) {
+    elem.setAttribute('disabled', 'disabled');
+    const nearElem = <HTMLElement>elem.nextElementSibling;
+    nearElem.setAttribute('disabled', 'disabled');
+
+    const allButtons = $All('.drive__go');
+    const nearAllButtons = $All('.drive__stop');
+    allButtons.forEach((item) => {
+      item.setAttribute('disabled', 'disabled');
+    });
+    nearAllButtons.forEach((item) => {
+      item.removeAttribute('disabled');
+    });
+  }
+  if (elem.classList.contains('btns__reset')) {
+    elem.setAttribute('disabled', 'disabled');
+    const nearElem = <HTMLElement>elem.previousElementSibling;
+    nearElem.removeAttribute('disabled');
+
+    const allButtons = $All('.drive__stop');
+    const nearAllButtons = $All('.drive__go');
+    allButtons.forEach((item) => {
+      item.setAttribute('disabled', 'disabled');
+    });
+    nearAllButtons.forEach((item) => {
+      item.removeAttribute('disabled');
+    });
+  }
+  // switch (elem.className) {
+  //   case ('drive__go'):
+  //     elem.setAttribute('disabled', 'disabled');
+  //     const nearElem = <HTMLElement>elem.nextElementSibling();
+  //     break;
+  //   case ('drive__stop'):
+  //     elem.setAttribute('disabled', 'disabled');
+  //     const nearElem = <HTMLElement>elem.previousElementSibling();
+  //     break;
+  //   case ('btns__race.button'):
+  //     elem = $All('.drive__go');
+  //     elem.forEach((item) => {
+  //       item.setAttribute('disabled', 'disabled');
+  //     });
+  //     break;
+  //   default:
+  //     console.log('no');
+  // }
+  // if (Array.isArray(elem)) {
+  //   elem.forEach((item) => item.setAttribute('disabled'));
+  // } else {
+  //   elem.setAttribute('disabled', 'disabled');
+  // }
+};
 
 const convertTime = (time: number) => {
   time /= 1000;

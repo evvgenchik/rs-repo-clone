@@ -93,7 +93,7 @@ class Garage {
 </div>
 <div class="menu__btns">
   <button class="btns__race button">RACE</button>
-  <button class="btns__reset button">RESET</button>
+  <button disabled class="btns__reset button">RESET</button>
   <button class="btns__generate button">GENERATE CARS</button>
 </div>
 </div>
@@ -118,10 +118,12 @@ class Garage {
 
   async renderCars(cars?: ICar[]) {
     const carsBlock = <HTMLElement>$('.content__items');
-    const allCars = await api.getCars(1, 7);
-    const carsArr = cars || allCars;
+    const allCars: ICar[] = await api.getCars();
+    const arrCars: ICar[] = await api.getCars(1, 7);
+    const carsArr = cars || arrCars;
+
     const amount = <HTMLElement>$('.amount-cars');
-    amount.textContent = ` ${carsArr.length}`;
+    amount.textContent = ` ${allCars.length}`;
     const page = <HTMLElement>$('.content__page-number');
     page.textContent = `Page ${String(this.page)}`;
 
@@ -140,7 +142,7 @@ class Garage {
         <div class="car__drive">
           <div class="drive__btns">
             <button class="drive__go">A</button>
-            <button class="drive__stop">B</button>
+            <button class="drive__stop" disabled>B</button>
           </div>
           <div class="drive__icon">
           <svg  data-color="${item.color}" data-model="${nameCar}" class="drive__img" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800" height="800" viewBox="0 0 511 511">

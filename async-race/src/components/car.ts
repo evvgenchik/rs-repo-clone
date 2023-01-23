@@ -102,8 +102,8 @@ class Car {
 
         const responseDrive = await this.drive(e, 'drive');
         if (responseDrive === 500) {
-          this.drive(e, 'stopped');
           this.animation(e, true, true);
+          this.drive(e, 'stopped');
         }
       });
     });
@@ -237,17 +237,19 @@ class Car {
 
       const responseDrive = await this.drive(e, 'drive', carBlock);
 
+      if (responseDrive === 500) {
+        console.log(carIcon);
+        this.animation(e, true, true, carIcon);
+        this.drive(e, 'stopped', carBlock);
+        return;
+      }
+
       if (responseDrive.success && firstWin) {
         firstWin = false;
 
         this.createWinner(modelCar, winTime, idCar);
       }
 
-      if (responseDrive === 500) {
-        this.drive(e, 'stopped', carBlock);
-        this.animation(e, true, true, carIcon);
-        return;
-      }
       const eventBtn = <HTMLButtonElement>e.target;
       const nearElem = <HTMLElement>eventBtn.nextElementSibling;
       nearElem.removeAttribute('disabled');
@@ -274,5 +276,4 @@ class Car {
     }, 2000);
   }
 }
-
 export default Car;

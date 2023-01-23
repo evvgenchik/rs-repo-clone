@@ -59,19 +59,20 @@ class Api {
     }
   }
 
+  // eslint-disable-next-line consistent-return
   async drive(id: string, status: string) {
     try {
       const response = await fetch(`http://127.0.0.1:3000/engine?id=${id}&status=${status}`, {
         method: 'PATCH'
       });
       if (response.status === 500) {
-        await fetch(`http://127.0.0.1:3000/engine?id=${id}&status=stopped`, { method: 'PATCH' });
+        // await fetch(`http://127.0.0.1:3000/engine?id=${id}&status=stopped`, { method: 'PATCH' });
         return 500;
       }
       const date = await response.json();
       return date;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
     }
   }
 

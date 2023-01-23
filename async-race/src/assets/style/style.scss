@@ -29,10 +29,6 @@ body {
   }
 }
 
-.garage {}
-
-.winners {}
-
 .main {
   flex: 1 1 auto;
   margin-bottom: 50rem;
@@ -44,8 +40,6 @@ body {
     gap: 20rem;
     margin-bottom: 100rem;
   }
-
-  &__content {}
 }
 
 .menu {
@@ -68,22 +62,11 @@ body {
 
 .input {
   width: 300rem;
-
-  &__create {}
-
-  &__update {}
 }
 
-.create {
-
-  &__color {}
-
-  &__confirm {}
-}
 
 .color {
   width: 50rem;
-
 }
 
 .button {
@@ -97,26 +80,6 @@ body {
   }
 }
 
-.btn {
-
-  &__update {}
-}
-
-.update {
-
-  &__confirm {}
-}
-
-.btns {
-
-  &__race {}
-
-  &__reset {}
-
-  &__generate {}
-}
-
-
 .title {
   font-size: 35rem;
   margin-bottom: 10rem;
@@ -126,8 +89,6 @@ body {
   font-size: 30rem;
   margin-bottom: 20rem;
 }
-
-.amount-cars {}
 
 .item {
   &__container {
@@ -171,38 +132,24 @@ body {
 }
 
 .control {
-
-  &__select {}
-
-  &__remove {}
-
   &__model {
     color: rgb(199, 218, 33);
   }
 }
 
 .drive {
-
-  &__btns {}
-
   &__go {
     border: 3rem solid hsl(83, 78%, 50%);
     color: hsl(83, 78%, 50%);
     cursor: pointer;
-
-    // border: 3rem solid hsl(83, 78%, 50%);
-    // color: hsl(83, 78%, 50%);
   }
 
   &__stop {
-    //background-color: hsl(83, 78%, 50%);
     border: 3rem solid hsl(83, 78%, 50%);
     color: hsl(83, 78%, 50%);
     cursor: pointer;
 
   }
-
-  &__icon {}
 
   &__img {
     width: 64rem;
@@ -211,33 +158,9 @@ body {
   }
 }
 
-.flag {
-
-  &__img {}
-}
-
-.footer {
-
-  &__btns {}
-
-  &__prev {}
-
-  &__next {}
-}
-
-
 /*winners*/
-.main {
-
-  &__content {}
-}
 
 .content {
-
-  &__title {}
-
-  &__page-numbe {}
-
   &__chart {
     width: 500rem;
   }
@@ -249,13 +172,6 @@ body {
   }
 }
 
-.title {}
-
-.amount-cars {}
-
-.page {}
-
-.page-number {}
 
 .chart {
   width: 450rem;
@@ -297,12 +213,6 @@ body {
   &__img {
     width: 50%;
   }
-
-  &__name {}
-
-  &__wins {}
-
-  &__time {}
 }
 
 

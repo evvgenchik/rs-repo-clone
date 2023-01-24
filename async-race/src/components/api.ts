@@ -7,20 +7,19 @@ class Api {
 
   async getCars(page?: number, limit?: number) {
     try {
-      // eslint-disable-next-line prettier/prettier
-      const url = page ? `${this.paths.garage}?_page=${page}&_limit=${limit}`
-        : this.paths.garage;
+      const url = page ? `${this.paths.garage}?_page=${page}&_limit=${limit}` : this.paths.garage;
       const response = await fetch(url);
       const cars = await response.json();
       return cars;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
   async createCar(model: string, color: string) {
     if (!model) {
-      return;
+      return false;
     }
     const body = { name: model, color: color };
     try {
@@ -29,9 +28,10 @@ class Api {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       });
-      console.log(response);
+      return response;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
@@ -48,7 +48,8 @@ class Api {
       });
       return response.json();
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
@@ -57,11 +58,11 @@ class Api {
       const response = await fetch(`${this.paths.garage}/${id}`, { method: 'DELETE' });
       return response.json();
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
-  // eslint-disable-next-line consistent-return
   async drive(id: string, status: string) {
     try {
       const response = await fetch(`${this.paths.engine}?id=${id}&status=${status}`, {
@@ -74,6 +75,7 @@ class Api {
       return date;
     } catch (e) {
       console.log(e);
+      return false;
     }
   }
 
@@ -83,7 +85,8 @@ class Api {
       const winner = await response.json();
       return winner;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
@@ -98,7 +101,8 @@ class Api {
 
       return response.status;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
@@ -113,7 +117,8 @@ class Api {
 
       return response.status;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
@@ -126,7 +131,8 @@ class Api {
       const winners = await response.json();
       return winners;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
@@ -136,7 +142,8 @@ class Api {
       const car = await response.json();
       return car;
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 
@@ -145,7 +152,8 @@ class Api {
       const response = await fetch(`${this.paths.winners}/${id}`, { method: 'DELETE' });
       return response.json();
     } catch (e) {
-      throw new Error('err');
+      console.log(e);
+      return false;
     }
   }
 }

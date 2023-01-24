@@ -77,7 +77,7 @@ class Garage {
     const carsArr = cars || arrCars;
 
     const amount = <HTMLElement>$('.amount-cars');
-    amount.textContent = ` ${allCars.length}`;
+    amount.textContent = ` ${allCars.length || '0'}`;
     const page = <HTMLElement>$('.content__page-number');
     page.textContent = `Page ${String(store.carsPage)}`;
 
@@ -86,9 +86,12 @@ class Garage {
     const inputNameUpdate = <HTMLButtonElement>$('.input__update');
     inputNameUpdate.value = store.inputNameUpdate;
     const inputColorUpdate = <HTMLButtonElement>$('.btn__update,color');
-    inputColorUpdate.value = store.inputColorUpdate;
+    inputColorUpdate.value = store.inputColorUpdate || '#e66465';
     const inputColorCreate = <HTMLButtonElement>$('.btn__create,color');
-    inputColorCreate.value = store.inputColorCreate;
+    inputColorCreate.value = store.inputColorCreate || '#e66465';
+    if (!carsArr) {
+      return;
+    }
 
     carsArr.forEach((item: ICar) => {
       const nameCar = item.name.split(' ').join('-');
@@ -123,7 +126,7 @@ class Garage {
  </div>
   </div>
     `;
-      const iconCar = <SVGSVGElement>$(`[data-model=${nameCar}]`);
+      const iconCar = <SVGSVGElement>$(`[data-model="${nameCar}"]`);
       changeColor(iconCar, item.color);
     });
 

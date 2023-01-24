@@ -105,6 +105,10 @@ class Winner {
     const page = <HTMLElement>$('.content__page-number');
     page.textContent = `Page ${String(store.winnersPage)}`;
 
+    if (!winnersArr) {
+      return;
+    }
+
     winnersArr.forEach(async (item: IWinner, index: number) => {
       const car: ICar = await api.getCar(item.id);
       const nameCar = car.name.split(' ').join('-');

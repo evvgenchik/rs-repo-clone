@@ -135,7 +135,10 @@ class Garage {
 
   cleanCars() {
     const carsBlock = <HTMLElement>$('.content__items');
-    carsBlock.innerHTML = '';
+
+    if (carsBlock) {
+      carsBlock.innerHTML = '';
+    }
   }
 
   async pagination(direction: string) {

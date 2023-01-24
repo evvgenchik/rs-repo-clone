@@ -235,10 +235,13 @@ class Car {
       const winTime = convertTime(time);
       this.animation(e, false, false, carIcon, response);
 
-      const responseDrive = await this.drive(e, 'drive', carBlock);
+      const responseDrive = await this.drive(e, 'drive', carBlock) || {};
+
+      const eventBtn = <HTMLButtonElement>e.target;
+      const nearElem = <HTMLElement>eventBtn.nextElementSibling;
+      nearElem.removeAttribute('disabled');
 
       if (responseDrive === 500) {
-        console.log(carIcon);
         this.animation(e, true, true, carIcon);
         this.drive(e, 'stopped', carBlock);
         return;
@@ -249,10 +252,6 @@ class Car {
 
         this.createWinner(modelCar, winTime, idCar);
       }
-
-      const eventBtn = <HTMLButtonElement>e.target;
-      const nearElem = <HTMLElement>eventBtn.nextElementSibling;
-      nearElem.removeAttribute('disabled');
     });
   }
 

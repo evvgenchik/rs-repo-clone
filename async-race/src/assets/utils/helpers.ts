@@ -71,29 +71,6 @@ const addDisabled = (elem: HTMLElement) => {
       item.removeAttribute('disabled');
     });
   }
-  // switch (elem.className) {
-  //   case ('drive__go'):
-  //     elem.setAttribute('disabled', 'disabled');
-  //     const nearElem = <HTMLElement>elem.nextElementSibling();
-  //     break;
-  //   case ('drive__stop'):
-  //     elem.setAttribute('disabled', 'disabled');
-  //     const nearElem = <HTMLElement>elem.previousElementSibling();
-  //     break;
-  //   case ('btns__race.button'):
-  //     elem = $All('.drive__go');
-  //     elem.forEach((item) => {
-  //       item.setAttribute('disabled', 'disabled');
-  //     });
-  //     break;
-  //   default:
-  //     console.log('no');
-  // }
-  // if (Array.isArray(elem)) {
-  //   elem.forEach((item) => item.setAttribute('disabled'));
-  // } else {
-  //   elem.setAttribute('disabled', 'disabled');
-  // }
 };
 
 const convertTime = (time: number) => {

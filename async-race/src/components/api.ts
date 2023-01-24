@@ -1,13 +1,15 @@
 class Api {
-  // pathes = {
-
-  // }
+  paths = {
+    garage: 'http://127.0.0.1:3000/garage',
+    winners: 'http://127.0.0.1:3000/winners',
+    engine: 'http://127.0.0.1:3000/engine'
+  };
 
   async getCars(page?: number, limit?: number) {
     try {
       // eslint-disable-next-line prettier/prettier
-      const url = page ? `http://127.0.0.1:3000/garage?_page=${page}&_limit=${limit}`
-        : 'http://127.0.0.1:3000/garage';
+      const url = page ? `${this.paths.garage}?_page=${page}&_limit=${limit}`
+        : this.paths.garage;
       const response = await fetch(url);
       const cars = await response.json();
       return cars;
@@ -22,7 +24,7 @@ class Api {
     }
     const body = { name: model, color: color };
     try {
-      const response = await fetch('http://127.0.0.1:3000/garage', {
+      const response = await fetch(this.paths.garage, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -39,7 +41,7 @@ class Api {
     }
     const body = { name: model, color: color };
     try {
-      const response = await fetch(`http://127.0.0.1:3000/garage/${id}`, {
+      const response = await fetch(`${this.paths.garage}/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -52,7 +54,7 @@ class Api {
 
   async deleteCar(id: string) {
     try {
-      const response = await fetch(`http://127.0.0.1:3000/garage/${id}`, { method: 'DELETE' });
+      const response = await fetch(`${this.paths.garage}/${id}`, { method: 'DELETE' });
       return response.json();
     } catch (e) {
       throw new Error('err');
@@ -62,7 +64,7 @@ class Api {
   // eslint-disable-next-line consistent-return
   async drive(id: string, status: string) {
     try {
-      const response = await fetch(`http://127.0.0.1:3000/engine?id=${id}&status=${status}`, {
+      const response = await fetch(`${this.paths.engine}?id=${id}&status=${status}`, {
         method: 'PATCH'
       });
       if (response.status === 500) {
@@ -77,7 +79,7 @@ class Api {
 
   async getWinner(id: number) {
     try {
-      const response = await fetch(`http://127.0.0.1:3000/winners/${id}`);
+      const response = await fetch(`${this.paths.winners}/${id}`);
       const winner = await response.json();
       return winner;
     } catch (e) {
@@ -88,7 +90,7 @@ class Api {
   async createWinner(id: number, time: number) {
     const body = { id: id, wins: 1, time: time };
     try {
-      const response = await fetch('http://127.0.0.1:3000/winners', {
+      const response = await fetch(this.paths.winners, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -103,7 +105,7 @@ class Api {
   async updateWinner(id: number, time: number, wins: number) {
     const body = { id: id, wins: wins + 1, time: time };
     try {
-      const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, {
+      const response = await fetch(`${this.paths.winners}/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -118,7 +120,7 @@ class Api {
   async getAllWinners(page: number, sort: string, order: string, limit?: number) {
     try {
       const url = limit
-        ? `http://127.0.0.1:3000/winners?_page=${page}&_sort=${sort}&_order=${order}&_limit=${limit}`
+        ? `${this.paths.winners}?_page=${page}&_sort=${sort}&_order=${order}&_limit=${limit}`
         : 'http://127.0.0.1:3000/winners';
       const response = await fetch(url);
       const winners = await response.json();
@@ -130,7 +132,7 @@ class Api {
 
   async getCar(id: number) {
     try {
-      const response = await fetch(`http://127.0.0.1:3000/garage/${id}`);
+      const response = await fetch(`${this.paths.garage}/${id}`);
       const car = await response.json();
       return car;
     } catch (e) {
@@ -140,7 +142,7 @@ class Api {
 
   async deleteWinner(id: string) {
     try {
-      const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, { method: 'DELETE' });
+      const response = await fetch(`${this.paths.winners}/${id}`, { method: 'DELETE' });
       return response.json();
     } catch (e) {
       throw new Error('err');

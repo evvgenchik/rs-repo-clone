@@ -81,6 +81,15 @@ class Garage {
     const page = <HTMLElement>$('.content__page-number');
     page.textContent = `Page ${String(store.carsPage)}`;
 
+    const inputNameCreate = <HTMLButtonElement>$('.input__create');
+    inputNameCreate.value = store.inputNameCreate;
+    const inputNameUpdate = <HTMLButtonElement>$('.input__update');
+    inputNameUpdate.value = store.inputNameUpdate;
+    const inputColorUpdate = <HTMLButtonElement>$('.btn__update,color');
+    inputColorUpdate.value = store.inputColorUpdate;
+    const inputColorCreate = <HTMLButtonElement>$('.btn__create,color');
+    inputColorCreate.value = store.inputColorCreate;
+
     carsArr.forEach((item: ICar) => {
       const nameCar = item.name.split(' ').join('-');
 

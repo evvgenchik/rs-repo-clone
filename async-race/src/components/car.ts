@@ -10,6 +10,7 @@ import {
 } from '../assets/utils/helpers';
 import Garage from '../pages/garagePage';
 import api from './api';
+import store from './store';
 import Winner from './winner';
 
 class Car {
@@ -45,6 +46,26 @@ class Car {
     const generateBtn = <HTMLButtonElement>$('.btns__generate');
     const raceBtn = <HTMLButtonElement>$('.btns__race');
     const resetBtn = <HTMLButtonElement>$('.btns__reset');
+    const inputNameCreate = <HTMLButtonElement>$('.input__create');
+    const inputNameUpdate = <HTMLButtonElement>$('.input__update');
+    const inputColorUpdate = <HTMLButtonElement>$('.btn__update,color');
+    const inputColorCreate = <HTMLButtonElement>$('.btn__create,color');
+
+    inputNameCreate.addEventListener('input', () => {
+      store.inputNameCreate = inputNameCreate.value;
+    });
+    inputNameUpdate.addEventListener('input', () => {
+      store.inputNameUpdate = inputNameUpdate.value;
+    });
+    inputNameUpdate.addEventListener('input', () => {
+      store.inputNameUpdate = inputNameUpdate.value;
+    });
+    inputColorUpdate.addEventListener('input', () => {
+      store.inputColorUpdate = inputColorUpdate.value;
+    });
+    inputColorCreate.addEventListener('input', () => {
+      store.inputColorCreate = inputColorCreate.value;
+    });
 
     createBtn.addEventListener('click', () => {
       this.create();
@@ -135,6 +156,10 @@ class Car {
     this.currentId = <string>carBlock.id;
     modelInput.value = name;
     colorInput.value = <string>icon.getAttribute('data-color');
+
+    const eventInput = new Event('input');
+    modelInput.dispatchEvent(eventInput);
+    colorInput.dispatchEvent(eventInput);
   }
 
   update() {

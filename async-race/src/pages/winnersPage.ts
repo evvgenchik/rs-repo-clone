@@ -129,7 +129,7 @@ class Winner {
     </li>
     `;
 
-      const iconCar = <SVGSVGElement>$(`[data-model=${nameCar}]`);
+      const iconCar = <SVGSVGElement>$(`[data-model="${nameCar}"]`);
       changeColor(iconCar, car.color);
     });
   }

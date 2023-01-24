@@ -87,6 +87,9 @@ class Car {
 
     raceBtn.addEventListener('click', (e) => {
       this.race(e);
+
+      const eventBtn = <HTMLElement>e.target;
+      addDisabled(eventBtn);
     });
 
     resetBtn.addEventListener('click', (e) => {
@@ -99,6 +102,9 @@ class Car {
         await this.drive(e, 'stopped', carBlock);
         this.animation(e, true, false, carIcon);
       });
+
+      const eventBtn = <HTMLElement>e.target;
+      addDisabled(eventBtn);
     });
   }
 
@@ -118,6 +124,9 @@ class Car {
 
     aBtns.forEach((item) => {
       item.addEventListener('click', async (e) => {
+        const eventBtn = <HTMLElement>e.target;
+        addDisabled(eventBtn);
+
         const response = await this.drive(e, 'started');
         this.animation(e, false, false, null, response);
 
@@ -133,6 +142,9 @@ class Car {
       item.addEventListener('click', async (e) => {
         await this.drive(e, 'stopped');
         this.animation(e, true);
+
+        const eventBtn = <HTMLElement>e.target;
+        addDisabled(eventBtn);
       });
     });
   }
@@ -190,8 +202,6 @@ class Car {
 
   async drive(e: Event, status: string, carBlock?: HTMLElement) {
     const eventBtn = <HTMLElement>e.target;
-
-    addDisabled(eventBtn);
 
     carBlock = carBlock || <HTMLElement>eventBtn.closest('.item__block');
 

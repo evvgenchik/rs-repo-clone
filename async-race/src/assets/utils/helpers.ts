@@ -83,7 +83,4 @@ const changeColor = (image: SVGSVGElement, color: string) => {
   image.style.fill = color;
 };
 
-// eslint-disable-next-line prettier/prettier
-export {
-  $, $All, mixCars, randomHexColor, getTranslateX, addDisabled, convertTime, changeColor
-};
+export { $, $All, mixCars, randomHexColor, getTranslateX, addDisabled, convertTime, changeColor };

@@ -90,13 +90,8 @@ class Winner {
 
   async renderWinners(winners?: IWinner[]) {
     const list = <HTMLElement>$('.chart__list');
-    // eslint-disable-next-line prettier/prettier
-    const winnersArr = (await api.getAllWinners(
-      store.winnersPage,
-      store.sort,
-      store.order,
-      this.limit
-    )) || winners;
+    const winnersArr =
+      (await api.getAllWinners(store.winnersPage, store.sort, store.order, this.limit)) || winners;
 
     const allWinners = await api.getAllWinners(store.winnersPage, store.sort, store.order);
 
@@ -139,7 +134,6 @@ class Winner {
     const lastPage = Math.ceil(+allCarsAmount.length / 10);
 
     if (
-      // eslint-disable-next-line operator-linebreak
       (direction === 'next' && store.winnersPage === lastPage) ||
       (direction === 'prev' && store.winnersPage < 2)
     ) {

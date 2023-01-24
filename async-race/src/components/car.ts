@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {
   $,
   $All,
@@ -86,10 +85,10 @@ class Car {
     });
 
     raceBtn.addEventListener('click', (e) => {
-      this.race(e);
-
       const eventBtn = <HTMLElement>e.target;
       addDisabled(eventBtn);
+
+      this.race(e, eventBtn);
     });
 
     resetBtn.addEventListener('click', (e) => {
@@ -222,8 +221,7 @@ class Car {
     const duration = response.distance / response.velocity;
     const distance = carBlock.clientWidth - 150;
     let startAnimation = 0;
-    // eslint-disable-next-line no-undef
-    let measure: FrameRequestCallback;
+    let measure: (time: number) => void;
 
     if (icon !== null) {
       if (stop) {
@@ -255,7 +253,7 @@ class Car {
     }
   }
 
-  race(e: Event) {
+  race(e: Event, eventBtn: HTMLElement) {
     const allCarsIcons = <NodeList>$All('.drive__img');
     let firstWin = true;
 
@@ -266,13 +264,12 @@ class Car {
       const idCar = <number>Number(carBlock.getAttribute('id'));
 
       const response = await this.drive(e, 'started', carBlock);
-      const time = response.distance / response.velocity;
-      const winTime = convertTime(time);
+      const winTime = convertTime(response.distance / response.velocity);
+
       this.animation(e, false, false, carIcon, response);
 
-      const responseDrive = await this.drive(e, 'drive', carBlock) || {};
+      const responseDrive = (await this.drive(e, 'drive', carBlock)) || {};
 
-      const eventBtn = <HTMLButtonElement>e.target;
       const nearElem = <HTMLElement>eventBtn.nextElementSibling;
       nearElem.removeAttribute('disabled');
 

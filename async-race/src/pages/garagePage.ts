@@ -146,7 +146,6 @@ class Garage {
     const lastPage = Math.ceil(+allCarsAmount.length / 7);
 
     if (
-      // eslint-disable-next-line operator-linebreak
       (direction === 'next' && store.carsPage === lastPage) ||
       (direction === 'prev' && store.carsPage < 2)
     ) {

@@ -22,6 +22,9 @@
     "node": true
   },
   "rules": {
+    "object-curly-newline": 0,
+    "operator-linebreak": 0,
+    "no-unused-vars": 0,
     "eol-last": [
       "error",
       "always"

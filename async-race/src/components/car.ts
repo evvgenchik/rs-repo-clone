@@ -13,14 +13,6 @@ import store from './store';
 import Winner from './winner';
 
 class Car {
-  updateBtn: HTMLButtonElement;
-
-  createBtn: HTMLButtonElement;
-
-  selectBtn: HTMLButtonElement;
-
-  removeBtn: HTMLButtonElement;
-
   currentId = '0';
 
   animationId = 0;
@@ -30,10 +22,6 @@ class Car {
   winner: Winner;
 
   constructor(garage: Garage) {
-    this.createBtn = <HTMLButtonElement>$('.create__confirm');
-    this.updateBtn = <HTMLButtonElement>$('.create__confirm');
-    this.selectBtn = <HTMLButtonElement>$('.create__confirm');
-    this.removeBtn = <HTMLButtonElement>$('.create__confirm');
     this.garage = garage;
 
     this.winner = new Winner();
@@ -98,7 +86,7 @@ class Car {
         const carIcon = <SVGSVGElement>item;
         const carBlock = <HTMLElement>carIcon.closest('.item__block');
 
-        await this.drive(e, 'stopped', carBlock);
+        await this.start(e, 'stopped', carBlock);
         this.animation(e, true, false, carIcon);
       });
 
@@ -126,20 +114,24 @@ class Car {
         const eventBtn = <HTMLElement>e.target;
         addDisabled(eventBtn);
 
-        const response = await this.drive(e, 'started');
-        this.animation(e, false, false, null, response);
+        const response = await this.start(e, 'started');
 
-        const responseDrive = await this.drive(e, 'drive');
-        if (responseDrive === 500) {
-          this.animation(e, true, true);
-          this.drive(e, 'stopped');
+        if (response) {
+          this.animation(e, false, false, null, response);
+
+          const responseDrive = await this.drive(e, 'drive');
+
+          if (responseDrive) {
+            this.animation(e, true, true);
+            this.drive(e, 'stopped');
+          }
         }
       });
     });
 
     bBtns.forEach((item) => {
       item.addEventListener('click', async (e) => {
-        await this.drive(e, 'stopped');
+        await this.start(e, 'stopped');
         this.animation(e, true);
 
         const eventBtn = <HTMLElement>e.target;
@@ -194,6 +186,7 @@ class Car {
 
   generateCars() {
     const arrayAuto = <string[]>mixCars();
+
     arrayAuto.forEach((item) => {
       api.createCar(item, randomHexColor());
     });
@@ -205,6 +198,15 @@ class Car {
     carBlock = carBlock || <HTMLElement>eventBtn.closest('.item__block');
 
     const date = await api.drive(carBlock.id, status);
+    return date;
+  }
+
+  async start(e: Event, status: string, carBlock?: HTMLElement) {
+    const eventBtn = <HTMLElement>e.target;
+
+    carBlock = carBlock || <HTMLElement>eventBtn.closest('.item__block');
+
+    const date = await api.start(carBlock.id, status);
     return date;
   }
 
@@ -263,26 +265,30 @@ class Car {
       const carBlock = <HTMLElement>carIcon.closest('.item__block');
       const idCar = <number>Number(carBlock.getAttribute('id'));
 
-      const response = await this.drive(e, 'started', carBlock);
-      const winTime = convertTime(response.distance / response.velocity);
+      const response = await this.start(e, 'started', carBlock);
 
-      this.animation(e, false, false, carIcon, response);
+      if (response) {
+        const winTime = convertTime(response.distance / response.velocity);
 
-      const responseDrive = (await this.drive(e, 'drive', carBlock)) || {};
+        this.animation(e, false, false, carIcon, response);
 
-      const nearElem = <HTMLElement>eventBtn.nextElementSibling;
-      nearElem.removeAttribute('disabled');
+        const responseDrive = await this.drive(e, 'drive', carBlock);
 
-      if (responseDrive === 500) {
-        this.animation(e, true, true, carIcon);
-        this.drive(e, 'stopped', carBlock);
-        return;
-      }
+        if (responseDrive) {
+          const nearElem = <HTMLElement>eventBtn.nextElementSibling;
+          nearElem.removeAttribute('disabled');
 
-      if (responseDrive.success && firstWin) {
-        firstWin = false;
+          if (!responseDrive.success) {
+            this.animation(e, true, true, carIcon);
+            this.drive(e, 'stopped', carBlock);
+            return;
+          }
 
-        this.createWinner(modelCar, winTime, idCar);
+          if (responseDrive.success && firstWin) {
+            firstWin = false;
+            this.createWinner(modelCar, winTime, idCar);
+          }
+        }
       }
     });
   }

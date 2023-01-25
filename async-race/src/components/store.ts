@@ -1,4 +1,6 @@
-const store = {
+import { IStore } from '../assets/utils/types';
+
+const store: IStore = {
   carsPage: 1,
   winnersPage: 1,
   sort: 'time',

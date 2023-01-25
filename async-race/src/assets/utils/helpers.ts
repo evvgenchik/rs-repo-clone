@@ -46,7 +46,6 @@ const addDisabled = (elem: HTMLElement) => {
   if (elem.classList.contains('btns__race')) {
     elem.setAttribute('disabled', 'disabled');
     const nearElem = <HTMLElement>elem.nextElementSibling;
-    console.log('her');
     nearElem.setAttribute('disabled', 'disabled');
 
     const allButtons = $All('.drive__go');

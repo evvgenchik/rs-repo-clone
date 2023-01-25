@@ -1,3 +1,5 @@
+import { engineDriveResponse, engineStartResponse, ICar, IWinner } from '../assets/utils/types';
+
 class Api {
   paths = {
     garage: 'http://127.0.0.1:3000/garage',
@@ -9,7 +11,7 @@ class Api {
     try {
       const url = page ? `${this.paths.garage}?_page=${page}&_limit=${limit}` : this.paths.garage;
       const response = await fetch(url);
-      const cars = await response.json();
+      const cars: ICar[] = await response.json();
       return cars;
     } catch (e) {
       console.log(e);
@@ -68,13 +70,23 @@ class Api {
       const response = await fetch(`${this.paths.engine}?id=${id}&status=${status}`, {
         method: 'PATCH'
       });
-      if (response.status === 500) {
-        return 500;
-      }
-      const date = await response.json();
+
+      const date = (await response.json()) as engineDriveResponse;
       return date;
     } catch (e) {
-      console.log(e);
+      return false;
+    }
+  }
+
+  async start(id: string, status: string) {
+    try {
+      const response = await fetch(`${this.paths.engine}?id=${id}&status=${status}`, {
+        method: 'PATCH'
+      });
+
+      const date = (await response.json()) as engineStartResponse;
+      return date;
+    } catch (e) {
       return false;
     }
   }
@@ -82,7 +94,7 @@ class Api {
   async getWinner(id: number) {
     try {
       const response = await fetch(`${this.paths.winners}/${id}`);
-      const winner = await response.json();
+      const winner: IWinner = await response.json();
       return winner;
     } catch (e) {
       console.log(e);
@@ -128,7 +140,7 @@ class Api {
         ? `${this.paths.winners}?_page=${page}&_sort=${sort}&_order=${order}&_limit=${limit}`
         : 'http://127.0.0.1:3000/winners';
       const response = await fetch(url);
-      const winners = await response.json();
+      const winners: IWinner[] = await response.json();
       return winners;
     } catch (e) {
       console.log(e);
@@ -139,7 +151,7 @@ class Api {
   async getCar(id: number) {
     try {
       const response = await fetch(`${this.paths.garage}/${id}`);
-      const car = await response.json();
+      const car: ICar = await response.json();
       return car;
     } catch (e) {
       console.log(e);

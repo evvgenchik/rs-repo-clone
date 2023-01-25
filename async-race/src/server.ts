@@ -14,7 +14,6 @@ class Server {
     </div>
   </div>
   <main class="main">
-    
   </main>
   <footer class="footer">
     <div class="footer__btns">

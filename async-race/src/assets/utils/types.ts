@@ -29,11 +29,4 @@ type engineStartResponse = {
   distance: number;
 };
 
-// type renderWinnerParam = ICar | IWinner;
-// interface IWinnersResponse {
-//   id: number;
-//   wins: number;
-//   time: number;
-// }
-
 export { ICar, IWinner, IStore, engineDriveResponse, engineStartResponse };

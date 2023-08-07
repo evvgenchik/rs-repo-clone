@@ -73,7 +73,7 @@ body {
 }
 .logo::before {
   content: "";
-  background: url("../main/img/bamboo.svg") no-repeat;
+  background: url("./img/bamboo.svg") no-repeat;
   position: absolute;
   width: 7rem;
   height: 21rem;
@@ -196,7 +196,7 @@ body {
   }
   .header .logo::before {
     content: "";
-    background: url("../main/img/bamboo.svg") no-repeat;
+    background: url("./img/bamboo.svg") no-repeat;
     position: absolute;
     width: 7rem;
     height: 21rem;
@@ -286,7 +286,7 @@ body {
 }
 
 .watch {
-  background: url("../main/img/panda_bg.png") center no-repeat;
+  background: url("./img/panda_bg.png") center no-repeat;
   background-size: cover;
   width: 100%;
   height: 700rem;
@@ -958,7 +958,7 @@ body {
 }
 .column-pick:not(:last-child)::after {
   content: "";
-  background: url("../main/img/pick/Vector.svg") no-repeat;
+  background: url("./img/pick/Vector.svg") no-repeat;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1088,7 +1088,7 @@ body {
   }
   .pick .column-pick:not(:last-child)::after {
     content: "";
-    background: url("../main/img/pick/arrow.png") no-repeat;
+    background: url("./img/pick/arrow.png") no-repeat;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1142,7 +1142,7 @@ body {
   }
   .pick .description-pick .column-pick:not(:last-child)::after {
     content: "";
-    background: url("../main/img/pick/arrow.png") no-repeat;
+    background: url("./img/pick/arrow.png") no-repeat;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1308,19 +1308,19 @@ body {
 }
 .testimonials-column:first-child .person-column::before {
   content: "";
-  background: url("../main/img/comments/user_icon.svg") no-repeat;
+  background: url("./img/comments/user_icon.svg") no-repeat;
 }
 .testimonials-column:nth-child(2) .person-column::before {
   content: "";
-  background: url("../main/img/comments/man2.svg") no-repeat;
+  background: url("./img/comments/man2.svg") no-repeat;
 }
 .testimonials-column:nth-child(3) .person-column::before {
   content: "";
-  background: url("../main/img/comments/girl 1.svg") no-repeat;
+  background: url("./img/comments/girl 1.svg") no-repeat;
 }
 .testimonials-column:last-child .person-column::before {
   content: "";
-  background: url("../main/img/comments/girl2.svg") no-repeat;
+  background: url("./img/comments/girl2.svg") no-repeat;
 }
 .testimonials-column__text {
   font-weight: 300;
@@ -1530,19 +1530,19 @@ body {
 }
 .contacts-block1__link:first-child::before {
   content: "";
-  background: url("../main/img/footer/Facebook.svg") center no-repeat;
+  background: url("./img/footer/Facebook.svg") center no-repeat;
 }
 .contacts-block1__link:nth-child(2)::before {
   content: "";
-  background: url("../main/img/footer/twitter.svg") center no-repeat;
+  background: url("./img/footer/twitter.svg") center no-repeat;
 }
 .contacts-block1__link:nth-child(3)::before {
   content: "";
-  background: url("../main/img/footer/inst.svg") center no-repeat;
+  background: url("./img/footer/inst.svg") center no-repeat;
 }
 .contacts-block1__link:nth-child(4)::before {
   content: "";
-  background: url("../main/img/footer/youtube.svg") center no-repeat;
+  background: url("./img/footer/youtube.svg") center no-repeat;
 }
 
 .block2-footer {

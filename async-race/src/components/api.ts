@@ -2,9 +2,9 @@ import { engineDriveResponse, engineStartResponse, ICar, IWinner } from '../asse
 
 class Api {
   paths = {
-    garage: 'http://127.0.0.1:3000/garage',
-    winners: 'http://127.0.0.1:3000/winners',
-    engine: 'http://127.0.0.1:3000/engine'
+    garage: 'https://async-race-v1ik.onrender.com/garage',
+    winners: 'https://async-race-v1ik.onrender.com/winners',
+    engine: 'https://async-race-v1ik.onrender.com/engine'
   };
 
   async getCars(page?: number, limit?: number) {
